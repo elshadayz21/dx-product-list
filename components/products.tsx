@@ -175,7 +175,8 @@ export default function ProductPage() {
                     return (
                       !product?.type ||
                       (product.type !== "corebankingapp" &&
-                        product.type !== "underDevelopment")
+                        product.type !== "underDevelopment") &&
+                      product.type !== "dropdownMenu"
                     );
                   }
                   return false;
