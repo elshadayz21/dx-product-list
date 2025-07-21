@@ -701,7 +701,7 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "http://10.8.100.90:7070/dashboard",
+    link: "http://10.8.100.90/dashboard",
     file: "",
     moto: "",
     video: "",
