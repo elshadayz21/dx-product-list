@@ -701,7 +701,7 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "https://coopbankoromia.com.et/coopay-ebirr/",
+    link: "http://10.8.100.90:7070/dashboard",
     file: "",
     moto: "",
     video: "",
