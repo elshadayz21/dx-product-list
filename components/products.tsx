@@ -175,8 +175,8 @@ export default function ProductPage() {
                     return (
                       !product?.type ||
                       (product.type !== "corebankingapp" &&
-                        product.type !== "underDevelopment") &&
-                      product.type !== "dropdownMenu"
+                        product.type !== "underDevelopment" &&
+                        product.type !== "dropdownMenu")
                     );
                   }
                   return false;
@@ -225,7 +225,7 @@ export default function ProductPage() {
                   (product) =>
                     product?.type !== "corebankingapp" &&
                     product?.type !== "underDevelopment" &&
-                    product?.type !== "dropdownMenu",
+                    product?.type !== "dropdownMenu"
                 )
 
                 .map((product) => (
@@ -298,17 +298,28 @@ export default function ProductPage() {
                 ))}
             </div>
           </TabsContent>
-          <TabsContent value="imageTab">
+          <TabsContent value="imageTab" id="imageTab">
             <div className="flex justify-center items-center h-full">
               <Card className="shadow-lg max-w-2xl">
                 <CardContent className="p-4">
                   <Image
-                    src="/image.jpeg"
-                    alt="Featured Image"
-                    width={800}
-                    height={600}
+                    // src="/Mobile-Money-ecosystem-shega.webp"
+                     src="/image.jpeg"
+                    alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
+                    width={400}
+                    height={100}
                     className="w-full object-cover rounded-lg"
                   />
+                  <div className="mt-4">
+                    Source:{" "}
+                    <span className="text-blue-600 underline">
+                      <em>
+                        <a href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ?utm_source=share&utm_medium=member_android" target="_blank" rel="noopener noreferrer">
+                          Shega Media
+                        </a>
+                      </em>
+                    </span>
+                  </div>
                 </CardContent>
               </Card>
             </div>

@@ -317,10 +317,12 @@ export const products: Product[] = [
           </strong>
           , making it the ultimate all-in-one solution for your digital banking
           needs.
+         
         </p>
+         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
     ),
-    link: "https://coopbankoromia.com.et/coopay-ebirr/",
+    link: "http://10.8.100.90/dashboard/coopay",
     file: "",
     moto: "",
     video: "",
