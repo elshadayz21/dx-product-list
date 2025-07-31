@@ -274,7 +274,7 @@ export const products: Product[] = [
   },
   {
     id: 30,
-    name: "MyCard - Card App",
+    name: "MyCard",
     description: (
       <div>
         <p className="mb-2">
