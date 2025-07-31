@@ -9,10 +9,11 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coop Stream is CoopBank&apos;s innovative <strong>loan origination platform</strong>that
-          automates the entire loan processing workflow. This app simplifies and
-          accelerates the process of applying for and approving loans, reducing
-          manual tasks and enhancing efficiency.
+          Coop Stream is CoopBank&apos;s innovative{" "}
+          <strong>loan origination platform</strong>that automates the entire
+          loan processing workflow. This app simplifies and accelerates the
+          process of applying for and approving loans, reducing manual tasks and
+          enhancing efficiency.
         </p>
         <p>
           By streamlining loan origination, Coop Stream allows both customers
@@ -36,10 +37,11 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Deboo, <strong> a donation and crowdfunding platform</strong> is a web-based platform offered by
-          Cooperative Bank of Oromia. It enables individuals and organizations
-          to create fundraising campaigns and receive contributions from a large
-          number of people to support their projects, causes, or initiatives.
+          Deboo, <strong> a donation and crowdfunding platform</strong> is a
+          web-based platform offered by Cooperative Bank of Oromia. It enables
+          individuals and organizations to create fundraising campaigns and
+          receive contributions from a large number of people to support their
+          projects, causes, or initiatives.
         </p>
         <p>
           The Deboo Crowdfunding System supports various types of campaigns,
@@ -63,7 +65,8 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Our Diaspora Banking platform allow Diasporas who reside and work
-          outside the country to <strong> create CoopBank account</strong>from wherever they are.
+          outside the country to <strong> create CoopBank account</strong>from
+          wherever they are.
         </p>
         <p>
           The bank provides Mortgage, Capital and Investment loan along with
@@ -121,9 +124,9 @@ export const products: Product[] = [
           with CARE Ethiopia Association to digitize the VSLA concept.
         </p>
         <p>
-         <strong>  Village Savings and Loans Associations (VSLAs)</strong> empower participants to
-          increase access to and control over resources, leveraging collective
-          power to overcome social and financial barriers.
+          <strong> Village Savings and Loans Associations (VSLAs)</strong>{" "}
+          empower participants to increase access to and control over resources,
+          leveraging collective power to overcome social and financial barriers.
         </p>
       </div>
     ),
@@ -157,11 +160,15 @@ export const products: Product[] = [
         <p className="mb-2">
           Souqpass, a fully fledged inventory system powered by the Cooperative
           Bank of Oromia and developed in collaboration with the World Bank to
-          pilot <strong>Revenue-Based Financing (RBF)</strong>, is a financial platform offering
-          innovative solutions for businesses and MSMEs. It primarily serves as
-          an inventory platform that delivers{" "}
-          <strong>Revenue-Based Financing (RBF), a cash-flow based credit repayment method</strong>, supporting business
-          growth through flexible funding aligned with revenue streams.
+          pilot <strong>Revenue-Based Financing (RBF)</strong>, is a financial
+          platform offering innovative solutions for businesses and MSMEs. It
+          primarily serves as an inventory platform that delivers{" "}
+          <strong>
+            Revenue-Based Financing (RBF), a cash-flow based credit repayment
+            method
+          </strong>
+          , supporting business growth through flexible funding aligned with
+          revenue streams.
         </p>
 
         <p className="mb-2">
@@ -187,10 +194,10 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Coop Recon is a powerful tool designed by CoopBank to streamline
-          <strong>reconciliation processes </strong>both within the bank and with external banks
-          and systems. It automates the matching of transactions, ensuring that
-          all accounts are accurately balanced and discrepancies are quickly
-          identified.
+          <strong>reconciliation processes </strong>both within the bank and
+          with external banks and systems. It automates the matching of
+          transactions, ensuring that all accounts are accurately balanced and
+          discrepancies are quickly identified.
         </p>
         <p>
           By integrating with various systems, Coop Recon simplifies the complex
@@ -241,11 +248,12 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coop Ambition is CoopBank&apos;s dedicated <strong>learning and development platform</strong>,
-          designed to provide employees with access to a wide range of
-          educational resources. This platform supports continuous learning and
-          professional development, enabling staff to enhance their skills and
-          knowledge at their own pace.
+          Coop Ambition is CoopBank&apos;s dedicated{" "}
+          <strong>learning and development platform</strong>, designed to
+          provide employees with access to a wide range of educational
+          resources. This platform supports continuous learning and professional
+          development, enabling staff to enhance their skills and knowledge at
+          their own pace.
         </p>
         <p>
           Through Coop Ambition, employees can engage with interactive courses,
@@ -264,7 +272,33 @@ export const products: Product[] = [
     imageUrl: "/products/coopAmbition.jpg",
     type: "",
   },
-
+  {
+    id: 30,
+    name: "MyCard - Card App",
+    description: (
+      <div>
+        <p className="mb-2">
+          <strong> Bring Your Brand to Life </strong> — One Card at a Time
+          Welcome to the future of custom card ordering. Whether you&apos;re a
+          company, a student union, or an organization with a vision, our
+          platform empowers you to design and order beautifully personalized
+          debit cards that reflect your unique identity.
+        </p>
+        <p className="mb-2">
+          From vibrant logos to elegant minimalist designs, you have full
+          creative control. Choose your preferred pickup branch, streamline the
+          order process, and deliver a card experience your
+          members will remember.
+        </p>
+      </div>
+    ),
+    link: "https://mycard.coopbankoromiasc.com/",
+    file: "",
+    moto: "",
+    video: "",
+    imageUrl: "/products/mycard-logo.png",
+    type: "",
+  },
   {
     id: 11,
     name: "Michu",
@@ -317,9 +351,8 @@ export const products: Product[] = [
           </strong>
           , making it the ultimate all-in-one solution for your digital banking
           needs.
-         
         </p>
-         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
+        {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
     ),
     link: "http://10.8.100.90/dashboard/coopay",
@@ -391,7 +424,8 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          The Coop Bank&apos;s <strong>dedicated Mobile Banking Application</strong> for CoopBank
+          The Coop Bank&apos;s{" "}
+          <strong>dedicated Mobile Banking Application</strong> for CoopBank
           offers customers a convenient way to manage their finances on the go.
           With features like account management, fund transfers, and bill
           payments, users can handle their banking needs directly from their
