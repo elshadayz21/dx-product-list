@@ -441,7 +441,7 @@ export const products: Product[] = [
         </p>
       </div>
     ),
-    link: "https://coopbankoromia.com.et/coopapp/",
+    link: "https://coopapp.cbo.com.et/",
     file: "",
     moto: "",
     video: "",

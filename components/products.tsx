@@ -49,9 +49,9 @@ export default function ProductPage() {
     const link = document.createElement("a");
     link.href = filePath;
     link.download = `${file}`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    document.body.appendChild(link); // required for firefox
+    link.click(); // This will download the file
+    document.body.removeChild(link); // cleanup
   };
 
   const handleBackToList = () => {
