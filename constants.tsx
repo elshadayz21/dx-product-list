@@ -10,7 +10,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Coop Stream is CoopBank&apos;s innovative{" "}
-          <strong>loan origination platform</strong>that automates the entire
+          <strong>loan origination platform</strong> {" "}that automates the entire
           loan processing workflow. This app simplifies and accelerates the
           process of applying for and approving loans, reducing manual tasks and
           enhancing efficiency.
@@ -37,7 +37,7 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Deboo, <strong> a donation and crowdfunding platform</strong> is a
+          Deboo,{" "} <strong> a donation and crowdfunding platform</strong> {" "}is a
           web-based platform offered by Cooperative Bank of Oromia. It enables
           individuals and organizations to create fundraising campaigns and
           receive contributions from a large number of people to support their
@@ -65,7 +65,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Our Diaspora Banking platform allow Diasporas who reside and work
-          outside the country to <strong> create CoopBank account</strong>from
+          outside the country to {" "}<strong> create CoopBank account</strong>{" "}from
           wherever they are.
         </p>
         <p>
@@ -88,19 +88,19 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Our innovative Coop Remittance app is the first of its kind in
-          Ethiopia, <strong>leveraging blockchain technology</strong> to enable
+          Ethiopia,{" "} <strong>leveraging blockchain technology</strong> {" "} to enable
           fast, secure, and cost-effective money transfers. Here&apos;s what
           distinguishes it:
           <li>
-            <strong> Very small latency: </strong>
+            <strong> Very small latency: </strong>{" "}
             Transactions are processed within 3–5 seconds.
           </li>
           <li>
-            <strong> Very Low transfer limits: </strong>
+            <strong> Very Low transfer limits: </strong>{" "}
             Send amounts as small as 5 Euros effortlessly.
           </li>
           <li>
-            <strong> Extremely low transfer cost: </strong>
+            <strong> Extremely low transfer cost: </strong>{" "}
             Transfer cost is very significantly low compared to other remittance
             apps locally.
           </li>
@@ -124,7 +124,7 @@ export const products: Product[] = [
           with CARE Ethiopia Association to digitize the VSLA concept.
         </p>
         <p>
-          <strong> Village Savings and Loans Associations (VSLAs)</strong>{" "}
+         {" "} <strong> Village Savings and Loans Associations (VSLAs)</strong>{" "}
           empower participants to increase access to and control over resources,
           leveraging collective power to overcome social and financial barriers.
         </p>
@@ -167,7 +167,7 @@ export const products: Product[] = [
             Revenue-Based Financing (RBF), a cash-flow based credit repayment
             method
           </strong>
-          , supporting business growth through flexible funding aligned with
+          ,{" "} supporting business growth through flexible funding aligned with
           revenue streams.
         </p>
 
@@ -194,7 +194,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Coop Recon is a powerful tool designed by CoopBank to streamline
-          <strong>reconciliation processes </strong>both within the bank and
+         {" "} <strong>reconciliation processes </strong>{" "} both within the bank and
           with external banks and systems. It automates the matching of
           transactions, ensuring that all accounts are accurately balanced and
           discrepancies are quickly identified.
@@ -222,7 +222,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Our payroll system is a cutting-edge{" "}
-          <strong> Software as a Service (SaaS) </strong>
+          <strong> Software as a Service (SaaS) </strong>{" "}
           solution designed to automate and simplify payroll processes for
           businesses of all sizes. With its hyper-customizable and localization
           features, the system allows organizations to input employee data once
@@ -249,7 +249,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Coop Ambition is CoopBank&apos;s dedicated{" "}
-          <strong>learning and development platform</strong>, designed to
+          <strong>learning and development platform</strong>,{" "} designed to
           provide employees with access to a wide range of educational
           resources. This platform supports continuous learning and professional
           development, enabling staff to enhance their skills and knowledge at
@@ -278,7 +278,7 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          <strong> Bring Your Brand to Life </strong> — One Card at a Time
+          <strong>{" "} Bring Your Brand to Life </strong> {" "} — One Card at a Time
           Welcome to the future of custom card ordering. Whether you&apos;re a
           company, a student union, or an organization with a vision, our
           platform empowers you to design and order beautifully personalized
@@ -306,7 +306,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Michu is CoopBank&apos;s groundbreaking and pioneering{" "}
-          <strong> on-collateral digital lending platform</strong>, the first in
+          <strong> on-collateral digital lending platform</strong>,{" "} the first in
           Ethiopia to offer loans without requiring collateral.
         </p>
         <p className="mb-2">
@@ -320,7 +320,7 @@ export const products: Product[] = [
         <p>
           Recognizing its impacts and growing demands, Michu was upgraded to
           Michu 2.0, incorporating new segments such as{" "}
-          <strong> Michu Kiya</strong>, a women-only lending module.
+          <strong> Michu Kiya</strong>,{" "} a women-only lending module.{" "}
         </p>
       </div>
     ),
@@ -338,7 +338,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Coopay-Ebirr is coop bank&apos;s{" "}
-          <strong>digital mobile wallet</strong> provided in partnership with
+          <strong>digital mobile wallet</strong>{" "} provided in partnership with
           Ebirr, a fintech company in Ethiopia. Whether you need to pay for your
           mobile airtime, send money to all corners of the country, or make use
           of the bank&apos;s vast branch and agent networks, Coopay-Ebirr has
@@ -425,7 +425,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           The Coop Bank&apos;s{" "}
-          <strong>dedicated Mobile Banking Application</strong> for CoopBank
+          <strong>dedicated Mobile Banking Application</strong>{" "} for CoopBank
           offers customers a convenient way to manage their finances on the go.
           With features like account management, fund transfers, and bill
           payments, users can handle their banking needs directly from their
@@ -458,7 +458,7 @@ export const products: Product[] = [
             {" "}
             supply chain system designed to onboard all stakeholders in the
             farming ecosystem specially in the horticulture sector.{" "}
-          </strong>
+          </strong>{" "}
           This innovative solution not only addresses uncollateralized, in-kind
           loans for farmers but also provides market privileges for various
           MSMEs. It is open to anyone looking to finance farmers with a
@@ -636,7 +636,7 @@ export const products: Product[] = [
           customers to handling high-profile customer interactions.
         </p>
         <p>
-          <strong>Admin Portal</strong>
+        {" "}  <strong>Admin Portal</strong> {" "}
           To checkout all the information that is happening on the branch, track
           progress and follow up with customers.
         </p>
