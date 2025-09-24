@@ -100,7 +100,30 @@ const Page = () => {
           </Button>
         </div>
       ) : (
-        <RadioToggleProductView />
+        // <RadioToggleProductView />
+              <div className='grid grid-cols-2 gap-4 w-full'>
+          <div className='space-y-4'>
+            <CooperativeVision />
+
+          {/* this div is for the image */}
+            <div className=' mx-auto'>
+
+            {/* <div className='h-[330px] mx-auto'> */}
+              {/* <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' /> */}
+                <div className="flex flex-col items-center w-full">
+          <Image
+            src="/global-msme-award.jpg"
+            alt="Global MSME Award"
+            width={350}
+            height={350}
+          />
+        </div>
+            </div>
+          </div>
+          <div className='h-[660px] overflow-y-auto'>
+            <ProductPage />
+          </div>
+        </div>
       )}
     </div>
   );
