@@ -813,13 +813,13 @@ export const products: Product[] = [
   },
 {
     id: 32,
-    name: "Global SME Finance Awards - Sustainable SME Financer of the Year",
+    name: "Global SME Finance Awards Winner",
     description: (
       <div>
-        <p className="mb-2"></p>
+        <p className="mb-2">Global SME Finance Awards - Sustainable SME Financer of the Year</p>
       </div>
     ),
-    link: "https://coopbankoromia.com.et/about/eco-branches/",
+    link: "https://www.linkedin.com/posts/ebr-2013_ebrabrnews-ebr-ethiopia-activity-7373700546958102528-ho1J?utm_source=social_share_send&utm_medium=member_desktop_web&rcm=ACoAADLAjv8BmcuF6ZFL5Cw5MJLSMUEMUv0CxiM",
     file: "",
     moto: "",
     video: "",
