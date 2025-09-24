@@ -823,7 +823,7 @@ export const products: Product[] = [
     file: "",
     moto: "",
     video: "",
-    imageUrl: "/products/global-msme award.jpg.png",
+    imageUrl: "/products/global-msme award.jpg",
     type: "dropdownMenu",
   },
   // {

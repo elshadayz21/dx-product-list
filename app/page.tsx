@@ -7,9 +7,58 @@ import ProductPage from "@/components/products";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 // import Image from "next/image";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
+function RadioToggleProductView() {
+  const [showProduct, setShowProduct] = useState(true);
+  return (
+    <div className="flex flex-col items-center w-full">
+      <div className="mb-6 flex gap-4">
+        <label className="flex items-center gap-2">
+          <input
+            type="radio"
+            name="viewToggle"
+            checked={showProduct}
+            onChange={() => setShowProduct(true)}
+          />
+          Show Product Page
+        </label>
+        <label className="flex items-center gap-2">
+          <input
+            type="radio"
+            name="viewToggle"
+            checked={!showProduct}
+            onChange={() => setShowProduct(false)}
+          />
+          Show Global MSME Award
+        </label>
+      </div>
+      {showProduct ? (
+        <div className='grid grid-cols-2 gap-4 w-full'>
+          <div className='space-y-4'>
+            <CooperativeVision />
+            <div className='h-[330px] mx-auto'>
+              <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' />
+            </div>
+          </div>
+          <div className='h-[660px] overflow-y-auto'>
+            <ProductPage />
+          </div>
+        </div>
+      ) : (
+        <div className="flex flex-col items-center w-full">
+          <Image
+            src="/global-msme-award.jpg"
+            alt="Global MSME Award"
+            width={600}
+            height={500}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
 const Page = () => {
   const [pin, setPin] = useState("");
   const [isPinVerified, setIsPinVerified] = useState(false);
@@ -51,20 +100,11 @@ const Page = () => {
           </Button>
         </div>
       ) : (
-        <div className='grid grid-cols-2 gap-4'>
-          <div className='space-y-4'>
-            <CooperativeVision />
-            <div className='h-[330px] mx-auto'>
-              <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' />
-            </div>
-          </div>
-          <div className='h-[660px] overflow-y-auto'>
-            <ProductPage />
-          </div>
-        </div>
+        <RadioToggleProductView />
       )}
     </div>
   );
-};
+}
 
+// Removed duplicate RadioToggleProductView and misplaced bracket
 export default Page;

@@ -40,6 +40,7 @@ export default function ProductPage() {
     setShowVideo(false); // reset video view on product selection
   };
 
+  const [selectedImage, setSelectedImage] = useState("/image.jpeg");
   const handleOpenLink = (url: string | undefined) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
