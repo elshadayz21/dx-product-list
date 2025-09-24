@@ -811,7 +811,21 @@ export const products: Product[] = [
     imageUrl: "/products/entrust-logo.png",
     type: "corebankingapp",
   },
-
+{
+    id: 32,
+    name: "Global SME Finance Awards - Sustainable SME Financer of the Year",
+    description: (
+      <div>
+        <p className="mb-2"></p>
+      </div>
+    ),
+    link: "https://coopbankoromia.com.et/about/eco-branches/",
+    file: "",
+    moto: "",
+    video: "",
+    imageUrl: "/products/global-msme award.jpg.png",
+    type: "dropdownMenu",
+  },
   // {
   //   id: 20,
   //   name: "App Connect",
