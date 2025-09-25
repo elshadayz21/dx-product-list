@@ -106,7 +106,7 @@ const Page = () => {
             <CooperativeVision />
 
           {/* this div is for the image */}
-            <div className=' mx-auto'>
+            <div className='mx-auto'>
 
             {/* <div className='h-[330px] mx-auto'> */}
               {/* <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' /> */}
@@ -114,8 +114,8 @@ const Page = () => {
           <Image
             src="/global-msme-award.jpg"
             alt="Global MSME Award"
-            width={350}
-            height={350}
+            width={300}
+            height={300}
           />
         </div>
             </div>
