@@ -813,7 +813,7 @@ export const products: Product[] = [
   },
 {
     id: 32,
-    name: "Global SME Finance Awards - Sustainable SME Financer of the Year",
+    name: "Global SME Finance Award",
     description: (
       <div>
         <p className="mb-2"></p>
