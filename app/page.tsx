@@ -110,7 +110,7 @@ const Page = () => {
               {/* <div className='h-[330px] mx-auto'> */}
               {/* <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' /> */}
               <div className="flex flex-col items-center w-full">
-                <div className="mb-6 flex gap-4">
+                <div className="mb-2 flex gap-2">
                   {" "}
                   <Image
                     src="/global-msme-award.jpg"
