@@ -112,7 +112,8 @@ const Page = () => {
               {/* <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' /> */}
                 <div className="flex flex-col items-center w-full">
           <Image
-            src="/global-msme-award.jpg"
+            // src="/global-msme-award.jpg"
+            src="/top-100-african-banks.jpeg"
             alt="Global MSME Award"
             width={300}
             height={300}
