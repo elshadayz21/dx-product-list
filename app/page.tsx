@@ -124,7 +124,7 @@ const Page = () => {
                     src="/top-100-african-banks.jpeg"
                     alt="Global MSME Award"
                     width={300}
-                    height={300}
+                    height={200}
                   />{" "}
                 </div>
               </div>
