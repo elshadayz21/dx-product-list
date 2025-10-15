@@ -34,14 +34,14 @@ function RadioToggleProductView() {
         </label>
       </div>
       {showProduct ? (
-        <div className='grid grid-cols-2 gap-4 w-full'>
-          <div className='space-y-4'>
+        <div className="grid grid-cols-2 gap-4 w-full">
+          <div className="space-y-4">
             <CooperativeVision />
-            <div className='h-[330px] mx-auto'>
-              <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' />
+            <div className="h-[330px] mx-auto">
+              <PDFViewer fileUrl="/THE STORY OF FATIMA.pdf" />
             </div>
           </div>
-          <div className='h-[660px] overflow-y-auto'>
+          <div className="h-[660px] overflow-y-auto">
             <ProductPage />
           </div>
         </div>
@@ -73,62 +73,71 @@ const Page = () => {
   };
 
   return (
-    <div className='container flex flex-col h-screen items-center justify-center'>
+    <div className="container flex flex-col h-screen items-center justify-center">
       {!isPinVerified ? (
-        <div className='flex flex-col items-center justify-center'>
+        <div className="flex flex-col items-center justify-center">
           <Image
             src={"/products/dxvalleylogo.png"}
-            alt='Dx Valley'
+            alt="Dx Valley"
             width={500} // adjust the width as needed
             height={200}
-            className='mx-auto mb-4 '
+            className="mx-auto mb-4 "
           />
-          <p className='mb-4 text-lg font-medium'>Enter PIN to Access</p>
+          <p className="mb-4 text-lg font-medium">Enter PIN to Access</p>
           <Input
-            type='password'
+            type="password"
             value={pin}
-            placeholder='Enter Password'
+            placeholder="Enter Password"
             onChange={(e) => setPin(e.target.value)}
-            className='mb-2 max-w-xs'
+            className="mb-2 max-w-xs"
           />
           {/* Error Message */}
           {errorMessage && (
-            <span className='text-red-500 text-sm'>{errorMessage}</span>
+            <span className="text-red-500 text-sm">{errorMessage}</span>
           )}
-          <Button onClick={handlePinSubmit} className='bg-[#00adef] mt-2'>
+          <Button onClick={handlePinSubmit} className="bg-[#00adef] mt-2">
             Submit Password
           </Button>
         </div>
       ) : (
         // <RadioToggleProductView />
-              <div className='grid grid-cols-2 gap-4 w-full'>
-          <div className='space-y-4'>
+        <div className="grid grid-cols-2 gap-4 w-full">
+          <div className="space-y-4">
             <CooperativeVision />
 
-          {/* this div is for the image */}
-            <div className='mx-auto'>
-
-            {/* <div className='h-[330px] mx-auto'> */}
+            {/* this div is for the image */}
+            <div className="mx-auto">
+              {/* <div className='h-[330px] mx-auto'> */}
               {/* <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' /> */}
-                <div className="flex flex-col items-center w-full">
-          <Image
-            // src="/global-msme-award.jpg"
-            src="/top-100-african-banks.jpeg"
-            alt="Global MSME Award"
-            width={300}
-            height={300}
-          />
-        </div>
+              <div className="flex flex-col items-center w-full">
+                <div className="mb-6 flex gap-4">
+                  {" "}
+                  <Image
+                    src="/global-msme-award.jpg"
+                    // src="/top-100-african-banks.jpeg"
+                    alt="Global MSME Award"
+                    width={300}
+                    height={300}
+                  />
+                  <Image
+                    // src="/global-msme-award.jpg"
+                    src="/top-100-african-banks.jpeg"
+                    alt="Global MSME Award"
+                    width={300}
+                    height={300}
+                  />{" "}
+                </div>
+              </div>
             </div>
           </div>
-          <div className='h-[660px] overflow-y-auto'>
+          <div className="h-[660px] overflow-y-auto">
             <ProductPage />
           </div>
         </div>
       )}
     </div>
   );
-}
+};
 
 // Removed duplicate RadioToggleProductView and misplaced bracket
 export default Page;
