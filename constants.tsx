@@ -332,7 +332,7 @@ export const products: Product[] = [
     type: "",
   },
   {
-    id: 11,
+    id: 12,
     name: "Coopay-Ebirr",
     description: (
       <div>
@@ -358,7 +358,7 @@ export const products: Product[] = [
     link: "http://10.8.100.90/dashboard/coopay",
     file: "",
     moto: "",
-    video: "",
+    video: "/4-trillion.mp4",
     imageUrl: "/products/coopay-logo.png",
     type: "",
   },
