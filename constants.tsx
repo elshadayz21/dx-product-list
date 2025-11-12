@@ -104,7 +104,7 @@ export const products: Product[] = [
     link: "https://coopremit.coopbankoromiasc.com",
     file: "",
     moto: "",
-    // video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
+    video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
     imageUrl: "/products/Coop-remit-new.png",
     type: "",
 
