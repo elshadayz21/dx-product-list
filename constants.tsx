@@ -296,7 +296,7 @@ export const products: Product[] = [
     file: "",
     moto: "",
     video: "",
-    videos: ["/michu-testimonials-amharic.mp4", "/wro. genet michu testimonial.mp4",],
+    videos: ["/wro. genet michu testimonial.mp4",],
     imageUrl: "/products/MICHU.png",
     type: "",
     iframeUrls: ["https://metabase.michu.com.et/public/dashboard/14c647bf-d063-49d9-b868-41b53b4334fa?tab=25-michu-commercial"],
