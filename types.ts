@@ -8,6 +8,8 @@ export interface Product {
   file?: string;
   moto?: string;
   video?: string;
+  videos?: string[];
+  iframeUrls?: string[];
   imageUrl: string;
   type?:string;
   vslaPhotos?: VslaPhoto[];

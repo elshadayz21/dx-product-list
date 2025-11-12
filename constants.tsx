@@ -110,9 +110,15 @@ export const products: Product[] = [
     link: "https://coopremit.coopbankoromiasc.com",
     file: "",
     moto: "",
+    iframeUrls: ["https://coopremit.coopbankoromiasc.com"],
+    videos: [
+      "/4-trillion.mp4",
+      "https://www.youtube.com/watch?v=gSOe5oowXcc",
+    ],
     video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
     imageUrl: "/products/Coop-remit-new.png",
     type: "",
+
   },
   {
     id: 5,
@@ -124,7 +130,7 @@ export const products: Product[] = [
           with CARE Ethiopia Association to digitize the VSLA concept.
         </p>
         <p>
-         {" "} <strong> Village Savings and Loans Associations (VSLAs)</strong>{" "}
+          {" "} <strong> Village Savings and Loans Associations (VSLAs)</strong>{" "}
           empower participants to increase access to and control over resources,
           leveraging collective power to overcome social and financial barriers.
         </p>
@@ -135,6 +141,7 @@ export const products: Product[] = [
     moto: "",
     video: "https://www.youtube.com/watch?v=bnZ8jxVdVYQ",
     imageUrl: "/products/VSLA-image.png",
+
     vslaPhotos: [
       {
         src: "/vsla/vsla-photo-1.JPG",
@@ -194,7 +201,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Coop Recon is a powerful tool designed by CoopBank to streamline
-         {" "} <strong>reconciliation processes </strong>{" "} both within the bank and
+          {" "} <strong>reconciliation processes </strong>{" "} both within the bank and
           with external banks and systems. It automates the matching of
           transactions, ensuring that all accounts are accurately balanced and
           discrepancies are quickly identified.
@@ -255,14 +262,7 @@ export const products: Product[] = [
           development, enabling staff to enhance their skills and knowledge at
           their own pace.
         </p>
-        <p>
-          Through Coop Ambition, employees can engage with interactive courses,
-          training modules, and other educational content tailored to their
-          roles within the bank. This initiative underscores CoopBank&apos;s
-          commitment to fostering a culture of growth and excellence, ensuring
-          that its workforce remains equipped to meet the evolving demands of
-          the banking industry.
-        </p>
+
       </div>
     ),
     link: "http://learn.coopbankoromiasc.com",
@@ -305,31 +305,25 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Michu is CoopBank&apos;s groundbreaking and pioneering{" "}
-          <strong> on-collateral digital lending platform</strong>,{" "} the first in
-          Ethiopia to offer loans without requiring collateral.
+          <strong>Michu</strong> is CoopBank&apos;s pioneering non-collateral digital lending platform—the first in Ethiopia to offer loans without requiring collateral.
         </p>
         <p className="mb-2">
-          As a non-collateral lending platform, Michu leverages digital
-          technology to assess credit worthiness and disburse loans swiftly. It
-          opens up new opportunities for those who may not have traditional
-          assets, empowering more people across Ethiopia to access credit and
-          support their financial goals.
+          It leverages digital credit scoring to provide fast, secure loans of up to <strong>300,000 ETB</strong>, opening doors for individuals without traditional assets.
         </p>
-        {"  "}
-        <p>
-          Recognizing its impacts and growing demands, Michu was upgraded to
-          Michu 2.0, incorporating new segments such as{" "}
-          <strong> Michu Kiya</strong>,{" "} a women-only lending module.{" "}
-        </p>
+        {/* <p>
+          Now upgraded to <strong>Michu 2.0</strong>, the platform includes <strong>Michu Kiya</strong>, a women-only lending module, furthering inclusive access to finance across Ethiopia.
+        </p> */}
+
       </div>
     ),
-    link: "https://coopbankoromiasc.com.et/michu",
+    link: "https://coopbankoromia.com.et/michu",
     file: "",
     moto: "",
     video: "",
+    videos: ["/wro. genet michu testimonial.mp4"],
     imageUrl: "/products/MICHU.png",
     type: "",
+    iframeUrls: ["https://metabase.michu.com.et/public/dashboard/14c647bf-d063-49d9-b868-41b53b4334fa?tab=25-michu-commercial"],
   },
   {
     id: 12,
@@ -337,20 +331,13 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coopay-Ebirr is coop bank&apos;s{" "}
-          <strong>digital mobile wallet</strong>{" "} provided in partnership with
-          Ebirr, a fintech company in Ethiopia. Whether you need to pay for your
-          mobile airtime, send money to all corners of the country, or make use
-          of the bank&apos;s vast branch and agent networks, Coopay-Ebirr has
-          got you covered. This platform also lets you make payments for a range
-          of services, including{" "}
-          <strong>
-            {" "}
-            fuel ups, traffic fines, shopping, flight booking, DSTV, Canal+,
-            water and electricity bills, telephone and other bills{" "}
-          </strong>
-          , making it the ultimate all-in-one solution for your digital banking
-          needs.
+          <p>
+            <strong>Coopay-Ebirr</strong> is Coop Bank&apos;s digital mobile wallet, built in partnership with Ebirr—
+            Ethiopia&apos;s <strong>second-largest mobile money platform</strong>. From airtime top-ups and nationwide transfers
+            to payments for <strong>fuel, traffic fines, shopping, flights, DSTV, Canal+, utilities, and more</strong>,
+            Coopay-Ebirr is your all-in-one solution backed by a vast branch and agent network.
+          </p>
+
         </p>
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
@@ -358,6 +345,8 @@ export const products: Product[] = [
     link: "http://10.8.100.90/dashboard/coopay",
     file: "",
     moto: "",
+    videos: [
+      "/4-trillion.mp4",],
     video: "/4-trillion.mp4",
     imageUrl: "/products/coopay-logo.png",
     type: "",
@@ -636,7 +625,7 @@ export const products: Product[] = [
           customers to handling high-profile customer interactions.
         </p>
         <p>
-        {" "}  <strong>Admin Portal</strong> {" "}
+          {" "}  <strong>Admin Portal</strong> {" "}
           To checkout all the information that is happening on the branch, track
           progress and follow up with customers.
         </p>
@@ -811,7 +800,7 @@ export const products: Product[] = [
     imageUrl: "/products/entrust-logo.png",
     type: "corebankingapp",
   },
-{
+  {
     id: 32,
     name: "Global SME Finance Award",
     description: (

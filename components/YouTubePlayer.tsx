@@ -6,6 +6,7 @@ interface YouTubePlayerProps {
   url: string;
   width?: string;
   height?: string;
+  repeat?: boolean;
 }
 
 // Helper function to extract video ID
@@ -26,13 +27,15 @@ const isLocalVideo = (url: string): boolean => {
 const YouTubePlayer: React.FC<YouTubePlayerProps> = ({
   url,
   width = "100%",
+  height = "100%",
+  repeat = false,
 }) => {
   const videoId = extractVideoId(url);
 
   if (!videoId) {
     if (isLocalVideo(url)) {
       return (
-        <video width={width} controls className="w-full">
+        <video width={width} height={height} controls loop={repeat} className="w-full h-full">
           <source src={url} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
@@ -43,15 +46,18 @@ const YouTubePlayer: React.FC<YouTubePlayerProps> = ({
 
   const opts: YouTubeProps["opts"] = {
     width,
+    height,
     playerVars: {
       autoplay: 0,
       controls: 1,
       modestbranding: 1,
       rel: 0, // prevents showing related videos from other channels
+      loop: repeat ? 1 : 0,
+      playlist: repeat ? videoId : undefined,
     },
   };
 
-  return <YouTube videoId={videoId} opts={opts} />;
+  return <YouTube videoId={videoId} opts={opts} className="w-full h-full" />;
 };
 
 export default YouTubePlayer;

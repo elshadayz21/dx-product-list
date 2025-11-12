@@ -1,6 +1,6 @@
 /** @format */
 
-import { useState } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
@@ -19,6 +19,8 @@ import YouTubePlayer from "./YouTubePlayer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Input } from "./ui/input";
 import ImageSlider from "./ImageSlider";
+import VideoSlider from "./VideoSlider";
+import MixedContentSlider from "./MixedContentSlider";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,6 +29,19 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+type ContentItem = {
+  type: "video" | "image" | "iframe";
+  src: string;
+  alt?: string;
+};
+
+const MemoizedMixedContentSlider = React.memo(MixedContentSlider);
+const MemoizedImageSlider = React.memo(ImageSlider);
+const MemoizedVideoSlider = React.memo(VideoSlider);
+const MemoizedYouTubePlayer = React.memo(YouTubePlayer);
+
+
 export default function ProductPage() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showVideo, setShowVideo] = useState(false);
@@ -71,9 +86,33 @@ export default function ProductPage() {
     setShowVideo((prev) => !prev);
   };
 
+  const mediaContent = useMemo(() => {
+    if (!selectedProduct) return [];
+
+    const items: ContentItem[] = [];
+    if (selectedProduct.video) {
+      items.push({ type: 'video', src: selectedProduct.video });
+    }
+    if (selectedProduct.videos) {
+      selectedProduct.videos.forEach(v => items.push({ type: 'video', src: v }));
+    }
+    if (selectedProduct.vslaPhotos) {
+      selectedProduct.vslaPhotos.forEach(p => items.push({ type: 'image', src: p.src, alt: p.alt }));
+    }
+
+    if (selectedProduct.iframeUrls) {
+      selectedProduct.iframeUrls.forEach(url => items.push({ type: 'iframe', src: url }));
+    } else if (selectedProduct.link && selectedProduct.link.includes('dashboard')) {
+      // items.push({ type: 'iframe', src: selectedProduct.link });
+    }
+
+    return items;
+  }, [selectedProduct]);
+
+
   if (selectedProduct) {
     return (
-      <div className="flex flex-col h-[660px]">
+      <div className="flex flex-col h-[670px]">
         <main className="flex-grow overflow-auto">
           <Card className="h-full flex flex-col">
             <CardHeader>
@@ -125,25 +164,12 @@ export default function ProductPage() {
               </div>
               <div className="w-full md:w-2/3 flex flex-col">
                 <div className="flex-grow overflow-none mb-4">
-                  {showVideo && selectedProduct.video ? (
-                    <YouTubePlayer url={selectedProduct.video} />
-                  ) : (
-                    <p className="text-muted-foreground">
-                      {selectedProduct.description}
-                      {selectedProduct.vslaPhotos && (
-                        <ImageSlider vslaPhotos={selectedProduct.vslaPhotos} />
-                      )}
-                      {/* <ImageSlider /> */}
-                    </p>
+                  <div className="text-muted-foreground mb-4">
+                    {selectedProduct.description}
+                  </div>
+                  {mediaContent.length > 0 && (
+                    <MemoizedMixedContentSlider items={mediaContent} />
                   )}
-                  {/* <ImageSlider images={imageSliderDummyProps} /> */}
-                  {/* {selectedProduct && selectedProduct.vslaPhotos?.map((image, index) => (
-                      // <ImageSlider key={index} vslaPhotos={[image]} />
-                      <div key={index} >
-
-                        <ImageSlider vslaPhotos={[image]} />
-                        </div>
-                    ))} */}
                 </div>
 
                 <div className="flex flex-col sm:flex-row justify-between items-end mt-4">
@@ -185,11 +211,10 @@ export default function ProductPage() {
                 .map((product) => (
                   <div
                     key={product.id}
-                    className={`p-3 bg-white ${
-                      selectedProduct && product.id === selectedProduct.id
+                    className={`p-3 bg-white ${selectedProduct && product.id === selectedProduct.id
                         ? "bg-muted"
                         : ""
-                    }`}
+                      }`}
                     onClick={() => handleProductSelect(product)}
                   >
                     <Image
@@ -305,7 +330,7 @@ export default function ProductPage() {
                 <CardContent className="p-4">
                   <Image
                     // src="/Mobile-Money-ecosystem-shega.webp"
-                     src="/image.jpeg"
+                    src="/image.jpeg"
                     alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
                     width={400}
                     height={100}
