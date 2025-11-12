@@ -15,7 +15,7 @@ export const products: Product[] = [
           process of applying for and approving loans, reducing manual tasks and
           enhancing efficiency.
         </p>
- 
+
       </div>
     ),
     link: "http://coopstream.coopbank.local/LOS",
@@ -166,12 +166,6 @@ export const products: Product[] = [
           ,{" "} supporting business growth through flexible funding aligned with
           revenue streams.
         </p>
-
-        <p className="mb-2">
-          Beyond financing, Souqpass serves as a secure and efficient payment
-          gateway for individuals and startups, enabling seamless fintech and
-          e-commerce integration with well-structured documentation.
-        </p>
       </div>
     ),
     link: "https://souqpass.coopbankoromiasc.com/",
@@ -195,13 +189,7 @@ export const products: Product[] = [
           transactions, ensuring that all accounts are accurately balanced and
           discrepancies are quickly identified.
         </p>
-        <p>
-          By integrating with various systems, Coop Recon simplifies the complex
-          process of reconciliation, reducing manual errors and improving
-          efficiency. This product enhances the bank&apos;s ability to maintain
-          financial accuracy and fosters smoother interactions with external
-          banking partners.
-        </p>
+   
       </div>
     ),
     link: "http://cooprecon.coopbank.local/",
@@ -217,18 +205,15 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Our payroll system is a cutting-edge{" "}
-          <strong> Software as a Service (SaaS) </strong>{" "}
-          solution designed to automate and simplify payroll processes for
-          businesses of all sizes. With its hyper-customizable and localization
-          features, the system allows organizations to input employee data once
-          and process payroll with just a few clicks, drastically reducing time
-          spent on repetitive tasks. It offers a flexible and scalable platform
-          that adapts to both small and large enterprises, ensuring accuracy,
-          compliance, and efficiency. Whether handling basic payroll tasks or
-          complex pay structures, our system empowers businesses to streamline
-          operations, cut costs, and focus on growth.
+          Our payroll system is a powerful <strong>Software as a Service (SaaS)</strong> platform built to automate and simplify payroll for businesses of all sizes. With hyper-customizable features and localization support, it enables organizations to input employee data once and process payroll with just a few clicks.
         </p>
+        <p className="mb-2">
+          Whether managing basic salaries or complex pay structures, the system ensures accuracy, compliance, and efficiency—saving time and reducing operational costs. Its scalable design adapts seamlessly to both small startups and large enterprises.
+        </p>
+        <p>
+          Supporting <strong>6 languages</strong>, it’s built for diverse teams and regional needs, making it the ideal solution for modern, growing businesses across Ethiopia and beyond.
+        </p>
+
       </div>
     ),
     link: "https://coopayroll.coopbankoromiasc.com/en",
