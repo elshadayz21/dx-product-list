@@ -323,6 +323,7 @@ export const products: Product[] = [
     moto: "",
     // videos: ["/4-trillion.mp4"],
     video: "/4-trillion.mp4",
+    videos: ["/4-trillion.mp4"],
     imageUrl: "/products/coopay-logo.png",
     type: "",
     vslaPhotos: [
