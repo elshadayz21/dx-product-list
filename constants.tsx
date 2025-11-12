@@ -393,14 +393,15 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          <strong>Coop App</strong> is CoopBank’s omni-channel banking platform, seamlessly integrated across mobile and web. It offers a unified experience for both retail and business users, ensuring secure, convenient access anytime, anywhere.
+          <strong>Coop App</strong> is CoopBank’s omni-channel platform for mobile and web, built for both retail and business users.
         </p>
         <p className="mb-2">
-          For retail customers, Coop App enables everyday banking—transfers, bill payments, airtime top-ups, and utility coverage—all from a smartphone. It’s fast, intuitive, and built for on-the-go financial management.
+          Retail customers enjoy fast, secure access to transfers, bill payments, airtime top-ups, and utilities.
         </p>
         <p>
-          For businesses, the platform includes advanced <strong>authentication and authorization</strong> features to support multi-user access, approval workflows, and secure transaction handling. Whether you're a solo entrepreneur or managing enterprise-level operations, Coop App adapts to your needs with scalability and control.
+          Businesses benefit from advanced <strong>authentication and authorization</strong> for multi-user access and approval workflows—scalable for any size.
         </p>
+
 
       </div>
     ),
