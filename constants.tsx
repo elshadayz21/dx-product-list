@@ -104,7 +104,7 @@ export const products: Product[] = [
     link: "https://coopremit.coopbankoromiasc.com",
     file: "",
     moto: "",
-    video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
+    // video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
     imageUrl: "/products/Coop-remit-new.png",
     type: "",
 
@@ -130,18 +130,17 @@ export const products: Product[] = [
     moto: "",
     video: "https://www.youtube.com/watch?v=bnZ8jxVdVYQ",
     imageUrl: "/products/VSLA-image.png",
-
     vslaPhotos: [
       {
         src: "/vsla/vsla-photo-1.JPG",
         alt: "VSLA-1",
       },
       {
-        src: "/vsla/vsla-photo-2.JPG",
+        src: "/vsla/6K2A9645.JPG",
         alt: "VSLA-2",
       },
       {
-        src: "/vsla/vsla-photo-3.JPG",
+        src: "/vsla/6K2A9647.JPG",
         alt: "VSLA-3",
       },
     ],
@@ -171,7 +170,6 @@ export const products: Product[] = [
     link: "https://souqpass.coopbankoromiasc.com/",
     file: "Souqpass tanning.pptx",
     // file: "souqpass.pptx",
-
     moto: "",
     video: "https://www.youtube.com/watch?v=gSOe5oowXcc",
     imageUrl: "/products/souqpass.png",
@@ -207,7 +205,7 @@ export const products: Product[] = [
         <p className="mb-2">
           Our payroll system is a powerful <strong>Software as a Service (SaaS)</strong> platform built to automate and simplify payroll for businesses of all sizes. With hyper-customizable features and localization support, it enables organizations to input employee data once and process payroll with just a few clicks.
         </p>
-     
+
         <p>
           Supporting <strong>6 languages</strong>, it’s built for diverse teams and regional needs, making it the ideal solution for modern, growing businesses across Ethiopia and beyond.
         </p>
@@ -292,7 +290,7 @@ export const products: Product[] = [
     file: "",
     moto: "",
     video: "",
-    videos: ["/wro. genet michu testimonial.mp4"],
+    videos: ["/michu-testimonials-amharic.mp4", "/wro. genet michu testimonial.mp4",],
     imageUrl: "/products/MICHU.png",
     type: "",
     iframeUrls: ["https://metabase.michu.com.et/public/dashboard/14c647bf-d063-49d9-b868-41b53b4334fa?tab=25-michu-commercial"],
@@ -317,11 +315,17 @@ export const products: Product[] = [
     link: "http://10.8.100.90/dashboard/coopay",
     file: "",
     moto: "",
-    videos: [
-      "/4-trillion.mp4",],
+    // videos: ["/4-trillion.mp4"],
     video: "/4-trillion.mp4",
     imageUrl: "/products/coopay-logo.png",
     type: "",
+    vslaPhotos: [
+      {
+        src: "/image.jpeg",
+        alt: "mobile-money-ecosystem-2023/24-shega"
+      },
+
+    ],
   },
   {
     id: 9,
