@@ -189,7 +189,7 @@ export const products: Product[] = [
           transactions, ensuring that all accounts are accurately balanced and
           discrepancies are quickly identified.
         </p>
-   
+
       </div>
     ),
     link: "http://cooprecon.coopbank.local/",
@@ -363,9 +363,7 @@ export const products: Product[] = [
             core banking services for cooperatives, SACCOs, and microfinance
             institutions.
           </strong>{" "}
-          This product upholds the bank&apos;s position in the Ethiopian banking
-          industry as a leader in digital, innovative, and cutting-edge banking
-          solutions for the community.
+
         </p>
         <p>
           As a financial institution deeply rooted in the community, Coopbank is
@@ -387,21 +385,15 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          The Coop Bank&apos;s{" "}
-          <strong>dedicated Mobile Banking Application</strong>{" "} for CoopBank
-          offers customers a convenient way to manage their finances on the go.
-          With features like account management, fund transfers, and bill
-          payments, users can handle their banking needs directly from their
-          smartphones.
+          <strong>Coop App</strong> is CoopBank’s omni-channel banking platform, seamlessly integrated across mobile and web. It offers a unified experience for both retail and business users, ensuring secure, convenient access anytime, anywhere.
+        </p>
+        <p className="mb-2">
+          For retail customers, Coop App enables everyday banking—transfers, bill payments, airtime top-ups, and utility coverage—all from a smartphone. It’s fast, intuitive, and built for on-the-go financial management.
         </p>
         <p>
-          Coop App Omni-Channel platform, represents a leap forward in
-          technology, seamlessly integrating across web portals and mobile
-          applications. With tailored solutions designed for businesses and
-          individual retail customers, this innovation ensures enhanced
-          accessibility, convenience, and security in managing Conventional
-          banking financial solutions.
+          For businesses, the platform includes advanced <strong>authentication and authorization</strong> features to support multi-user access, approval workflows, and secure transaction handling. Whether you're a solo entrepreneur or managing enterprise-level operations, Coop App adapts to your needs with scalability and control.
         </p>
+
       </div>
     ),
     link: "https://coopapp.cbo.com.et/",
