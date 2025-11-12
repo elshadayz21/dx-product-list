@@ -60,7 +60,11 @@ export default function MixedContentSlider({
             aria-label={`${index + 1} of ${items.length}`}
           >
             {item.type === "video" && (
-              <YouTubePlayer url={item.src} repeat={true} />
+              <YouTubePlayer
+                url={item.src}
+                autoplay={index === currentIndex}
+                muted={true}
+              />
             )}
             {item.type === "image" && (
               <Image

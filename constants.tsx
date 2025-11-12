@@ -203,11 +203,15 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Our payroll system is a powerful <strong>Software as a Service (SaaS)</strong> platform built to automate and simplify payroll for businesses of all sizes. With hyper-customizable features and localization support, it enables organizations to input employee data once and process payroll with just a few clicks.
+          Our payroll system is a powerful <strong>Software as a Service (SaaS)</strong>
+          platform built to automate and simplify payroll for businesses of all sizes.
+          With hyper-customizable features and localization support, it enables organizations to input employee data once and process payroll with just a few clicks.
         </p>
 
         <p>
-          Supporting <strong>6 languages</strong>, it’s built for diverse teams and regional needs, making it the ideal solution for modern, growing businesses across Ethiopia and beyond.
+          Supporting <strong>6 languages</strong>,
+          it&aps;s built for diverse teams and regional needs,
+          making it the ideal solution for modern, growing businesses across Ethiopia and beyond.
         </p>
 
       </div>
@@ -278,7 +282,9 @@ export const products: Product[] = [
           <strong>Michu</strong> is CoopBank&apos;s pioneering non-collateral digital lending platform—the first in Ethiopia to offer loans without requiring collateral.
         </p>
         <p className="mb-2">
-          It leverages digital credit scoring to provide fast, secure loans of up to <strong>300,000 ETB</strong>, opening doors for individuals without traditional assets.
+          It leverages digital credit scoring to provide fast,
+          secure loans of up to <strong>300,000 ETB</strong>,
+          opening doors for individuals without traditional assets.
         </p>
         {/* <p>
           Now upgraded to <strong>Michu 2.0</strong>, the platform includes <strong>Michu Kiya</strong>, a women-only lending module, furthering inclusive access to finance across Ethiopia.

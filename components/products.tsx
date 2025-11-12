@@ -90,9 +90,9 @@ export default function ProductPage() {
     if (!selectedProduct) return [];
 
     const items: ContentItem[] = [];
-    if (selectedProduct.video) {
-      items.push({ type: 'video', src: selectedProduct.video });
-    }
+    // if (selectedProduct.video) {
+    //   items.push({ type: 'video', src: selectedProduct.video });
+    // }
     if (selectedProduct.videos) {
       selectedProduct.videos.forEach(v => items.push({ type: 'video', src: v }));
     }

@@ -111,7 +111,12 @@ export default function VideoSlider({
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${videos.length}`}
           >
-            <YouTubePlayer url={videoUrl} repeat={true} height="100%" />
+            <YouTubePlayer
+              url={videoUrl}
+              height="100%"
+              autoplay={index === currentIndex}
+              muted={true}
+            />
           </div>
         ))}
       </div>
