@@ -15,13 +15,7 @@ export const products: Product[] = [
           process of applying for and approving loans, reducing manual tasks and
           enhancing efficiency.
         </p>
-        <p>
-          By streamlining loan origination, Coop Stream allows both customers
-          and bank staff to manage loan applications with ease. The app ensures
-          quicker decision-making, improves accuracy, and delivers a seamless
-          experience from application to approval, reflecting CoopBank&apos;s
-          commitment to leveraging technology for better financial services.
-        </p>
+ 
       </div>
     ),
     link: "http://coopstream.coopbank.local/LOS",
@@ -110,11 +104,6 @@ export const products: Product[] = [
     link: "https://coopremit.coopbankoromiasc.com",
     file: "",
     moto: "",
-    iframeUrls: ["https://coopremit.coopbankoromiasc.com"],
-    videos: [
-      "/4-trillion.mp4",
-      "https://www.youtube.com/watch?v=gSOe5oowXcc",
-    ],
     video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
     imageUrl: "/products/Coop-remit-new.png",
     type: "",

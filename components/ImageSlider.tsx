@@ -45,7 +45,7 @@ import Image from "next/image";
 export default function ImageSlider({
   vslaPhotos = [],
   autoplayInterval = 5000,
-  className,
+  className = "",
 }: ImageSliderProps1) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);

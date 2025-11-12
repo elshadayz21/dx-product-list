@@ -22,7 +22,7 @@ export interface MixedContentSliderProps {
 
 export default function MixedContentSlider({
   items = [],
-  className,
+  className = "",
 }: MixedContentSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -43,7 +43,7 @@ export default function MixedContentSlider({
   return (
     <div
       className={cn(
-       "relative w-full h-48 md:h-48 mx-auto overflow-hidden rounded-lg",
+        "relative w-full h-48 md:h-48 mx-auto overflow-hidden rounded-lg",
         className
       )}
       aria-roledescription="carousel"

@@ -17,7 +17,7 @@ export interface VideoSliderProps {
 export default function VideoSlider({
   videos = [],
   autoplayInterval = 5000,
-  className,
+  className = "",
 }: VideoSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
