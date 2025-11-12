@@ -207,9 +207,7 @@ export const products: Product[] = [
         <p className="mb-2">
           Our payroll system is a powerful <strong>Software as a Service (SaaS)</strong> platform built to automate and simplify payroll for businesses of all sizes. With hyper-customizable features and localization support, it enables organizations to input employee data once and process payroll with just a few clicks.
         </p>
-        <p className="mb-2">
-          Whether managing basic salaries or complex pay structures, the system ensures accuracy, compliance, and efficiency—saving time and reducing operational costs. Its scalable design adapts seamlessly to both small startups and large enterprises.
-        </p>
+     
         <p>
           Supporting <strong>6 languages</strong>, it’s built for diverse teams and regional needs, making it the ideal solution for modern, growing businesses across Ethiopia and beyond.
         </p>
