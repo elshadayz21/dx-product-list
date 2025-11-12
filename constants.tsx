@@ -210,7 +210,7 @@ export const products: Product[] = [
 
         <p>
           Supporting <strong>6 languages</strong>,
-          it&aps;s built for diverse teams and regional needs,
+          it&apos;s built for diverse teams and regional needs,
           making it the ideal solution for modern, growing businesses across Ethiopia and beyond.
         </p>
 
