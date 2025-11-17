@@ -596,14 +596,10 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coop-Engage+ serves as both an onboarding and engagement platform,
-          managing the entire customer engagement process from onboarding new
-          customers to handling high-profile customer interactions.
+          Coop-Engage+ is first and foremost an internal social platform—an engaging, collaborative space where staff across all departments can connect, share insights, celebrate achievements, and stay informed about the bank’s latest campaigns and initiatives. It fosters a culture of openness and teamwork, creating a dynamic environment where ideas flow freely and everyone can participate in shaping the bank’s journey.
         </p>
         <p>
-          {" "}  <strong>Admin Portal</strong> {" "}
-          To checkout all the information that is happening on the branch, track
-          progress and follow up with customers.
+          In addition to its social and collaborative features, Coop-Engage+ also includes another major module currently under development: a comprehensive CRM and Customer Onboarding system.
         </p>
       </div>
     ),
