@@ -713,7 +713,7 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "http://10.12.51.60:3009",
+    link: "https://paymentplatformdashboardga.netlify.app/",
     file: "",
     moto: "",
     video: "",
