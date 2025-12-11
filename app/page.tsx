@@ -89,6 +89,11 @@ const Page = () => {
             value={pin}
             placeholder="Enter Password"
             onChange={(e) => setPin(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                handlePinSubmit();
+              }
+            }}
             className="mb-2 max-w-xs"
           />
           {/* Error Message */}

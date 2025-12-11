@@ -3,7 +3,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import YouTubePlayer from "./YouTubePlayer";
@@ -26,11 +26,18 @@ export default function MixedContentSlider({
 }: MixedContentSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Ensure we start from the first slide whenever the content set changes
+  useEffect(() => {
+    setCurrentIndex(0);
+  }, [items]);
+
   const goToNextSlide = useCallback(() => {
+    if (items.length === 0) return;
     setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
   }, [items.length]);
 
   const goToPrevSlide = useCallback(() => {
+    if (items.length === 0) return;
     setCurrentIndex(
       (prevIndex) => (prevIndex - 1 + items.length) % items.length
     );

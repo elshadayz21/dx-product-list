@@ -168,7 +168,10 @@ export default function ProductPage() {
                     {selectedProduct.description}
                   </div>
                   {mediaContent.length > 0 && (
-                    <MemoizedMixedContentSlider items={mediaContent} />
+                    <MemoizedMixedContentSlider
+                      key={selectedProduct.id}
+                      items={mediaContent}
+                    />
                   )}
                 </div>
 
