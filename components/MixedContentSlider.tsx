@@ -59,18 +59,21 @@ export default function MixedContentSlider({
         className="flex transition-transform duration-500 ease-in-out  h-48 md:h-48"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
-        {items.map((item, index) => (
+        {items.map((item, index) => {
+          const itemKey = `${item.type}-${item.src}`;
+          return (
           <div
-            key={index}
+            key={itemKey}
             className="flex-shrink-0 w-full h-full"
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${items.length}`}
           >
             {item.type === "video" && (
               <YouTubePlayer
+                key={itemKey}
                 url={item.src}
                 autoplay={index === currentIndex}
-                muted={true}
+                muted={true} // keep autoplay stable across slides
               />
             )}
             {item.type === "image" && (
@@ -91,7 +94,8 @@ export default function MixedContentSlider({
               ></iframe>
             )}
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {items.length > 1 && (
