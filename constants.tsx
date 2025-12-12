@@ -257,14 +257,17 @@ export const products: Product[] = [
       // </div>
       <div>
         <p className="mb-2">
-          Coop Ambition is CoopBank&apos;s dedicated{" "}
-          <strong>learning and development platform</strong>, designed to
-          provide employees with access to a wide range of educational
-          resources. This platform supports continuous learning and professional
-          development, enabling staff to enhance their skills and knowledge at
-          their own pace. It has the following categories with 35 courses withen
-          them: <strong>Business, Software, Digital Marketing, Digital Transformation, Capital Market, Project Management, Leadership</strong>
+          Coop Ambition is CoopBank&apos;s{" "}
+          <strong>learning and training platform</strong>, introduced during
+          staff onboarding to support continuous professional growth. It offers
+          35 courses across{" "}
+          <strong>
+            Business, Software, Digital Marketing, Digital Transformation,
+            Capital Market, Project Management, and Leadership
+          </strong>
+          .
         </p>
+
         {/* <ul className="list-disc pl-6">
           <li>Business</li>
           <li>Software</li>
@@ -274,7 +277,6 @@ export const products: Product[] = [
           <li>Project Management</li>
           <li>Leadership</li>
         </ul> */}
-       
       </div>
     ),
     link: "http://learn.coopbankoromiasc.com",
@@ -369,7 +371,8 @@ export const products: Product[] = [
               and more
             </strong>
             , Coopay-Ebirr is your all-in-one solution backed by a vast branch
-            and agent network which managed to transact over <strong>4 trillion ETB</strong>.
+            and agent network which managed to transact over{" "}
+            <strong>4 trillion ETB</strong>.
           </p>
         </p>
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
@@ -429,7 +432,6 @@ export const products: Product[] = [
             microfinance institutions.
           </strong>{" "}
         </p>
-       
       </div>
     ),
     link: "http://10.8.100.90/dashboard/sacco",
