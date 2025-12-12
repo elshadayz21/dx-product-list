@@ -369,7 +369,7 @@ export const products: Product[] = [
           digital banking solutions, providing essential
           <strong>
             {" "}
-            core banking services for cooperatives, SACCOs, and microfinance
+            core banking services for cooperatives, SACCOs, Unions and microfinance
             institutions.
           </strong>{" "}
 
@@ -385,7 +385,7 @@ export const products: Product[] = [
     file: "",
     moto: "",
     video: "",
-    iframeUrls: ["http://10.8.100.90/dashboard/sacco"],
+    // iframeUrls: ["http://10.8.100.90/dashboard/sacco"],
     imageUrl: "/products/sacco-link.png",
     type: "",
      vslaPhotos: [
