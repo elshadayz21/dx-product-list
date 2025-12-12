@@ -385,8 +385,16 @@ export const products: Product[] = [
     file: "",
     moto: "",
     video: "",
+    iframeUrls: ["http://10.8.100.90/dashboard/sacco"],
     imageUrl: "/products/sacco-link.png",
     type: "",
+     vslaPhotos: [
+      {
+        src: "/products/sacco-stat.jpg",
+        alt: "Sacco-Link-Stat-Dec-2025"
+      },
+
+    ],
   },
   {
     id: 16,
