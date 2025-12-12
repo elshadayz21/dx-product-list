@@ -433,11 +433,7 @@ export const products: Product[] = [
             microfinance institutions.
           </strong>{" "}
         </p>
-        <p>
-          As a financial institution deeply rooted in the community, Coopbank is
-          dedicated to serving all segments of society, with a special focus on
-          cooperatives that own 61.25% of the bank&apos;s shares.
-        </p>
+       
       </div>
     ),
     link: "http://10.8.100.90/dashboard/sacco",
