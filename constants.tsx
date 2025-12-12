@@ -10,12 +10,11 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Coop Stream is CoopBank&apos;s innovative{" "}
-          <strong>loan origination platform</strong> {" "}that automates the entire
+          <strong>loan origination platform</strong> that automates the entire
           loan processing workflow. This app simplifies and accelerates the
           process of applying for and approving loans, reducing manual tasks and
           enhancing efficiency.
         </p>
-
       </div>
     ),
     link: "http://coopstream.coopbank.local/LOS",
@@ -31,7 +30,7 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Deboo,{" "} <strong> a donation and crowdfunding platform</strong> {" "}is a
+          Deboo, <strong> a donation and crowdfunding platform</strong> is a
           web-based platform offered by Cooperative Bank of Oromia. It enables
           individuals and organizations to create fundraising campaigns and
           receive contributions from a large number of people to support their
@@ -59,7 +58,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Our Diaspora Banking platform allow Diasporas who reside and work
-          outside the country to {" "}<strong> create CoopBank account</strong>{" "}from
+          outside the country to <strong> create CoopBank account</strong> from
           wherever they are.
         </p>
         <p>
@@ -82,21 +81,20 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Our innovative Coop Remittance app is the first of its kind in
-          Ethiopia,{" "} <strong>leveraging blockchain technology</strong> {" "} to enable
+          Ethiopia, <strong>leveraging blockchain technology</strong> to enable
           fast, secure, and cost-effective money transfers. Here&apos;s what
           distinguishes it:
           <li>
-            <strong> Very small latency: </strong>{" "}
-            Transactions are processed within 3–5 seconds.
+            <strong> Very small latency: </strong> Transactions are processed
+            within 3–5 seconds.
           </li>
           <li>
-            <strong> Very Low transfer limits: </strong>{" "}
-            Send amounts as small as 5 Euros effortlessly.
+            <strong> Very Low transfer limits: </strong> Send amounts as small
+            as 5 Euros effortlessly.
           </li>
           <li>
-            <strong> Extremely low transfer cost: </strong>{" "}
-            Transfer cost is very significantly low compared to other remittance
-            apps locally.
+            <strong> Extremely low transfer cost: </strong> Transfer cost is
+            very significantly low compared to other remittance apps locally.
           </li>
         </p>
       </div>
@@ -107,7 +105,6 @@ export const products: Product[] = [
     video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
     imageUrl: "/products/Coop-remit-new.png",
     type: "",
-
   },
   {
     id: 5,
@@ -119,18 +116,23 @@ export const products: Product[] = [
           with CARE Ethiopia Association to digitize the VSLA concept.
         </p>
         <p>
-          {" "} <strong> Village Savings and Loans Associations (VSLAs)</strong>{" "}
+          {" "}
+          <strong> Village Savings and Loans Associations (VSLAs)</strong>{" "}
           empower participants to increase access to and control over resources,
           leveraging collective power to overcome social and financial barriers.
         </p>
       </div>
     ),
     link: "https://vsla.coopbankoromiasc.com",
-    file: "",
+    file: "1pager VSLA description.pdf",
     moto: "",
     video: "https://www.youtube.com/watch?v=bnZ8jxVdVYQ",
     imageUrl: "/products/VSLA-image.png",
     vslaPhotos: [
+      {
+        src: "/vsla-stat.jpg",
+        alt: "VSLA Stat",
+      },
       {
         src: "/vsla/vsla-photo-1.JPG",
         alt: "VSLA-1",
@@ -146,7 +148,6 @@ export const products: Product[] = [
     ],
     type: "",
   },
-
   {
     id: 6,
     name: "Souqpass",
@@ -155,14 +156,14 @@ export const products: Product[] = [
         <p className="mb-2">
           Souqpass, a fully fledged inventory system powered by the Cooperative
           Bank of Oromia and developed in collaboration with the World Bank to
-          pilot <strong>Revenue-Based Financing (RBF)</strong>, is a financial
+          pilot <strong> Revenue-Based Financing (RBF) </strong>, is a financial
           platform offering innovative solutions for businesses and MSMEs. It
           primarily serves as an inventory platform that delivers{" "}
           <strong>
             Revenue-Based Financing (RBF), a cash-flow based credit repayment
             method
           </strong>
-          ,{" "} supporting business growth through flexible funding aligned with
+          , supporting business growth through flexible funding aligned with
           revenue streams.
         </p>
       </div>
@@ -181,13 +182,12 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coop Recon is a powerful tool designed by CoopBank to streamline
-          {" "} <strong>reconciliation processes </strong>{" "} both within the bank and
+          Coop Recon is a powerful tool designed by CoopBank to streamline{" "}
+          <strong>reconciliation processes </strong> both within the bank and
           with external banks and systems. It automates the matching of
           transactions, ensuring that all accounts are accurately balanced and
           discrepancies are quickly identified.
         </p>
-
       </div>
     ),
     link: "http://cooprecon.coopbank.local/",
@@ -202,24 +202,47 @@ export const products: Product[] = [
     name: "CooPayRoll",
     description: (
       <div>
-        <p className="mb-2">
-          Our payroll system is a powerful <strong>Software as a Service (SaaS)</strong>
+        {/* <p className="mb-2">
+          Our payroll system is a powerful <strong>Software as a Service (SaaS)</strong> 
           platform built to automate and simplify payroll for businesses of all sizes.
-          With hyper-customizable features and localization support, it enables organizations to input employee data once and process payroll with just a few clicks.
+          With hyper-customizable features and localization support,
+           it enables organizations to input employee data once and process payroll with just a few clicks.
         </p>
 
         <p>
           Supporting <strong>6 languages</strong>,
           it&apos;s built for diverse teams and regional needs,
           making it the ideal solution for modern, growing businesses across Ethiopia and beyond.
-        </p>
+        </p> */}
+        <p className="mb-2">
+          {" "}
+          COOPAYROLL is a comprehensive payroll management system that
+          streamlines employee administration, attendance tracking, and salary
+          processing. It enables HR teams to manage applications, configure
+          system settings, and generate detailed payroll reports. The platform
+          automates tax filings, monitors benefits, and ensures compliance—
+          making payroll efficient, error-free, and scalable for organizations
+          of all sizes. To enhance accessibility, it also supports six languages,
+          ensuring diverse teams can use the platform seamlessly.
 
+
+        </p>
       </div>
     ),
     link: "https://coopayroll.coopbankoromiasc.com/en",
     file: "",
     moto: "",
     video: "",
+    vslaPhotos: [
+      {
+        src: "/CooPayRoll-dashboard.jpg",
+        alt: "CooPayRoll-dashboard",
+      },
+      {
+        src: "/CooPayRoll-AI-assistant.jpg",
+        alt: "CooPayRoll-AI-assistant",
+      },
+    ],
     imageUrl: "/products/coopayroll.png",
     type: "",
   },
@@ -227,22 +250,51 @@ export const products: Product[] = [
     id: 10,
     name: "Coop Ambition",
     description: (
+      // <div>
+      //   <p className="mb-2">
+      //     Coop Ambition is CoopBank&apos;s dedicated{" "}
+      //     <strong>learning and development platform</strong>, designed to
+      //     provide employees with access to a wide range of educational
+      //     resources. This platform supports continuous learning and professional
+      //     development, enabling staff to enhance their skills and knowledge at
+      //     their own pace.
+      //   </p>
+      // </div>
       <div>
         <p className="mb-2">
           Coop Ambition is CoopBank&apos;s dedicated{" "}
-          <strong>learning and development platform</strong>,{" "} designed to
+          <strong>learning and development platform</strong>, designed to
           provide employees with access to a wide range of educational
           resources. This platform supports continuous learning and professional
           development, enabling staff to enhance their skills and knowledge at
-          their own pace.
+          their own pace. It has the following categories with 35 courses withen them:
         </p>
-
+        <ul className="list-disc pl-6">
+          <li>Business</li>
+          <li>Software</li>
+          <li>Digital Marketing</li>
+          <li>Digital Transformation</li>
+          <li>Capital Market</li>
+          <li>Project Management</li>
+          <li>Leadership</li>
+        </ul>
       </div>
     ),
     link: "http://learn.coopbankoromiasc.com",
     file: "",
     moto: "",
     video: "",
+    vslaPhotos: [
+      {
+        src: "/CoopAmbition-Certificate.jpg",
+        alt: "CoopAmbition-Certificate",
+      },
+      {
+        src: "/coop-ambition-courses-page.jpg",
+        alt: "coop-ambition-courses-page",
+      },
+    ],
+    // iframeUrls: ["http://learn.coopbankoromiasc.com"],
     imageUrl: "/products/coopAmbition.jpg",
     type: "",
   },
@@ -252,7 +304,7 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          <strong>{" "} Bring Your Brand to Life </strong> {" "} — One Card at a Time
+          <strong> Bring Your Brand to Life </strong> — One Card at a Time
           Welcome to the future of custom card ordering. Whether you&apos;re a
           company, a student union, or an organization with a vision, our
           platform empowers you to design and order beautifully personalized
@@ -279,27 +331,30 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          <strong>Michu</strong> is CoopBank&apos;s pioneering non-collateral digital lending platform—the first in Ethiopia to offer loans without requiring collateral.
+          <strong>Michu</strong> is CoopBank&apos;s pioneering non-collateral
+          digital lending platform—the first in Ethiopia to offer loans without
+          requiring collateral.
         </p>
         <p className="mb-2">
-          It leverages digital credit scoring to provide fast,
-          secure loans of up to <strong>300,000 ETB</strong>,
-          opening doors for individuals without traditional assets.
+          It leverages digital credit scoring to provide fast, secure loans of
+          up to <strong>300,000 ETB</strong>, opening doors for individuals
+          without traditional assets.
         </p>
         {/* <p>
           Now upgraded to <strong>Michu 2.0</strong>, the platform includes <strong>Michu Kiya</strong>, a women-only lending module, furthering inclusive access to finance across Ethiopia.
         </p> */}
-
       </div>
     ),
     link: "https://coopbankoromia.com.et/michu",
     file: "",
     moto: "",
     video: "",
-    videos: ["/wro. genet michu testimonial.mp4",],
+    videos: ["/wro. genet michu testimonial.mp4"],
     imageUrl: "/products/MICHU.png",
     type: "",
-    iframeUrls: ["https://metabase.michu.com.et/public/dashboard/14c647bf-d063-49d9-b868-41b53b4334fa?tab=25-michu-commercial"],
+    iframeUrls: [
+      "https://metabase.michu.com.et/public/dashboard/14c647bf-d063-49d9-b868-41b53b4334fa?tab=25-michu-commercial",
+    ],
   },
   {
     id: 12,
@@ -308,12 +363,17 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           <p>
-            <strong>Coopay-Ebirr</strong> is Coop Bank&apos;s digital mobile wallet, built in partnership with Ebirr—
-            Ethiopia&apos;s <strong>second-largest mobile money platform</strong>. From airtime top-ups and nationwide transfers
-            to payments for <strong>fuel, traffic fines, shopping, flights, DSTV, Canal+, utilities, and more</strong>,
-            Coopay-Ebirr is your all-in-one solution backed by a vast branch and agent network.
+            <strong>Coopay-Ebirr</strong> is Coop Bank&apos;s digital mobile
+            wallet, built in partnership with Ebirr— Ethiopia&apos;s{" "}
+            <strong>second-largest mobile money platform</strong>. From airtime
+            top-ups and nationwide transfers to payments for{" "}
+            <strong>
+              fuel, traffic fines, shopping, flights, DSTV, Canal+, utilities,
+              and more
+            </strong>
+            , Coopay-Ebirr is your all-in-one solution backed by a vast branch
+            and agent network.
           </p>
-
         </p>
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
@@ -329,9 +389,8 @@ export const products: Product[] = [
     vslaPhotos: [
       {
         src: "/image.jpeg",
-        alt: "mobile-money-ecosystem-2023/24-shega"
+        alt: "mobile-money-ecosystem-2023/24-shega",
       },
-
     ],
   },
   {
@@ -369,10 +428,9 @@ export const products: Product[] = [
           digital banking solutions, providing essential
           <strong>
             {" "}
-            core banking services for cooperatives, SACCOs, Unions and microfinance
-            institutions.
+            core banking services for cooperatives, SACCOs, Unions and
+            microfinance institutions.
           </strong>{" "}
-
         </p>
         <p>
           As a financial institution deeply rooted in the community, Coopbank is
@@ -388,12 +446,15 @@ export const products: Product[] = [
     // iframeUrls: ["http://10.8.100.90/dashboard/sacco"],
     imageUrl: "/products/sacco-link.png",
     type: "",
-     vslaPhotos: [
+    vslaPhotos: [
       {
         src: "/products/sacco-stat.jpg",
-        alt: "Sacco-Link-Stat-Dec-2025"
+        alt: "Sacco-Link-Stat-Dec-2025",
       },
-
+      {
+        src: "/saccopay-mobile-app.jpg",
+        alt: "saccopay-mobile-app",
+      },
     ],
   },
   {
@@ -402,16 +463,18 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          <strong>Coop App</strong> is CoopBank’s omni-channel platform for mobile and web, built for both retail and business users.
+          <strong>Coop App</strong> is CoopBank’s omni-channel platform for
+          mobile and web, built for both retail and business users.
         </p>
         <p className="mb-2">
-          Retail customers enjoy fast, secure access to transfers, bill payments, airtime top-ups, and utilities.
+          Retail customers enjoy fast, secure access to transfers, bill
+          payments, airtime top-ups, and utilities.
         </p>
         <p>
-          Businesses benefit from advanced <strong>authentication and authorization</strong> for multi-user access and approval workflows—scalable for any size.
+          Businesses benefit from advanced{" "}
+          <strong>authentication and authorization</strong> for multi-user
+          access and approval workflows—scalable for any size.
         </p>
-
-
       </div>
     ),
     link: "https://coopapp.cbo.com.et/",
@@ -604,10 +667,18 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coop-Engage+ is first and foremost an internal social platform—an engaging, collaborative space where staff across all departments can connect, share insights, celebrate achievements, and stay informed about the bank’s latest campaigns and initiatives. It fosters a culture of openness and teamwork, creating a dynamic environment where ideas flow freely and everyone can participate in shaping the bank’s journey.
+          Coop-Engage+ is first and foremost an internal social platform—an
+          engaging, collaborative space where staff across all departments can
+          connect, share insights, celebrate achievements, and stay informed
+          about the bank’s latest campaigns and initiatives. It fosters a
+          culture of openness and teamwork, creating a dynamic environment where
+          ideas flow freely and everyone can participate in shaping the bank’s
+          journey.
         </p>
         <p>
-          In addition to its social and collaborative features, Coop-Engage+ also includes another major module currently under development: a comprehensive CRM and Customer Onboarding system.
+          In addition to its social and collaborative features, Coop-Engage+
+          also includes another major module currently under development: a
+          comprehensive CRM and Customer Onboarding system.
         </p>
       </div>
     ),
