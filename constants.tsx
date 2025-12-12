@@ -263,7 +263,7 @@ export const products: Product[] = [
           resources. This platform supports continuous learning and professional
           development, enabling staff to enhance their skills and knowledge at
           their own pace. It has the following categories with 35 courses withen
-          them:
+          them: <strong>Business, Software, Digital Marketing, Digital Transformation, Capital Market, Project Management, Leadership</strong>
         </p>
         {/* <ul className="list-disc pl-6">
           <li>Business</li>
@@ -274,11 +274,7 @@ export const products: Product[] = [
           <li>Project Management</li>
           <li>Leadership</li>
         </ul> */}
-        <strong className="mb-2">
-          {" "}
-          Business Software Digital Marketing Digital Transformation Capital
-          Market Project Management  Leadership
-        </strong>
+       
       </div>
     ),
     link: "http://learn.coopbankoromiasc.com",
