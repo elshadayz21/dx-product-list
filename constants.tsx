@@ -373,7 +373,7 @@ export const products: Product[] = [
               and more
             </strong>
             , Coopay-Ebirr is your all-in-one solution backed by a vast branch
-            and agent network.
+            and agent network which managed to transact over <strong>4 trillion ETB</strong>.
           </p>
         </p>
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
@@ -384,7 +384,7 @@ export const products: Product[] = [
     moto: "",
     // videos: ["/4-trillion.mp4"],
     video: "/4-trillion.mp4",
-    videos: ["/4-trillion.mp4"],
+    // videos: ["/4-trillion.mp4"],
     imageUrl: "/products/coopay-logo.png",
     type: "",
     vslaPhotos: [
