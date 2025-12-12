@@ -391,6 +391,10 @@ export const products: Product[] = [
         src: "/image.jpeg",
         alt: "mobile-money-ecosystem-2023/24-shega",
       },
+      {
+        src: "/numbers-on-coopay-ebirr.jpg",
+        alt: "numbers-on-coopay-ebirr",
+      },
     ],
   },
   {
