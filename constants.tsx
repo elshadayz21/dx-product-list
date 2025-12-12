@@ -216,12 +216,11 @@ export const products: Product[] = [
         </p> */}
         <p className="mb-2">
           {" "}
-          COOPAYROLL is a payroll management system that simplifies employee
-          administration, attendance tracking, and salary processing. It helps
-          HR teams manage applications, configure settings, and generate reports
-          while automating tax filings, monitoring benefits, and ensuring
-          compliance. Scalable and efficient, the platform supports six
-          languages for seamless use across diverse teams.
+          COOPAYROLL is a scalable payroll system that streamlines employee
+          management, attendance, and salary processing. It automates tax
+          filings, benefits tracking, and compliance, while enabling HR teams to
+          manage applications, settings, and reports—supporting six languages
+          for diverse teams.
         </p>
       </div>
     ),
@@ -266,7 +265,7 @@ export const products: Product[] = [
           their own pace. It has the following categories with 35 courses withen
           them:
         </p>
-        <ul className="list-disc pl-6">
+        {/* <ul className="list-disc pl-6">
           <li>Business</li>
           <li>Software</li>
           <li>Digital Marketing</li>
@@ -274,7 +273,12 @@ export const products: Product[] = [
           <li>Capital Market</li>
           <li>Project Management</li>
           <li>Leadership</li>
-        </ul>
+        </ul> */}
+        <strong className="mb-2">
+          {" "}
+          Business Software Digital Marketing Digital Transformation Capital
+          Market Project Management  Leadership
+        </strong>
       </div>
     ),
     link: "http://learn.coopbankoromiasc.com",
