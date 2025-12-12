@@ -216,16 +216,12 @@ export const products: Product[] = [
         </p> */}
         <p className="mb-2">
           {" "}
-          COOPAYROLL is a comprehensive payroll management system that
-          streamlines employee administration, attendance tracking, and salary
-          processing. It enables HR teams to manage applications, configure
-          system settings, and generate detailed payroll reports. The platform
-          automates tax filings, monitors benefits, and ensures compliance—
-          making payroll efficient, error-free, and scalable for organizations
-          of all sizes. To enhance accessibility, it also supports six languages,
-          ensuring diverse teams can use the platform seamlessly.
-
-
+          COOPAYROLL is a payroll management system that simplifies employee
+          administration, attendance tracking, and salary processing. It helps
+          HR teams manage applications, configure settings, and generate reports
+          while automating tax filings, monitoring benefits, and ensuring
+          compliance. Scalable and efficient, the platform supports six
+          languages for seamless use across diverse teams.
         </p>
       </div>
     ),
@@ -267,7 +263,8 @@ export const products: Product[] = [
           provide employees with access to a wide range of educational
           resources. This platform supports continuous learning and professional
           development, enabling staff to enhance their skills and knowledge at
-          their own pace. It has the following categories with 35 courses withen them:
+          their own pace. It has the following categories with 35 courses withen
+          them:
         </p>
         <ul className="list-disc pl-6">
           <li>Business</li>
