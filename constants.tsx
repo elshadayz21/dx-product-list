@@ -538,6 +538,11 @@ export const products: Product[] = [
     moto: "",
     video: "",
     imageUrl: "/products/Farmpass.jpg",
+    vslaPhotos: [
+      {
+        src: "/numbers-on-farmpass.jpg",
+        alt: "numbers-on-farmpass",
+      },],
     //  imageUrl: "/products/Mastercard Community Pass Hi-Res Logo.png",
     type: "",
   },
