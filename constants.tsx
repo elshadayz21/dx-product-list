@@ -362,10 +362,8 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Designed for the Muslim community, MichuMizan offers a convenient and
-          accessible way to access financial services. As part of
-          Coopbank&apos;s commitment to financial inclusion, Michu empowers
-          individuals and businesses to achieve their goals while adhering to
-          Islamic principles.
+          accessible way to access <strong className="font-bold">Murabaha financial services.</strong> As part of
+         
         </p>
         <p>
           This app aims to be a Sharia-compliant interest-free collateral-less
@@ -380,6 +378,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/Michu-mizan-logo.png",
     type: "",
+    iframeUrls: ["http://10.12.53.100:5000/"],
   },
   {
     id: 13,
