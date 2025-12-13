@@ -583,7 +583,7 @@ export const products: Product[] = [
         </p>
       </div>
     ),
-    link: "",
+    // link: "",
     file: "",
     moto: "",
     video: "",
@@ -592,6 +592,7 @@ export const products: Product[] = [
     iframeUrls: [
       "https://agrilm-pilot.agtuall.com/furtuu/login"
     ],
+    link: "https://agrilm-pilot.agtuall.com/furtuu/login",
   },
 
   {
