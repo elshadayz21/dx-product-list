@@ -509,7 +509,6 @@ export const products: Product[] = [
     imageUrl: "/products/coopApp.jpg",
   },
 
-
   {
     id: 13,
     name: "Farm pass",
@@ -545,8 +544,7 @@ export const products: Product[] = [
     ],
     //  imageUrl: "/products/Mastercard Community Pass Hi-Res Logo.png",
     type: "",
-    iframeUrls: ["https://agrilm-pilot.agtuall.com/"
-    ],
+    iframeUrls: ["https://agrilm-pilot.agtuall.com/"],
   },
   {
     id: 14,
@@ -578,7 +576,8 @@ export const products: Product[] = [
           Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "}
           <strong>
             {" "}
-            Loan Monitoring tool designed to track the farmers farm performance build in collaboration with RaboBank.{" "}
+            Loan Monitoring tool designed to track the farmers farm performance
+            build in collaboration with RaboBank.{" "}
           </strong>{" "}
         </p>
       </div>
@@ -589,9 +588,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/Furtuu.png",
     type: "",
-    iframeUrls: [
-      "https://agrilm-pilot.agtuall.com/furtuu/login"
-    ],
+    iframeUrls: ["https://agrilm-pilot.agtuall.com/furtuu/login"],
     link: "https://agrilm-pilot.agtuall.com/furtuu/login",
   },
 
