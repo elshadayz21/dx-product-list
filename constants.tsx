@@ -508,42 +508,10 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/coopApp.jpg",
   },
-  // {
-  //   id: 13,
-  //   name: "Furtuu",
-  //   description: (
-  //     <div>
-  //       <p className="mb-2">
-  //         Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "}
-  //         <strong>
-  //           {" "}
-  //           supply chain system designed to onboard all stakeholders in the
-  //           farming ecosystem specially in the horticulture sector.{" "}
-  //         </strong>{" "}
-  //         This innovative solution not only addresses uncollateralized, in-kind
-  //         loans for farmers but also provides market privileges for various
-  //         MSMEs. It is open to anyone looking to finance farmers with a
-  //         feasibility approach through its versatile functionality in one
-  //         platform.
-  //       </p>
-  //       <p>
-  //         Input Financing Seed, Fertilizers, and Chemicals Market Linkage
-  //         Provide Buyers to Farmer. Advisory Services Better Farming Practices,
-  //         New Agricultural Technology Traceability End to End traceability
-  //         Opening a Door to export Market
-  //       </p>
-  //     </div>
-  //   ),
-  //   link: "",
-  //   file: "furtuu.pptx",
-  //   moto: "",
-  //   video: "",
-  //   imageUrl: "/products/Furtuu.png",
-  //   type: "",
-  // },
+
 
   {
-    id: 14,
+    id: 13,
     name: "Farm pass",
     description: (
       <div>
@@ -577,6 +545,53 @@ export const products: Product[] = [
     ],
     //  imageUrl: "/products/Mastercard Community Pass Hi-Res Logo.png",
     type: "",
+    iframeUrls: ["https://agrilm-pilot.agtuall.com/"
+    ],
+  },
+  {
+    id: 14,
+    name: "Furtuu",
+    description: (
+      // <div>
+      //   <p className="mb-2">
+      //     Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "}
+      //     <strong>
+      //       {" "}
+      //       supply chain system designed to onboard all stakeholders in the
+      //       farming ecosystem specially in the horticulture sector.{" "}
+      //     </strong>{" "}
+      //     This innovative solution not only addresses uncollateralized, in-kind
+      //     loans for farmers but also provides market privileges for various
+      //     MSMEs. It is open to anyone looking to finance farmers with a
+      //     feasibility approach through its versatile functionality in one
+      //     platform.
+      //   </p>
+      //   <p>
+      //     Input Financing Seed, Fertilizers, and Chemicals Market Linkage
+      //     Provide Buyers to Farmer. Advisory Services Better Farming Practices,
+      //     New Agricultural Technology Traceability End to End traceability
+      //     Opening a Door to export Market
+      //   </p>
+      // </div>
+      <div>
+        <p className="mb-2">
+          Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "}
+          <strong>
+            {" "}
+            Loan Monitoring tool designed to track the farmers farm performance build in collaboration with RaboBank.{" "}
+          </strong>{" "}
+        </p>
+      </div>
+    ),
+    link: "",
+    file: "",
+    moto: "",
+    video: "",
+    imageUrl: "/products/Furtuu.png",
+    type: "",
+    iframeUrls: [
+      "https://agrilm-pilot.agtuall.com/furtuu/login"
+    ],
   },
 
   {
@@ -725,7 +740,7 @@ export const products: Product[] = [
     imageUrl: "/products/coop-engage.png",
     type: "underDevelopment",
   },
-  
+
   {
     id: 25,
     name: "Burning OKR",
