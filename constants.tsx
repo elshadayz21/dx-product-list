@@ -357,6 +357,32 @@ export const products: Product[] = [
   },
   {
     id: 12,
+    name: "Michu Mizan",
+    description: (
+      <div>
+        <p className="mb-2">
+          Designed for the Muslim community, MichuMizan offers a convenient and
+          accessible way to access financial services. As part of
+          Coopbank&apos;s commitment to financial inclusion, Michu empowers
+          individuals and businesses to achieve their goals while adhering to
+          Islamic principles.
+        </p>
+        <p>
+          This app aims to be a Sharia-compliant interest-free collateral-less
+          lending platform, addressing the financial needs of the Muslim
+          community.
+        </p>
+      </div>
+    ),
+    link: "http://michumizan.com",
+    file: "",
+    moto: "",
+    video: "",
+    imageUrl: "/products/Michu-mizan-logo.png",
+    type: "",
+  },
+  {
+    id: 13,
     name: "Coopay-Ebirr",
     description: (
       <div>
@@ -482,39 +508,39 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/coopApp.jpg",
   },
-  {
-    id: 13,
-    name: "Furtuu",
-    description: (
-      <div>
-        <p className="mb-2">
-          Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "}
-          <strong>
-            {" "}
-            supply chain system designed to onboard all stakeholders in the
-            farming ecosystem specially in the horticulture sector.{" "}
-          </strong>{" "}
-          This innovative solution not only addresses uncollateralized, in-kind
-          loans for farmers but also provides market privileges for various
-          MSMEs. It is open to anyone looking to finance farmers with a
-          feasibility approach through its versatile functionality in one
-          platform.
-        </p>
-        <p>
-          Input Financing Seed, Fertilizers, and Chemicals Market Linkage
-          Provide Buyers to Farmer. Advisory Services Better Farming Practices,
-          New Agricultural Technology Traceability End to End traceability
-          Opening a Door to export Market
-        </p>
-      </div>
-    ),
-    link: "",
-    file: "furtuu.pptx",
-    moto: "",
-    video: "",
-    imageUrl: "/products/Furtuu.png",
-    type: "",
-  },
+  // {
+  //   id: 13,
+  //   name: "Furtuu",
+  //   description: (
+  //     <div>
+  //       <p className="mb-2">
+  //         Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "}
+  //         <strong>
+  //           {" "}
+  //           supply chain system designed to onboard all stakeholders in the
+  //           farming ecosystem specially in the horticulture sector.{" "}
+  //         </strong>{" "}
+  //         This innovative solution not only addresses uncollateralized, in-kind
+  //         loans for farmers but also provides market privileges for various
+  //         MSMEs. It is open to anyone looking to finance farmers with a
+  //         feasibility approach through its versatile functionality in one
+  //         platform.
+  //       </p>
+  //       <p>
+  //         Input Financing Seed, Fertilizers, and Chemicals Market Linkage
+  //         Provide Buyers to Farmer. Advisory Services Better Farming Practices,
+  //         New Agricultural Technology Traceability End to End traceability
+  //         Opening a Door to export Market
+  //       </p>
+  //     </div>
+  //   ),
+  //   link: "",
+  //   file: "furtuu.pptx",
+  //   moto: "",
+  //   video: "",
+  //   imageUrl: "/products/Furtuu.png",
+  //   type: "",
+  // },
 
   {
     id: 14,
@@ -522,14 +548,19 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coopbank Farm pass powered by Mastercard&apos;s renowned Community
-          Pass platform, it is a supply chain Eco-system that seamlessly
-          connects farmers, cooperatives, aggregators, buyers, agricultural
-          input/service providers, financial institutions, and other service
-          providers. Language support in : Afaan Oromo Amharic and English *
+          Coopbank Farm Pass in collaboration with Mastercard renowned Community
+          Pass platform, largest AgTech platform in Ethiopia by number of
+          onboarded actors, is a supply chain Eco-system that seamlessly
+          connects farmers, cooperatives, aggregators, buyers, financial
+          institutions, and other service providers.
+        </p>
+        <p>
           Farmers do not directly use the platform, they access it through their
-          Cooperative, Cooperative Agents or any other organization they are
-          under.
+          Cooperatives, Unions, or Agro-Dealers they are registered with.
+        </p>
+        <p>
+          A loan monitoring tool built in collaboration with RaboBank provides
+          clear insights into how the farm is performing.
         </p>
       </div>
     ),
@@ -542,7 +573,8 @@ export const products: Product[] = [
       {
         src: "/numbers-on-farmpass.jpg",
         alt: "numbers-on-farmpass",
-      },],
+      },
+    ],
     //  imageUrl: "/products/Mastercard Community Pass Hi-Res Logo.png",
     type: "",
   },
@@ -693,32 +725,7 @@ export const products: Product[] = [
     imageUrl: "/products/coop-engage.png",
     type: "underDevelopment",
   },
-  {
-    id: 23,
-    name: "Michu Mizan",
-    description: (
-      <div>
-        <p className="mb-2">
-          Designed for the Muslim community, MichuMizan offers a convenient and
-          accessible way to access financial services. As part of
-          Coopbank&apos;s commitment to financial inclusion, Michu empowers
-          individuals and businesses to achieve their goals while adhering to
-          Islamic principles.
-        </p>
-        <p>
-          This app aims to be a Sharia-compliant interest-free collateral-less
-          lending platform, addressing the financial needs of the Muslim
-          community.
-        </p>
-      </div>
-    ),
-    link: "http://michumizan.com",
-    file: "",
-    moto: "",
-    video: "",
-    imageUrl: "/products/Michu-mizan-logo.png",
-    type: "underDevelopment",
-  },
+  
   {
     id: 25,
     name: "Burning OKR",
