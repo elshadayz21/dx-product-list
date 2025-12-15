@@ -524,10 +524,10 @@ export const products: Product[] = [
           Farmers do not directly use the platform, they access it through their
           Cooperatives, Unions, or Agro-Dealers they are registered with.
         </p> */}
-        <p className="mb-2">
+        {/* <p className="mb-2">
           A loan monitoring tool built in collaboration with RaboBank provides
           clear insights into how the farm is performing.
-        </p>
+        </p> */}
       </div>
     ),
     link: "",
