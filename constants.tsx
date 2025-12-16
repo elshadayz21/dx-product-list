@@ -559,7 +559,7 @@ export const products: Product[] = [
     ],
     //  imageUrl: "/products/Mastercard Community Pass Hi-Res Logo.png",
     type: "",
-    iframeUrls: ["https://agrilm-pilot.agtuall.com/"],
+    // iframeUrls: ["https://agrilm-pilot.agtuall.com/"],
   },
   {
     id: 14,
