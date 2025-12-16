@@ -362,8 +362,9 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           Designed for the Muslim community, MichuMizan offers a convenient and
-          accessible way to access <strong className="font-bold">Murabaha financial services.</strong> As part of
-         
+          accessible way to access{" "}
+          <strong className="font-bold">Murabaha financial services.</strong> As
+          part of
         </p>
         <p>
           This app aims to be a Sharia-compliant interest-free collateral-less
@@ -513,12 +514,28 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coopbank Farm Pass in collaboration with Mastercard renowned Community
-          Pass platform, largest AgTech platform in Ethiopia by number of
-          onboarded actors, is a supply chain Eco-system that seamlessly
-          connects farmers, cooperatives, aggregators, buyers, financial
-          institutions, and other service providers.
+          <strong>FarmPass</strong> is an all-in-one digital marketplace that
+          drives efficiency across the ag-chain:
         </p>
+        <ul>
+          <li>
+            <strong>Farmers:</strong> Digital market access, secure payments,
+            and activity-based credit.
+          </li>
+          <li>
+            <strong>Co-ops &amp; Aggregators:</strong> Structured collections
+            and improved financing.
+          </li>
+          <li>
+            <strong>Buyers:</strong> Traceable transactions and reliable,
+            aggregated supply.
+          </li>
+          <li>
+            <strong>Providers:</strong> Direct digital channel to reach and
+            manage farmer orders at scale.
+          </li>
+        </ul>
+
         {/* <p>
           Farmers do not directly use the platform, they access it through their
           Cooperatives, Unions, or Agro-Dealers they are registered with.
