@@ -547,7 +547,7 @@ export const products: Product[] = [
       </div>
     ),
     link: "",
-    file: "FarmPass.pptx",
+    file: "Updated_Product_Catalog_Template_ARMING_C[1].docx(Farmpass)[1][1].pdf",
     moto: "",
     video: "",
     imageUrl: "/products/Farmpass.jpg",
