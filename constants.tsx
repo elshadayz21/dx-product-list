@@ -9,13 +9,36 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          Coop Stream is CoopBank&apos;s innovative{" "}
-          <strong>loan origination platform</strong> that automates the entire
-          loan processing workflow. This app simplifies and accelerates the
-          process of applying for and approving loans, reducing manual tasks and
-          enhancing efficiency.
+          <span className="font-semibold">CoopStream</span> is Cooperative Bank of Oromia&apos;s
+         <strong> digital loan origination platform </strong>that automates the entire loan process—from
+          application to final decision—making financing faster, fairer, and more transparent
+          for customers across all branches.
         </p>
+
+        <p className="mb-3 font-semibold">What this means for customers?</p>
+
+        <div className="mb-2">
+          <p className="text-sm">Faster, predictable service with standard timelines and automatic escalations.</p>
+        </div>
+
+        <div className="mb-2">
+          <p className="text-sm">Transparent and accountable processing through a single digital system.</p>
+        </div>
+
+        <div className="mb-2">
+          <p className="text-sm">Equal access for customers at all branches, including remote locations.</p>
+        </div>
+
+        <div className="mb-2">
+          <p className="text-sm">Full visibility for authorized staff, enabling quicker decisions.</p>
+        </div>
+
+        <div className="mb-2">
+          <p className="text-sm">Customer-first workflows that prevent unnecessary delays.</p>
+        </div>
+
       </div>
+
     ),
     link: "http://coopstream.coopbank.local/LOS",
     file: "",
