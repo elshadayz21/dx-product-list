@@ -463,7 +463,7 @@ export const products: Product[] = [
         </p>
       </div>
     ),
-    link: "http://10.8.100.90/dashboard/sacco",
+    link: "http://dfs.coopbank.local/dashboard/sacco",
     file: "",
     moto: "",
     video: "",
@@ -816,7 +816,7 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "http://10.8.100.90/dashboard/coopay",
+    link: "http://dfs.coopbank.local/dashboard/coopay",
     file: "",
     moto: "",
     video: "",
