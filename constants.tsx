@@ -404,7 +404,7 @@ export const products: Product[] = [
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
     ),
-    link: "http://10.8.100.90/dashboard/coopay",
+    link: "http://dfs.coopbank.local/dashboard/coopay",
     file: "",
     moto: "",
     video: "/4-trillion.mp4",
