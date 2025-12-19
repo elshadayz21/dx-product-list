@@ -10,33 +10,47 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           <span className="font-semibold">CoopStream</span> is Cooperative Bank of Oromia&apos;s
-         <strong> digital loan origination platform </strong>that automates the entire loan process—from
+          <strong> digital loan origination platform </strong>that automates the entire loan process—from
           application to final decision—making financing faster, fairer, and more transparent
           for customers across all branches.
         </p>
 
-        <p className="mb-3 font-semibold">What this means for customers?</p>
+        <p className="mb-2 font-semibold">What this means for customers?</p>
 
-        <div className="mb-2">
-          <p className="text-sm">Faster, predictable service with standard timelines and automatic escalations.</p>
+        <div className="mb-1 flex items-start">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            <span className="font-semibold">Faster, predictable service</span> with standard timelines and automatic escalations.
+          </p>
         </div>
 
-        <div className="mb-2">
-          <p className="text-sm">Transparent and accountable processing through a single digital system.</p>
+        <div className="mb-1 flex items-start">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            <span className="font-semibold">Transparent and accountable processing</span> through a single digital system.
+          </p>
         </div>
 
-        <div className="mb-2">
-          <p className="text-sm">Equal access for customers at all branches, including remote locations.</p>
+        <div className="mb-1 flex items-start">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            <span className="font-semibold">Equal access</span> for customers at all branches, including remote locations.
+          </p>
         </div>
 
-        <div className="mb-2">
-          <p className="text-sm">Full visibility for authorized staff, enabling quicker decisions.</p>
+        <div className="mb-1 flex items-start">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            <span className="font-semibold">Full visibility</span> for authorized staff, enabling quicker decisions.
+          </p>
         </div>
 
-        <div className="mb-2">
-          <p className="text-sm">Customer-first workflows that prevent unnecessary delays.</p>
+        <div className="mb-1 flex items-start">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            <span className="font-semibold">Customer-first workflows</span> that prevent unnecessary delays.
+          </p>
         </div>
-
       </div>
 
     ),
