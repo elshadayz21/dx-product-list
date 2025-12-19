@@ -382,7 +382,7 @@ export const products: Product[] = [
     iframeUrls: ["http://10.12.53.100:5000/"],
   },
   {
-    id: 13,
+    id: 50,
     name: "Coopay-Ebirr",
     description: (
       <div>

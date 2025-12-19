@@ -164,14 +164,22 @@ export default function ProductPage() {
               </div>
               <div className="w-full md:w-2/3 flex flex-col">
                 <div className="flex-grow overflow-none mb-4">
-                  <div className="text-muted-foreground mb-4">
-                    {selectedProduct.description}
-                  </div>
-                  {mediaContent.length > 0 && (
-                    <MemoizedMixedContentSlider
-                      key={selectedProduct.id}
-                      items={mediaContent}
-                    />
+                  {showVideo && selectedProduct.video ? (
+                    <div className="h-full min-h-[300px]">
+                      <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
+                    </div>
+                  ) : (
+                    <>
+                      <div className="text-muted-foreground mb-4">
+                        {selectedProduct.description}
+                      </div>
+                      {mediaContent.length > 0 && (
+                        <MemoizedMixedContentSlider
+                          key={selectedProduct.id}
+                          items={mediaContent}
+                        />
+                      )}
+                    </>
                   )}
                 </div>
 
@@ -215,8 +223,8 @@ export default function ProductPage() {
                   <div
                     key={product.id}
                     className={`p-3 bg-white ${selectedProduct && product.id === selectedProduct.id
-                        ? "bg-muted"
-                        : ""
+                      ? "bg-muted"
+                      : ""
                       }`}
                     onClick={() => handleProductSelect(product)}
                   >
