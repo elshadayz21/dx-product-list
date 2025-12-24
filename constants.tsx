@@ -629,7 +629,7 @@ export const products: Product[] = [
 
           Agri-LMT (<strong>Loan Monitoring Tool</strong>)          <strong>
             {" "}
-         designed to track the farmers farm performance
+            designed to track the farmers farm performance
             built in collaboration with RaboBank.{" "}
           </strong>{" "}
         </p>
@@ -639,7 +639,7 @@ export const products: Product[] = [
     file: "",
     moto: "",
     video: "",
-    imageUrl: "/products/Agri-LMT.png",
+    imageUrl: "/products/agri-lmt.png",
     type: "",
     iframeUrls: ["https://agrilm-pilot.agtuall.com/furtuu/login"],
     link: "https://agrilm-pilot.agtuall.com/furtuu/login",
