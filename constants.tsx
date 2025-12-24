@@ -600,7 +600,7 @@ export const products: Product[] = [
   },
   {
     id: 14,
-    name: "Furtuu",
+    name: "Agri-LMT",
     description: (
       // <div>
       //   <p className="mb-2">
@@ -625,11 +625,12 @@ export const products: Product[] = [
       // </div>
       <div>
         <p className="mb-2">
-          Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "}
-          <strong>
+          {/* Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "} */}
+
+          Agri-LMT (<strong>Loan Monitoring Tool</strong>)          <strong>
             {" "}
-            Loan Monitoring tool designed to track the farmers farm performance
-            build in collaboration with RaboBank.{" "}
+         designed to track the farmers farm performance
+            built in collaboration with RaboBank.{" "}
           </strong>{" "}
         </p>
       </div>
@@ -638,7 +639,7 @@ export const products: Product[] = [
     file: "",
     moto: "",
     video: "",
-    imageUrl: "/products/Furtuu.png",
+    imageUrl: "/products/Agri-LMT.png",
     type: "",
     iframeUrls: ["https://agrilm-pilot.agtuall.com/furtuu/login"],
     link: "https://agrilm-pilot.agtuall.com/furtuu/login",
