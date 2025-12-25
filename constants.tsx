@@ -627,11 +627,11 @@ export const products: Product[] = [
         <p className="mb-2">
           {/* Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "} */}
 
-          Agri-LMT (<strong>Loan Monitoring Tool</strong>)          <strong>
+          Agri-LMT (<strong>Agricultural Loan Monitoring Tool</strong>)         
             {" "}
             designed to track the farmers farm performance
             built in collaboration with RaboBank.{" "}
-          </strong>{" "}
+     
         </p>
       </div>
     ),
