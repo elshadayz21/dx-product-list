@@ -425,7 +425,7 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           <p>
-            <strong>Coopay-Ebirr</strong> is Coop Bank&apos;s digital mobile
+            <strong>Coopay-Ebirr</strong> is CoopBank&apos;s digital mobile
             wallet, built in partnership with Ebirr— Ethiopia&apos;s{" "}
             <strong>second-largest mobile money platform</strong>. From airtime
             top-ups and nationwide transfers to payments for{" "}
@@ -433,16 +433,13 @@ export const products: Product[] = [
               fuel, traffic fines, shopping, flights, DSTV, Canal+, utilities,
               and more
             </strong>
-            , Coopay-Ebirr is your all-in-one solution backed by a vast branch
-            and agent network which managed to transact over{" "}
-            <strong>5 trillion ETB</strong>.
-          </p>
+            </p>
         </p>
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
     ),
     link: "http://dfs.coopbank.local/",
-      iframeUrls: [
+    iframeUrls: [
         "http://dfs.coopbank.local/",
     ],
     file: "",
