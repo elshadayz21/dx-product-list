@@ -504,7 +504,7 @@ export const products: Product[] = [
         </p>
       </div>
     ),
-    link: "http://dfs.coopbank.local/dashboard/sacco",
+    link: "https://all-sacco.sybylcloud.com/login",
     file: "SACCO-Link Update.pptx",
     moto: "",
     video: "",
