@@ -505,7 +505,7 @@ export const products: Product[] = [
       </div>
     ),
     link: "http://dfs.coopbank.local/dashboard/sacco",
-    file: "",
+    file: "SACCO-Link Update.pptx",
     moto: "",
     video: "",
     // iframeUrls: ["http://10.8.100.90/dashboard/sacco"],
@@ -513,10 +513,10 @@ export const products: Product[] = [
     type: "",
     vslaPhotos: [
       {
-        src: "/products/sacco-stat.jpg",
-        alt: "Sacco-Link-Stat-Dec-2025",
+        src: "/products/sacco-updated-numbers-60.jpeg",
+        alt: "sacco-updated-numbers-60",
       },
-      {
+           {
         src: "/saccopay-mobile-app.jpg",
         alt: "saccopay-mobile-app",
       },
