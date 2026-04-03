@@ -508,7 +508,7 @@ export const products: Product[] = [
     file: "SACCO-Link Update.pptx",
     moto: "",
     video: "",
-    // iframeUrls: ["http://10.8.100.90/dashboard/sacco"],
+    iframeUrls: ["http://dfs.coopbank.local/sacco-link"],
     imageUrl: "/products/sacco-link.png",
     type: "",
     vslaPhotos: [
@@ -858,7 +858,7 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "http://dfs.coopbank.local/dashboard/coopay",
+    link: "http://dfs.coopbank.local/coopay-ebirr",
     file: "",
     moto: "",
     video: "",
