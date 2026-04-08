@@ -438,9 +438,9 @@ export const products: Product[] = [
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
     ),
-    link: "http://dfs.coopbank.local/",
+    link: "http://dfs.coopbank.local/coopay-ebirr",
     iframeUrls: [
-        "http://dfs.coopbank.local/",
+        "http://dfs.coopbank.local/coopay-ebirr",
     ],
     file: "",
     moto: "",
