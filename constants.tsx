@@ -450,8 +450,8 @@ export const products: Product[] = [
     type: "",
     vslaPhotos: [
         {
-        src: "/5-trillion transaction.jpg",
-        alt: "5-trillion-transaction",
+        src: "/5.5-Trillion.jpg",
+        alt: "5.5-trillion-transaction",
       },
       {
         src: "/image.jpeg",
