@@ -60,6 +60,24 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/coop-stream.png",
     type: "",
+       vslaPhotos: [
+        {
+        src: "/vsla/coopstream-1.jpeg",
+        alt: "coopstream-1",
+      },
+      {
+        src: "/vsla/coopstream-2.jpeg",
+        alt: "coopstream-2",
+      },
+    {
+        src: "/vsla/coopstream-3.jpeg",
+        alt: "coopstream-1",
+      },
+      // {
+      //   src: "/numbers-on-coopay-ebirr.jpg",
+      //   alt: "numbers-on-coopay-ebirr",
+      // },
+    ],
   },
   {
     id: 2,
