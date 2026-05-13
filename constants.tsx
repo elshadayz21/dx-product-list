@@ -11,9 +11,7 @@ export const products: Product[] = [
         <p className="mb-2">
           <span className="font-semibold">CoopStream</span> is Cooperative Bank of Oromia&apos;s
           <strong> digital loan origination platform </strong>that automates the entire loan process—from
-          application to final decision—making financing faster, fairer, and more transparent
-          for customers across all branches.
-        </p>
+          application to final decision—making financing faster, fairer, and more transparent        </p>
 
         <p className="mb-2 font-semibold">What this means for customers?</p>
 
@@ -45,12 +43,6 @@ export const products: Product[] = [
           </p>
         </div>
 
-        <div className="mb-1 flex items-start">
-          <p className="mr-2 font-bold">•</p>
-          <p className="text-sm">
-            <span className="font-semibold">Customer-first workflows</span> that prevent unnecessary delays.
-          </p>
-        </div>
       </div>
 
     ),
