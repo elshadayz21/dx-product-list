@@ -604,7 +604,9 @@ export const products: Product[] = [
     imageUrl: "/products/Farmpass.jpg",
     vslaPhotos: [
       {
-        src: "/numbers-on-farmpass.jpg",
+        // src: "/numbers-on-farmpass.jpg",
+        src: "/farmpass-number-04-06-2026.png",
+
         alt: "numbers-on-farmpass",
       },
     ],
