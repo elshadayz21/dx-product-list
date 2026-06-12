@@ -65,6 +65,11 @@ export const products: Product[] = [
         src: "/vsla/coopstream-3.jpeg",
         alt: "coopstream-1",
       },
+    {
+        src: "/vsla/credit-donkey-work.png",
+        alt: "coopstream-4",
+      },
+     
       // {
       //   src: "/numbers-on-coopay-ebirr.jpg",
       //   alt: "numbers-on-coopay-ebirr",
@@ -460,8 +465,8 @@ export const products: Product[] = [
     type: "",
     vslaPhotos: [
         {
-        src: "/5.9-Trillion_Coopay.jpeg",
-        alt: "5.9-trillion-transaction",
+        src: "/6-trillion-coopay-ebirr.jpg",
+        alt: "6-trillion-transaction",
       },
       {
         src: "/image.jpeg",
