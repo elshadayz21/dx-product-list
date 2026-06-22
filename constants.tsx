@@ -848,9 +848,9 @@ export const products: Product[] = [
     // link: "https://coopbankoromia.com.et/about/eco-branches/",
     link: "https://eco-branches.vercel.app/",
     file: "",
-    moto: "",
+    moto: "Bank Smarter, Live Better",
     video: "",
-    imageUrl: "",
+    imageUrl: "/global-msme-award.jpg",
     type: "dropdownMenu",
   },
   {

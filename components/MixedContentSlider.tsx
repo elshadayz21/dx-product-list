@@ -3,7 +3,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import YouTubePlayer from "./YouTubePlayer";
@@ -18,13 +18,20 @@ type ContentItem = {
 export interface MixedContentSliderProps {
   items: ContentItem[];
   className?: string;
+  onImageClick?: (index: number) => void;
 }
 
 export default function MixedContentSlider({
   items = [],
   className = "",
+  onImageClick,
 }: MixedContentSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+  const mouseStartX = useRef<number | null>(null);
+  const isDragging = useRef(false);
+  const didSwipe = useRef(false);
 
   // Ensure we start from the first slide whenever the content set changes
   useEffect(() => {
@@ -43,6 +50,61 @@ export default function MixedContentSlider({
     );
   }, [items.length]);
 
+  const handleSwipe = useCallback(
+    (diff: number) => {
+      const threshold = 50;
+      if (diff > threshold) {
+        didSwipe.current = true;
+        goToNextSlide();
+      } else if (diff < -threshold) {
+        didSwipe.current = true;
+        goToPrevSlide();
+      }
+    },
+    [goToNextSlide, goToPrevSlide]
+  );
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    didSwipe.current = false;
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+    handleSwipe(touchStartX.current - touchEndX.current);
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    didSwipe.current = false;
+    isDragging.current = true;
+    mouseStartX.current = e.clientX;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || mouseStartX.current === null) return;
+    touchEndX.current = e.clientX;
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging.current || mouseStartX.current === null) return;
+    handleSwipe(mouseStartX.current - (touchEndX.current ?? mouseStartX.current));
+    isDragging.current = false;
+    mouseStartX.current = null;
+    touchEndX.current = null;
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging.current) {
+      handleMouseUp();
+    }
+  };
+
   if (items.length === 0) {
     return null;
   }
@@ -50,13 +112,20 @@ export default function MixedContentSlider({
   return (
     <div
       className={cn(
-        "relative w-full h-48 md:h-48 mx-auto overflow-hidden rounded-lg",
+        "relative w-full h-48 md:h-48 mx-auto overflow-hidden rounded-lg select-none",
         className
       )}
       aria-roledescription="carousel"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseLeave}
     >
       <div
-        className="flex transition-transform duration-500 ease-in-out  h-48 md:h-48"
+        className="flex transition-transform duration-500 ease-in-out h-full"
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {items.map((item, index) => {
@@ -77,13 +146,27 @@ export default function MixedContentSlider({
               />
             )}
             {item.type === "image" && (
-              <Image
-                src={item.src}
-                alt={item.alt || `Slide ${index + 1}`}
-                width={800}
-                height={600}
-                className="w-full h-full object-contain"
-              />
+              <button
+                type="button"
+                className={cn(
+                  "w-full h-full block",
+                  onImageClick ? "cursor-zoom-in" : ""
+                )}
+                onClick={() => {
+                  if (!didSwipe.current) {
+                    onImageClick?.(index);
+                  }
+                }}
+                aria-label={item.alt || `View slide ${index + 1}`}
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt || `Slide ${index + 1}`}
+                  width={800}
+                  height={600}
+                  className="w-full h-full object-cover pointer-events-none select-none"
+                />
+              </button>
             )}
             {item.type === "iframe" && (
               <iframe

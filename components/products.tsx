@@ -36,13 +36,17 @@ type ContentItem = {
   alt?: string;
 };
 
+interface ProductPageProps {
+  onOpenEcoBranch?: () => void;
+}
+
 const MemoizedMixedContentSlider = React.memo(MixedContentSlider);
 const MemoizedImageSlider = React.memo(ImageSlider);
 const MemoizedVideoSlider = React.memo(VideoSlider);
 const MemoizedYouTubePlayer = React.memo(YouTubePlayer);
 
 
-export default function ProductPage() {
+export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showVideo, setShowVideo] = useState(false);
   const [activeTab, setActiveTab] = useState("dxvalleyProducts");
@@ -432,6 +436,17 @@ export default function ProductPage() {
             <DropdownMenuContent className="bg-white shadow-lg rounded-md">
               {products.map((product) => {
                 if (product.type === "dropdownMenu") {
+                  if (product.name === "EcoBranch" && onOpenEcoBranch) {
+                    return (
+                      <DropdownMenuItem
+                        key={product.id}
+                        onClick={onOpenEcoBranch}
+                        className="cursor-pointer"
+                      >
+                        {product.name}
+                      </DropdownMenuItem>
+                    );
+                  }
                   return (
                     <DropdownMenuItem asChild key={product.id}>
                       <a

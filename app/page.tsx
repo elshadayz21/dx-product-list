@@ -2,6 +2,7 @@
 
 "use client";
 import CooperativeVision from "@/components/cooperativevision";
+import EcoBranchPanel from "@/components/EcoBranchPanel";
 import PDFViewer from "@/components/pdf-viewer";
 import ProductPage from "@/components/products";
 import { Button } from "@/components/ui/button";
@@ -63,6 +64,7 @@ const Page = () => {
   const [pin, setPin] = useState("");
   const [isPinVerified, setIsPinVerified] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [showEcoBranch, setShowEcoBranch] = useState(false);
   const handlePinSubmit = () => {
     if (pin === "DxOngoing123") {
       setIsPinVerified(true);
@@ -105,40 +107,40 @@ const Page = () => {
           </Button>
         </div>
       ) : (
-        // <RadioToggleProductView />
-        <div className="grid grid-cols-2 gap-4 w-full">
-          <div className="space-y-4">
-            <CooperativeVision />
+        <>
+          <div className="grid grid-cols-2 gap-4 w-full">
+            <div className="space-y-4">
+              <CooperativeVision />
 
-            {/* this div is for the image */}
-            <div className="mx-auto">
-              {/* <div className='h-[330px] mx-auto'> */}
-              {/* <PDFViewer fileUrl='/THE STORY OF FATIMA.pdf' /> */}
-              <div className="flex flex-col items-center w-full">
-                <div className="mb-2 flex gap-2">
-                  {" "}
-                  <Image
-                    src="/global-msme-award.jpg"
-                    // src="/top-100-african-banks.jpeg"
-                    alt="Global MSME Award"
-                    width={300}
-                    height={300}
-                  />
-                  <Image
-                    // src="/global-msme-award.jpg"
-                    src="/top-100-african-banks.jpeg"
-                    alt="Global MSME Award"
-                    width={300}
-                    height={200}
-                  />{" "}
+              <div className="mx-auto">
+                <div className="flex flex-col items-center w-full">
+                  <div className="mb-2 flex gap-2">
+                    <Image
+                      src="/global-msme-award.jpg"
+                      alt="Global MSME Award"
+                      width={300}
+                      height={300}
+                    />
+                    <Image
+                      src="/top-100-african-banks.jpeg"
+                      alt="Top 100 African Banks"
+                      width={300}
+                      height={200}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
+
+            <div className="h-[660px] overflow-y-auto">
+              <ProductPage onOpenEcoBranch={() => setShowEcoBranch(true)} />
+            </div>
           </div>
-          <div className="h-[660px] overflow-y-auto">
-            <ProductPage />
-          </div>
-        </div>
+
+          {showEcoBranch && (
+            <EcoBranchPanel onClose={() => setShowEcoBranch(false)} />
+          )}
+        </>
       )}
     </div>
   );
