@@ -845,7 +845,8 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "https://coopbankoromia.com.et/about/eco-branches/",
+    // link: "https://coopbankoromia.com.et/about/eco-branches/",
+    link: "https://eco-branches.vercel.app/",
     file: "",
     moto: "",
     video: "",
