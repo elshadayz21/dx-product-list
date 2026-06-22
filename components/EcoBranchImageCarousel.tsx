@@ -13,11 +13,9 @@ import {
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import type { EcoBranchImage } from "@/lib/eco-branch";
 
-export type EcoBranchImage = {
-  src: string;
-  alt: string;
-};
+export type { EcoBranchImage };
 
 interface EcoBranchImageCarouselProps {
   images: EcoBranchImage[];

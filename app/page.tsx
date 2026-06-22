@@ -8,8 +8,11 @@ import ProductPage from "@/components/products";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 // import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { preloadEcoBranchAssets } from "@/lib/eco-branch";
+import { Leaf } from "lucide-react";
+
 function RadioToggleProductView() {
   const [showProduct, setShowProduct] = useState(true);
   return (
@@ -65,6 +68,13 @@ const Page = () => {
   const [isPinVerified, setIsPinVerified] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showEcoBranch, setShowEcoBranch] = useState(false);
+
+  useEffect(() => {
+    if (isPinVerified) {
+      preloadEcoBranchAssets();
+    }
+  }, [isPinVerified]);
+
   const handlePinSubmit = () => {
     if (pin === "DxOngoing123") {
       setIsPinVerified(true);
@@ -116,16 +126,16 @@ const Page = () => {
                 <div className="flex flex-col items-center w-full">
                   <div className="mb-2 flex gap-2">
                     <Image
-                      src="/global-msme-award.jpg"
-                      alt="Global MSME Award"
-                      width={300}
-                      height={300}
-                    />
-                    <Image
                       src="/top-100-african-banks.jpeg"
                       alt="Top 100 African Banks"
                       width={300}
                       height={200}
+                    />
+                     <Image
+                      src="/global-msme-award.jpg"
+                      alt="Global MSME Award"
+                      width={300}
+                      height={300}
                     />
                   </div>
                 </div>
@@ -137,9 +147,52 @@ const Page = () => {
             </div>
           </div>
 
-          {showEcoBranch && (
-            <EcoBranchPanel onClose={() => setShowEcoBranch(false)} />
-          )}
+          {/* Floating ECO side tab */}
+          <button
+            onClick={() => setShowEcoBranch(true)}
+            title="View ECO Branches"
+            className="eco-side-tab"
+            style={{
+              position: "fixed",
+              left: 0,
+              top: "50%",
+              transform: "translateY(-50%)",
+              zIndex: 9999,
+              background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "0 14px 14px 0",
+              padding: "18px 20px 18px 14px",
+              fontSize: "13px",
+              fontWeight: 800,
+              letterSpacing: "0.12em",
+              cursor: "pointer",
+              boxShadow: "3px 0 18px rgba(0,102,51,0.35)",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "10px",
+              writingMode: "vertical-lr",
+              textOrientation: "mixed",
+              transition: "transform 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%) translateX(4px)";
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = "5px 0 28px rgba(0,165,80,0.55)";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%)";
+              (e.currentTarget as HTMLButtonElement).style.boxShadow = "3px 0 18px rgba(0,102,51,0.35)";
+            }}
+          >
+            <Leaf size={20} strokeWidth={2.5} style={{ rotate: "180deg", flexShrink: 0 }} />
+            <span style={{ fontWeight: 900, fontSize: "13px", letterSpacing: "0.18em" }}>ECO</span>
+          </button>
+
+          <EcoBranchPanel
+            open={showEcoBranch}
+            onClose={() => setShowEcoBranch(false)}
+          />
         </>
       )}
     </div>

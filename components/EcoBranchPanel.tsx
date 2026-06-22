@@ -5,46 +5,35 @@
 import Image from "next/image";
 import { X, Leaf, House, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import {
+  ECO_BRANCH_IFRAME_URL,
+  ECO_BRANCH_IMAGES,
+  preloadEcoBranchAssets,
+} from "@/lib/eco-branch";
 import { useEffect, useState } from "react";
-import EcoBranchImageCarousel, {
-  type EcoBranchImage,
-} from "./EcoBranchImageCarousel";
-
-export const ECO_BRANCH_IMAGES: EcoBranchImage[] = [
-  {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/ec-1024x576top.webp",
-    alt: "CoopBank Eco-Branch",
-  },
-  {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/19-1024x576eco-uai-384x288.webp",
-    alt: "Eco-Branch in rural Ethiopia",
-  },
-  {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/echo-branch-uai-384x288.webp",
-    alt: "Echo Branch",
-  },
-  {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/eco-green-724x1024echo-uai-362x362.webp",
-    alt: "Eco-Branch green design",
-  },
-  {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/1-1024x543-long-uai-483x272.webp",
-    alt: "CoopBank Eco-Branches journey",
-  },
-];
+import EcoBranchImageCarousel from "./EcoBranchImageCarousel";
 
 interface EcoBranchPanelProps {
+  open: boolean;
   onClose: () => void;
   iframeUrl?: string;
 }
 
 export default function EcoBranchPanel({
+  open,
   onClose,
-  iframeUrl = "https://eco-branches.vercel.app/",
+  iframeUrl = ECO_BRANCH_IFRAME_URL,
 }: EcoBranchPanelProps) {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
+    preloadEcoBranchAssets();
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
+
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
@@ -63,7 +52,13 @@ export default function EcoBranchPanel({
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleEscape);
     };
-  }, [onClose, lightboxIndex]);
+  }, [open, onClose, lightboxIndex]);
+
+  useEffect(() => {
+    if (!open) {
+      setLightboxIndex(null);
+    }
+  }, [open]);
 
   const goToPrevLightbox = () => {
     if (lightboxIndex === null) return;
@@ -80,12 +75,23 @@ export default function EcoBranchPanel({
   return (
     <>
       <div
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/65 p-3 sm:p-4 animate-in fade-in duration-200"
+        className={cn(
+          "fixed inset-0 flex items-center justify-center p-3 sm:p-4 transition-opacity duration-200",
+          open
+            ? "z-50 visible opacity-100 bg-black/65 animate-in fade-in"
+            : "z-[-1] invisible opacity-0 pointer-events-none bg-transparent"
+        )}
         role="dialog"
         aria-modal="true"
+        aria-hidden={!open}
         aria-label="CoopBank Eco-Branches"
       >
-        <div className="flex flex-col w-full h-full max-h-full bg-white rounded-xl shadow-2xl overflow-hidden border animate-in zoom-in-95 duration-200">
+        <div
+          className={cn(
+            "flex flex-col w-full h-full max-h-full bg-white rounded-xl shadow-2xl overflow-hidden border",
+            open ? "animate-in zoom-in-95 duration-200" : ""
+          )}
+        >
           <div className="flex items-center justify-between px-4 py-2 border-b bg-[#00adef] text-white shrink-0">
             <div className="flex items-center gap-2">
               <Leaf className="h-4 w-4 eco-float" />
@@ -97,6 +103,7 @@ export default function EcoBranchPanel({
               variant="ghost"
               size="icon"
               onClick={onClose}
+              tabIndex={open ? 0 : -1}
               className="text-white hover:bg-white/20 h-8 w-8"
               aria-label="Close Eco-Branches modal"
             >
@@ -132,6 +139,7 @@ export default function EcoBranchPanel({
             <Button
               onClick={onClose}
               size="sm"
+              tabIndex={open ? 0 : -1}
               className="bg-[#00adef] shrink-0 h-8 text-xs"
             >
               <House className="mr-1.5 h-3.5 w-3.5" />
@@ -141,7 +149,7 @@ export default function EcoBranchPanel({
         </div>
       </div>
 
-      {lightboxIndex !== null && (
+      {open && lightboxIndex !== null && (
         <div
           className="fixed inset-0 z-[110] flex items-center justify-center bg-black/85 p-4"
           onClick={() => setLightboxIndex(null)}
