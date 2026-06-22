@@ -147,47 +147,46 @@ const Page = () => {
             </div>
           </div>
 
-          {/* Floating ECO side tab */}
-          <button
-            onClick={() => setShowEcoBranch(true)}
-            title="View ECO Branches"
-            className="eco-side-tab"
-            style={{
-              position: "fixed",
-              left: 0,
-              top: "50%",
-              transform: "translateY(-50%)",
-              zIndex: 9999,
-              background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
-              color: "#fff",
-              border: "none",
-              borderRadius: "0 14px 14px 0",
-              padding: "18px 20px 18px 14px",
-              fontSize: "13px",
-              fontWeight: 800,
-              letterSpacing: "0.12em",
-              cursor: "pointer",
-              boxShadow: "3px 0 18px rgba(0,102,51,0.35)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "10px",
-              writingMode: "vertical-lr",
-              textOrientation: "mixed",
-              transition: "transform 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease",
-            }}
-            onMouseEnter={e => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%) translateX(4px)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "5px 0 28px rgba(0,165,80,0.55)";
-            }}
-            onMouseLeave={e => {
-              (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%)";
-              (e.currentTarget as HTMLButtonElement).style.boxShadow = "3px 0 18px rgba(0,102,51,0.35)";
-            }}
-          >
-            <Leaf size={20} strokeWidth={2.5} style={{ rotate: "180deg", flexShrink: 0 }} />
-            <span style={{ fontWeight: 900, fontSize: "13px", letterSpacing: "0.18em" }}>ECO</span>
-          </button>
+          {/* Floating ECO side tab — hidden while modal is open */}
+          {!showEcoBranch && (
+            <button
+              onClick={() => setShowEcoBranch(true)}
+              title="View ECO Branches"
+              style={{
+                position: "fixed",
+                left: 0,
+                top: "50%",
+                transform: "translateY(-50%)",
+                zIndex: 9999,
+                background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "0 14px 14px 0",
+                padding: "14px 20px 14px 14px",
+                fontSize: "13px",
+                fontWeight: 800,
+                letterSpacing: "0.12em",
+                cursor: "pointer",
+                boxShadow: "3px 0 18px rgba(0,102,51,0.35)",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "8px",
+                transition: "transform 0.25s ease, box-shadow 0.25s ease",
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%) translateX(4px)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "5px 0 28px rgba(0,165,80,0.55)";
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%)";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = "3px 0 18px rgba(0,102,51,0.35)";
+              }}
+            >
+              <Leaf size={18} strokeWidth={2.5} style={{ flexShrink: 0 }} />
+              <span style={{ fontWeight: 900, fontSize: "13px", letterSpacing: "0.18em" }}>ECO</span>
+            </button>
+          )}
 
           <EcoBranchPanel
             open={showEcoBranch}
