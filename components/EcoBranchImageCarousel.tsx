@@ -4,7 +4,12 @@
 
 import type React from "react";
 import { useState, useCallback, useEffect, useRef, useMemo } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronUp,
+  ChevronDown,
+} from "lucide-react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
@@ -19,6 +24,7 @@ interface EcoBranchImageCarouselProps {
   className?: string;
   autoplayInterval?: number;
   onImageClick?: (index: number) => void;
+  orientation?: "horizontal" | "vertical";
 }
 
 function chunkPairs<T>(items: T[]): T[][] {
@@ -34,19 +40,21 @@ export default function EcoBranchImageCarousel({
   className = "",
   autoplayInterval = 4000,
   onImageClick,
+  orientation = "horizontal",
 }: EcoBranchImageCarouselProps) {
+  const isVertical = orientation === "vertical";
   const slides = useMemo(() => chunkPairs(images), [images]);
   const [currentSlide, setCurrentSlide] = useState(0);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
-  const mouseStartX = useRef<number | null>(null);
+  const touchStart = useRef<number | null>(null);
+  const touchEnd = useRef<number | null>(null);
+  const mouseStart = useRef<number | null>(null);
   const isDragging = useRef(false);
   const didSwipe = useRef(false);
   const autoplayTimerRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     setCurrentSlide(0);
-  }, [images]);
+  }, [images, orientation]);
 
   const goToNextSlide = useCallback(() => {
     if (slides.length === 0) return;
@@ -94,37 +102,41 @@ export default function EcoBranchImageCarousel({
 
   const handleTouchStart = (e: React.TouchEvent) => {
     didSwipe.current = false;
-    touchStartX.current = e.touches[0].clientX;
+    touchStart.current = isVertical
+      ? e.touches[0].clientY
+      : e.touches[0].clientX;
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
+    touchEnd.current = isVertical
+      ? e.touches[0].clientY
+      : e.touches[0].clientX;
   };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current === null || touchEndX.current === null) return;
-    handleSwipe(touchStartX.current - touchEndX.current);
-    touchStartX.current = null;
-    touchEndX.current = null;
+    if (touchStart.current === null || touchEnd.current === null) return;
+    handleSwipe(touchStart.current - touchEnd.current);
+    touchStart.current = null;
+    touchEnd.current = null;
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
     didSwipe.current = false;
     isDragging.current = true;
-    mouseStartX.current = e.clientX;
+    mouseStart.current = isVertical ? e.clientY : e.clientX;
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current || mouseStartX.current === null) return;
-    touchEndX.current = e.clientX;
+    if (!isDragging.current || mouseStart.current === null) return;
+    touchEnd.current = isVertical ? e.clientY : e.clientX;
   };
 
   const handleMouseUp = () => {
-    if (!isDragging.current || mouseStartX.current === null) return;
-    handleSwipe(mouseStartX.current - (touchEndX.current ?? mouseStartX.current));
+    if (!isDragging.current || mouseStart.current === null) return;
+    handleSwipe(mouseStart.current - (touchEnd.current ?? mouseStart.current));
     isDragging.current = false;
-    mouseStartX.current = null;
-    touchEndX.current = null;
+    mouseStart.current = null;
+    touchEnd.current = null;
   };
 
   const handleMouseLeave = () => {
@@ -140,7 +152,8 @@ export default function EcoBranchImageCarousel({
   return (
     <div
       className={cn(
-        "relative w-full overflow-hidden rounded-lg select-none",
+        "relative overflow-hidden rounded-lg select-none",
+        isVertical ? "h-full w-full" : "w-full",
         className
       )}
       aria-roledescription="carousel"
@@ -153,15 +166,27 @@ export default function EcoBranchImageCarousel({
       onMouseLeave={handleMouseLeave}
     >
       <div
-        className="flex transition-transform duration-500 ease-in-out h-full"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        className={cn(
+          "transition-transform duration-500 ease-in-out h-full",
+          isVertical ? "flex flex-col" : "flex"
+        )}
+        style={
+          isVertical
+            ? { transform: `translateY(-${currentSlide * 100}%)` }
+            : { transform: `translateX(-${currentSlide * 100}%)` }
+        }
       >
         {slides.map((slideImages, slideIndex) => (
           <div
             key={`slide-${slideIndex}`}
             className={cn(
-              "flex-shrink-0 w-full h-full flex gap-2 px-1",
-              slideImages.length === 1 ? "justify-center" : ""
+              "flex-shrink-0 h-full w-full gap-2 p-1",
+              isVertical
+                ? "flex flex-col"
+                : cn(
+                    "flex",
+                    slideImages.length === 1 ? "justify-center" : ""
+                  )
             )}
             aria-roledescription="slide"
             aria-label={`${slideIndex + 1} of ${slides.length}`}
@@ -173,7 +198,12 @@ export default function EcoBranchImageCarousel({
               return (
                 <Card
                   key={image.src}
-                  className="overflow-hidden shadow-md hover:shadow-lg transition-shadow h-full flex-1 basis-[calc(50%-0.25rem)] max-w-[calc(50%-0.25rem)]"
+                  className={cn(
+                    "overflow-hidden shadow-md hover:shadow-lg transition-shadow",
+                    isVertical
+                      ? "flex-1 min-h-0 w-full"
+                      : "h-full flex-1 basis-[calc(50%-0.25rem)] max-w-[calc(50%-0.25rem)]"
+                  )}
                 >
                   <CardContent className="p-0 h-full">
                     <button
@@ -207,48 +237,97 @@ export default function EcoBranchImageCarousel({
 
       {slides.length > 1 && (
         <>
-          <button
-            type="button"
-            className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 rounded-full transition-colors z-10"
-            onClick={() => {
-              goToPrevSlide();
-              resetAutoplay();
-            }}
-            aria-label="Previous slide"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 rounded-full transition-colors z-10"
-            onClick={() => {
-              goToNextSlide();
-              resetAutoplay();
-            }}
-            aria-label="Next slide"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-
-          <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-            {slides.map((_, index) => (
+          {isVertical ? (
+            <>
               <button
-                key={`dot-${index}`}
                 type="button"
-                aria-label={`Go to slide ${index + 1}`}
+                className="absolute left-1/2 top-1 -translate-x-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 rounded-full transition-colors z-10"
                 onClick={() => {
-                  setCurrentSlide(index);
+                  goToPrevSlide();
                   resetAutoplay();
                 }}
-                className={cn(
-                  "h-1.5 rounded-full transition-all duration-300",
-                  index === currentSlide
-                    ? "w-4 bg-[#00adef]"
-                    : "w-1.5 bg-gray-400/80 hover:bg-gray-500"
-                )}
-              />
-            ))}
-          </div>
+                aria-label="Previous slide"
+              >
+                <ChevronUp className="h-4 w-4" />
+              </button>
+              <button
+                type="button"
+                className="absolute left-1/2 bottom-1 -translate-x-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 rounded-full transition-colors z-10"
+                onClick={() => {
+                  goToNextSlide();
+                  resetAutoplay();
+                }}
+                aria-label="Next slide"
+              >
+                <ChevronDown className="h-4 w-4" />
+              </button>
+
+              <div className="absolute right-1 top-1/2 -translate-y-1/2 flex flex-col gap-1.5 z-10">
+                {slides.map((_, index) => (
+                  <button
+                    key={`dot-${index}`}
+                    type="button"
+                    aria-label={`Go to slide ${index + 1}`}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      resetAutoplay();
+                    }}
+                    className={cn(
+                      "w-1.5 rounded-full transition-all duration-300",
+                      index === currentSlide
+                        ? "h-4 bg-[#00adef]"
+                        : "h-1.5 bg-gray-400/80 hover:bg-gray-500"
+                    )}
+                  />
+                ))}
+              </div>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                className="absolute left-1 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 rounded-full transition-colors z-10"
+                onClick={() => {
+                  goToPrevSlide();
+                  resetAutoplay();
+                }}
+                aria-label="Previous slide"
+              >
+                <ChevronLeft className="h-5 w-5" />
+              </button>
+              <button
+                type="button"
+                className="absolute right-1 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-1.5 rounded-full transition-colors z-10"
+                onClick={() => {
+                  goToNextSlide();
+                  resetAutoplay();
+                }}
+                aria-label="Next slide"
+              >
+                <ChevronRight className="h-5 w-5" />
+              </button>
+
+              <div className="absolute bottom-1 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                {slides.map((_, index) => (
+                  <button
+                    key={`dot-${index}`}
+                    type="button"
+                    aria-label={`Go to slide ${index + 1}`}
+                    onClick={() => {
+                      setCurrentSlide(index);
+                      resetAutoplay();
+                    }}
+                    className={cn(
+                      "h-1.5 rounded-full transition-all duration-300",
+                      index === currentSlide
+                        ? "w-4 bg-[#00adef]"
+                        : "w-1.5 bg-gray-400/80 hover:bg-gray-500"
+                    )}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </>
       )}
     </div>

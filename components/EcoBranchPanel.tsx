@@ -104,36 +104,39 @@ export default function EcoBranchPanel({
             </Button>
           </div>
 
-          <main className="flex-1 min-h-0 bg-slate-50">
-            <iframe
-              src={iframeUrl}
-              className="w-full h-full border-0"
-              title="CoopBank Eco-Branches Map"
-              allowFullScreen
-            />
-          </main>
+          <div className="flex flex-1 min-h-0">
+            <aside className="w-36 sm:w-44 shrink-0 border-r bg-white p-2 flex flex-col">
+              <EcoBranchImageCarousel
+                images={ECO_BRANCH_IMAGES}
+                className="flex-1 min-h-0"
+                orientation="vertical"
+                autoplayInterval={4000}
+                onImageClick={setLightboxIndex}
+              />
+            </aside>
 
-          <div className="shrink-0 border-t bg-white px-3 py-2 space-y-2">
-            <EcoBranchImageCarousel
-              images={ECO_BRANCH_IMAGES}
-              className="h-20 sm:h-24"
-              autoplayInterval={4000}
-              onImageClick={setLightboxIndex}
-            />
+            <main className="flex-1 min-w-0 min-h-0 bg-slate-50">
+              <iframe
+                src={iframeUrl}
+                className="w-full h-full border-0"
+                title="CoopBank Eco-Branches Map"
+                allowFullScreen
+              />
+            </main>
+          </div>
 
-            <div className="flex items-center justify-between gap-2">
-              <div className="bg-orange-100 text-orange-800 text-xs font-semibold py-1 px-2.5 rounded-full font-['Open Sans'] shadow-sm">
-                Bank Smarter, Live Better
-              </div>
-              <Button
-                onClick={onClose}
-                size="sm"
-                className="bg-[#00adef] shrink-0 h-8 text-xs"
-              >
-                <House className="mr-1.5 h-3.5 w-3.5" />
-                Go back to home
-              </Button>
+          <div className="shrink-0 border-t bg-white px-4 py-2 flex items-center justify-between gap-2">
+            <div className="bg-orange-100 text-orange-800 text-xs font-semibold py-1 px-2.5 rounded-full font-['Open Sans'] shadow-sm">
+              Bank Smarter, Live Better
             </div>
+            <Button
+              onClick={onClose}
+              size="sm"
+              className="bg-[#00adef] shrink-0 h-8 text-xs"
+            >
+              <House className="mr-1.5 h-3.5 w-3.5" />
+              Go back to home
+            </Button>
           </div>
         </div>
       </div>
@@ -168,7 +171,7 @@ export default function EcoBranchPanel({
           </button>
 
           <div
-            className="relative max-w-5xl max-h-[85vh] w-full"
+            className="relative max-w-5xl max-h-[85vh] w-full flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
@@ -176,11 +179,19 @@ export default function EcoBranchPanel({
               alt={ECO_BRANCH_IMAGES[lightboxIndex].alt}
               width={1200}
               height={800}
-              className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+              className="w-full h-auto max-h-[75vh] object-contain rounded-lg"
             />
             <p className="text-center text-white/90 text-sm mt-3 font-['Open Sans']">
               {ECO_BRANCH_IMAGES[lightboxIndex].alt}
             </p>
+            <Button
+              onClick={() => setLightboxIndex(null)}
+              className="mt-4 bg-[#00adef] hover:bg-[#0099d4]"
+              size="sm"
+            >
+              <X className="mr-1.5 h-4 w-4" />
+              Close
+            </Button>
           </div>
 
           <button
