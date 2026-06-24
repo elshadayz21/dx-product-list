@@ -134,7 +134,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   alt={selectedProduct.name}
                   width={300}
                   height={300}
-                  className="rounded-lg object-cover w-full"
+                  className="rounded-lg object-contain w-full h-full bg-white"
                 />
 
                 <div className="flex-grow overflow-auto mb-4"></div>
@@ -281,7 +281,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                         alt={product.name}
                         width={400}
                         height={200}
-                        className="w-full object-cover rounded-t-lg"
+                        className="w-full h-full object-contain rounded-t-lg bg-white"
                       />
                     </CardContent>
                     {/* <ImageSlider /> */}
@@ -307,7 +307,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                         alt={product.name}
                         width={400}
                         height={200}
-                        className="w-full object-cover rounded-t-lg"
+                        className="w-full h-full object-contain rounded-t-lg bg-white"
                       />
                     </CardContent>
                   </Card>
@@ -332,7 +332,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                         alt={product.name}
                         width={400}
                         height={200}
-                        className="w-full object-cover rounded-t-lg"
+                        className="w-full h-full object-contain rounded-t-lg bg-white"
                       />
                     </CardContent>
                   </Card>
@@ -349,7 +349,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
                     width={400}
                     height={100}
-                    className="w-full object-cover rounded-lg"
+                    className="w-full h-full object-contain rounded-lg bg-white"
                   />
                   <div className="mt-4">
                     Source:{" "}
@@ -484,3 +484,4 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
     </div>
   );
 }
+

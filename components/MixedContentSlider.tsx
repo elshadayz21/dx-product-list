@@ -164,7 +164,7 @@ export default function MixedContentSlider({
                   alt={item.alt || `Slide ${index + 1}`}
                   width={800}
                   height={600}
-                  className="w-full h-full object-cover pointer-events-none select-none"
+                  className="w-full h-full object-contain pointer-events-none select-none bg-white"
                 />
               </button>
             )}

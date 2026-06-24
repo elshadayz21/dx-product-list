@@ -147,7 +147,7 @@ export default function ImageSlider({
             <Image
               src={image.src || "/placeholder.svg"}
               alt={image.alt}
-              className="w-full h-full object-fit"
+              className="w-full h-full object-contain"
               width={300}
               height={300}
             />
@@ -213,3 +213,4 @@ export default function ImageSlider({
     </div>
   );
 }
+

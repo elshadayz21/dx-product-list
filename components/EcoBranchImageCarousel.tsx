@@ -222,7 +222,7 @@ export default function EcoBranchImageCarousel({
                         alt={image.alt}
                         width={400}
                         height={240}
-                        className="w-full h-full object-cover pointer-events-none select-none"
+                        className="w-full h-full object-contain pointer-events-none select-none bg-white"
                       />
                     </button>
                   </CardContent>
@@ -331,3 +331,4 @@ export default function EcoBranchImageCarousel({
     </div>
   );
 }
+
