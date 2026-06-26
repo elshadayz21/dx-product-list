@@ -9,8 +9,9 @@ export const products: Product[] = [
     description: (
       <div>
         <p className="mb-2">
-          <span className="font-semibold">CoopStream</span> is Cooperative Bank of Oromia&apos;s
-          <strong> digital loan origination platform </strong>that automates the entire loan process
+          <span className="font-semibold">CoopStream</span> is CoopBank&apos;s
+          <strong> digital loan origination platform </strong>that automates the entire loan process.</p>
+
         <p className="mb-2 font-semibold">What this means for customers?</p>
 
         <div className="mb-1 flex items-start">
