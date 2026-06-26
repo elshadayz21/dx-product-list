@@ -7,33 +7,41 @@ export type EcoBranchImage = {
   alt: string;
 };
 
+const ecoBranchPicture = (fileName: string) =>
+  `/eco-branch-pictures/${encodeURIComponent(fileName)}`;
+
 export const ECO_BRANCH_IMAGES: EcoBranchImage[] = [
   {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/ec-1024x576top.webp",
-    alt: "CoopBank Eco-Branch",
+    src: ecoBranchPicture("eco-branch-pictures (1).jpeg"),
+    alt: "Eco-Branch image 1",
   },
   {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/19-1024x576eco-uai-384x288.webp",
-    alt: "Eco-Branch in rural Ethiopia",
+    src: ecoBranchPicture("eco-branch-pictures (2).jpeg"),
+    alt: "Eco-Branch image 2",
   },
   {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/echo-branch-uai-384x288.webp",
-    alt: "Echo Branch",
+    src: ecoBranchPicture("eco-branch-pictures (3).jpeg"),
+    alt: "Eco-Branch image 3",
   },
   {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/eco-green-724x1024echo-uai-362x362.webp",
-    alt: "Eco-Branch green design",
+    src: ecoBranchPicture("eco-branch-pictures (4).jpeg"),
+    alt: "Eco-Branch image 4",
   },
   {
-    src: "https://coopbankoromia.com.et/wp-content/uploads/2025/04/1-1024x543-long-uai-483x272.webp",
-    alt: "CoopBank Eco-Branches journey",
+    src: ecoBranchPicture("eco-branch-pictures (5).jpeg"),
+    alt: "Eco-Branch image 5",
+  },
+  {
+    src: ecoBranchPicture("eco-branch-pictures (6).jpeg"),
+    alt: "Eco-Branch image 6",
+  },
+  {
+    src: ecoBranchPicture("eco-branch-pictures (7).jpeg"),
+    alt: "Eco-Branch image 7",
   },
 ];
 
-const PRECONNECT_ORIGINS = [
-  "https://eco-branches.vercel.app",
-  "https://coopbankoromia.com.et",
-];
+const PRECONNECT_ORIGINS = ["https://eco-branches.vercel.app"];
 
 let preloadStarted = false;
 
