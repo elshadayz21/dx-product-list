@@ -51,8 +51,8 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/coop-stream.png",
     type: "",
-       vslaPhotos: [
-        {
+    vslaPhotos: [
+      {
         src: "/vsla/coopstream-1.jpeg",
         alt: "coopstream-1",
       },
@@ -60,15 +60,15 @@ export const products: Product[] = [
         src: "/vsla/coopstream-2.jpeg",
         alt: "coopstream-2",
       },
-    {
+      {
         src: "/vsla/coopstream-3.jpeg",
         alt: "coopstream-1",
       },
-    {
+      {
         src: "/vsla/credit-donkey-work.png",
         alt: "coopstream-4",
       },
-     
+
       // {
       //   src: "/numbers-on-coopay-ebirr.jpg",
       //   alt: "numbers-on-coopay-ebirr",
@@ -135,19 +135,21 @@ export const products: Product[] = [
           Ethiopia, <strong>leveraging blockchain technology</strong> to enable
           fast, secure, and cost-effective money transfers. Here&apos;s what
           distinguishes it:
+        </p>
+        <ul className="list-disc pl-6 space-y-2">
           <li>
-            <strong> Very small latency: </strong> Transactions are processed
+            <strong>Very small latency:</strong> Transactions are processed
             within 3–5 seconds.
           </li>
           <li>
-            <strong> Very Low transfer limits: </strong> Send amounts as small
+            <strong>Very low transfer limits:</strong> Send amounts as small
             as 5 Euros effortlessly.
           </li>
           <li>
-            <strong> Extremely low transfer cost: </strong> Transfer cost is
+            <strong>Extremely low transfer cost:</strong> Transfer cost is
             very significantly low compared to other remittance apps locally.
           </li>
-        </p>
+        </ul>
       </div>
     ),
     link: "https://coopremit.coopbankoromiasc.com",
@@ -414,8 +416,7 @@ export const products: Product[] = [
         <p className="mb-2">
           Designed for the Muslim community, MichuMizan offers a convenient and
           accessible way to access{" "}
-          <strong className="font-bold">Murabaha financial services.</strong> As
-          part of
+          <strong className="font-bold">Murabaha financial services.</strong>
         </p>
         <p>
           This app aims to be a Sharia-compliant interest-free collateral-less
@@ -447,14 +448,14 @@ export const products: Product[] = [
               fuel, traffic fines, shopping, flights, DSTV, Canal+, utilities,
               and more
             </strong>
-            </p>
+          </p>
         </p>
         {/* <a href="#" onClick={() => setActiveTab("imageTab")}> see Stats </a> */}
       </div>
     ),
     link: "http://dfs.coopbank.local/coopay-ebirr",
     iframeUrls: [
-        "http://dfs.coopbank.local/coopay-ebirr",
+      "http://dfs.coopbank.local/coopay-ebirr",
     ],
     file: "",
     moto: "",
@@ -463,7 +464,7 @@ export const products: Product[] = [
     imageUrl: "/products/coopay-logo.png",
     type: "",
     vslaPhotos: [
-        {
+      {
         src: "/6-trillion-coopay-ebirr.jpg",
         alt: "6-trillion-transaction",
       },
@@ -530,7 +531,7 @@ export const products: Product[] = [
         src: "/products/sacco-updated-numbers-60.jpeg",
         alt: "sacco-updated-numbers-60",
       },
-           {
+      {
         src: "/saccopay-mobile-app.jpg",
         alt: "saccopay-mobile-app",
       },
@@ -620,7 +621,7 @@ export const products: Product[] = [
   },
   {
     id: 14,
-    name: "Agri-LMT",
+    name: "Furtuu",
     description: (
       // <div>
       //   <p className="mb-2">
@@ -643,25 +644,58 @@ export const products: Product[] = [
       //     Opening a Door to export Market
       //   </p>
       // </div>
-      <div>
-        <p className="mb-2">
-          {/* Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "} */}
 
-          Agri-LMT (<strong>Agricultural Loan Monitoring Tool</strong>)         
-            {" "}
-            designed to track the farmers farm performance
-            built in collaboration with RaboBank.{" "}
-     
+      // <div>
+      //   <p className="mb-2">
+      //     {/* Furtuu, meaning Key in Afaan Oromo, is comprehensive{" "} */}
+
+      //     Agri-LMT (<strong>Agricultural Loan Monitoring Tool</strong>)         
+      //       {" "}
+      //       designed to track the farmers farm performance
+      //       built in collaboration with RaboBank.{" "}
+
+      //   </p>
+      // </div>
+      <div className="text-sm space-y-3">
+        <p className="mb-2">
+          {/* <strong>Furtuu</strong> is a closed ecosystem agri‑financing solution. It provides input financing through cashless, in‑kind loans bundled with insurance and market linkages, delivered via cooperatives and partner ecosystems. */}
+        <strong>Furtuu</strong> is a closed ecosystem agri‑financing solution. It offers input financing through cashless, in‑kind loans bundled with insurance and market linkages, delivered via cooperatives and partner networks. Loans are credit‑scored and monitored with satellite systems, using internal and external datasets, and designed for both conventional and IFB models.
+
         </p>
+        <div className="mb-1 flex items-start gap-2">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            Cashless, in‑kind loans with insurance 
+        </p>
+        </div>
+        <div className="mb-1 flex items-start gap-2">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            Delivered through cooperatives and partner ecosystems.
+          </p>
+        </div>
+        <div className="mb-1 flex items-start gap-2">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            Satellite‑based loan monitoring and credit scoring.
+          </p>
+        </div>
+        <div className="mb-1 flex items-start gap-2">
+          <p className="mr-2 font-bold">•</p>
+          <p className="text-sm">
+            Inclusive design for conventional and IFB models.
+          </p>
+        </div>
       </div>
     ),
-    // link: "",
+
     file: "",
     moto: "",
     video: "",
-    imageUrl: "/products/agri-lmt.png",
+    videos: ["/furtuu-testimonial-video.mp4"],
+    imageUrl: "/products/furtuu-Raboo-Coop.png",
     type: "",
-    iframeUrls: ["https://agrilm-pilot.agtuall.com/furtuu/login"],
+    iframeUrls: ["https://google.com"],
     link: "https://agrilm-pilot.agtuall.com/furtuu/login",
   },
 
