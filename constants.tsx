@@ -431,7 +431,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/Michu-mizan-logo.png",
     type: "",
-    iframeUrls: ["http://10.12.53.100:5000/"],
+    iframeUrls: ["http://dfs.coopbank.local/mizan"],
   },
   {
     id: 50,
@@ -924,7 +924,22 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "https://paymentplatformdashboardga.netlify.app/",
+    link: "http://10.12.51.60:4000/public/dashboard/0fef826d-743a-49af-9bb1-8c2880ec8dfd",
+    file: "",
+    moto: "",
+    video: "",
+    imageUrl: "",
+    type: "dropdownMenu",
+  },
+   {
+    id: 31,
+    name: "Visit Hub",
+    description: (
+      <div>
+        <p className="mb-2"></p>
+      </div>
+    ),
+    link: "https://visithub.vercel.app/",
     file: "",
     moto: "",
     video: "",
