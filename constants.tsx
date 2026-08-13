@@ -431,7 +431,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/Michu-mizan-logo.png",
     type: "",
-    iframeUrls: ["http://dfs.coopbank.local/mizan"],
+    iframeUrls: [],
   },
   {
     id: 50,
