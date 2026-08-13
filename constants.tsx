@@ -695,7 +695,7 @@ export const products: Product[] = [
     videos: ["/furtuu-testimonial-video.mp4"],
     imageUrl: "/products/furtuu-Raboo-Coop.png",
     type: "",
-    iframeUrls: ["https://google.com"],
+    iframeUrls: [],
     link: "https://agrilm-pilot.agtuall.com/furtuu/login",
   },
 
