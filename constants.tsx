@@ -523,7 +523,7 @@ export const products: Product[] = [
     file: "SACCO-Link Update.pptx",
     moto: "",
     video: "",
-    iframeUrls: ["http://dfs.coopbank.local/sacco-link"],
+    iframeUrls: ["http://dfs.coopbank.local/saccolink"],
     imageUrl: "/products/sacco-link.png",
     type: "",
     vslaPhotos: [
