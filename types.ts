@@ -13,6 +13,7 @@ export interface Product {
   imageUrl: string;
   type?:string;
   vslaPhotos?: VslaPhoto[];
+  produtType?:string;
 
 }
 interface VslaPhoto {

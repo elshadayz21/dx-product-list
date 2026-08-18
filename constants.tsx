@@ -74,6 +74,7 @@ export const products: Product[] = [
       //   alt: "numbers-on-coopay-ebirr",
       // },
     ],
+     produtType:"Internal"
   },
   {
     id: 2,
@@ -101,6 +102,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/debbo.png",
     type: "",
+     produtType:"External"
   },
   {
     id: 3,
@@ -124,6 +126,7 @@ export const products: Product[] = [
     video: "https://www.youtube.com/watch?v=_eW0O2Kbz78",
     imageUrl: "/products/diaspora.png",
     type: "",
+     produtType:"External"
   },
   {
     id: 4,
@@ -158,6 +161,7 @@ export const products: Product[] = [
     video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
     imageUrl: "/products/Coop-remit-new.png",
     type: "",
+     produtType:"External"
   },
   {
     id: 5,
@@ -200,6 +204,7 @@ export const products: Product[] = [
       },
     ],
     type: "",
+     produtType:"External"
   },
   {
     id: 6,
@@ -228,6 +233,7 @@ export const products: Product[] = [
     video: "https://www.youtube.com/watch?v=gSOe5oowXcc",
     imageUrl: "/products/souqpass.png",
     type: "",
+     produtType:"External"
   },
   {
     id: 7,
@@ -249,6 +255,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/recon.png",
     type: "",
+     produtType:"Internal"
   },
   {
     id: 8,
@@ -293,6 +300,7 @@ export const products: Product[] = [
     ],
     imageUrl: "/products/coopayroll.png",
     type: "",
+     produtType:"External"
   },
   {
     id: 10,
@@ -376,6 +384,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/mycard-logo.png",
     type: "",
+     produtType:"External"
   },
   {
     id: 11,
@@ -407,6 +416,7 @@ export const products: Product[] = [
     iframeUrls: [
       "https://metabase.michu.com.et/public/dashboard/14c647bf-d063-49d9-b868-41b53b4334fa?tab=25-michu-commercial",
     ],
+     produtType:"External"
   },
   {
     id: 12,
@@ -432,6 +442,7 @@ export const products: Product[] = [
     imageUrl: "/products/Michu-mizan-logo.png",
     type: "",
     iframeUrls: [],
+    produtType:"External"
   },
   {
     id: 50,
@@ -477,6 +488,7 @@ export const products: Product[] = [
       //   alt: "numbers-on-coopay-ebirr",
       // },
     ],
+    produtType:"External"
   },
   {
     id: 9,
@@ -536,6 +548,7 @@ export const products: Product[] = [
         alt: "saccopay-mobile-app",
       },
     ],
+     produtType:"External"
   },
   {
     id: 16,
@@ -618,6 +631,7 @@ export const products: Product[] = [
     //  imageUrl: "/products/Mastercard Community Pass Hi-Res Logo.png",
     type: "",
     // iframeUrls: ["https://agrilm-pilot.agtuall.com/"],
+     produtType:"External"
   },
   {
     id: 14,
@@ -697,6 +711,7 @@ export const products: Product[] = [
     type: "",
     iframeUrls: [],
     link: "https://agrilm-pilot.agtuall.com/furtuu/login",
+    produtType:"Internal"
   },
 
   {
@@ -720,6 +735,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/logo-temenos-blue-font.jpg",
     type: "corebankingapp",
+    //  produtType:"Internal"
   },
   {
     id: 18,
@@ -747,6 +763,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/logo-cortex.jpg",
     type: "corebankingapp",
+    // produtType:"Internal"
   },
   {
     id: 19,
@@ -769,6 +786,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/wso2-vector-logo-2022.png",
     type: "corebankingapp",
+    //  produtType:"Internal"
   },
   {
     id: 20,
@@ -816,6 +834,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/microsoft-365-logo.png",
     type: "corebankingapp",
+    // produtType:"Internal"
   },
   {
     id: 22,
@@ -844,6 +863,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/coop-engage.png",
     type: "underDevelopment",
+    // produtType:"Internal"
   },
 
   {
@@ -869,6 +889,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/burning-okr.jpg",
     type: "underDevelopment",
+    // produtType:"Internal"
   },
   {
     id: 26,
@@ -971,6 +992,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/FIS-Logo.png",
     type: "corebankingapp",
+    // produtType:"Internal"
   },
   {
     id: 31,
