@@ -532,7 +532,7 @@ export const products: Product[] = [
       </div>
     ),
     link: "https://all-sacco.sybylcloud.com/login",
-    file: "SACCO-Link Update.pptx",
+    file: "Saccolink_Product_Material.pptx",
     moto: "",
     video: "",
     iframeUrls: ["http://dfs.coopbank.local/saccolink"],
