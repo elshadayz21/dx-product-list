@@ -1,4 +1,4 @@
-﻿/** @format */
+/** @format */
 
 "use client";
 import CooperativeVision from "@/components/cooperativevision";
@@ -50,9 +50,9 @@ const Page = () => {
       const ease = 1 - Math.pow(1 - progress, 3); // cubic ease-out
       setCounter({
         products: Math.round(targets.products * ease),
-        users:    Math.round(targets.users    * ease),
-        awards:   Math.round(targets.awards   * ease),
-        uptime:   Math.round(targets.uptime   * ease),
+        users: Math.round(targets.users * ease),
+        awards: Math.round(targets.awards * ease),
+        uptime: Math.round(targets.uptime * ease),
       });
       if (step >= steps) clearInterval(timer);
     }, interval);
@@ -92,7 +92,7 @@ const Page = () => {
     const rect = btn.getBoundingClientRect();
     circle.style.width = circle.style.height = `${diameter}px`;
     circle.style.left = `${e.clientX - rect.left - diameter / 2}px`;
-    circle.style.top  = `${e.clientY - rect.top  - diameter / 2}px`;
+    circle.style.top = `${e.clientY - rect.top - diameter / 2}px`;
     circle.className = "ripple-circle";
     btn.appendChild(circle);
     setTimeout(() => circle.remove(), 700);
@@ -117,7 +117,7 @@ const Page = () => {
             className="absolute w-[520px] h-[520px] rounded-full opacity-10 animate-spin-slow"
             style={{
               background:
-                "conic-gradient(from 0deg, #00adef, #0090c8, #f97316, #00adef)",
+                "conic-gradient(from 0deg, #00adef, #0090c8, #38bdf8, #00adef)",
               filter: "blur(1px)",
             }}
           />
@@ -280,7 +280,7 @@ const Page = () => {
                 style={{ animation: "slide-up 0.5s 0.5s ease both" }}
               >
                 <div className="flex gap-1.5">
-                  {[0,1,2,3].map(i => (
+                  {[0, 1, 2, 3].map(i => (
                     <div
                       key={i}
                       className="h-1 w-1 rounded-full bg-coopBlue"
@@ -306,7 +306,7 @@ const Page = () => {
             <div
               className="blob absolute w-[400px] h-[400px] opacity-[0.03]"
               style={{
-                background: "radial-gradient(circle, #f97316 0%, transparent 70%)",
+                background: "radial-gradient(circle, #38bdf8 0%, transparent 70%)",
                 bottom: "0",
                 right: "-80px",
                 animationDuration: "13s",
@@ -403,7 +403,7 @@ const Page = () => {
               <div className="flex gap-3">
                 {[
                   { id: "banks", src: "/top-100-african-banks.jpeg", alt: "Top 100 African Banks", label: "Top 100 African Banks" },
-                  { id: "msme",  src: "/global-msme-award.jpg",      alt: "Global MSME Award",    label: "Global MSME Award" },
+                  { id: "msme", src: "/global-msme-award.jpg", alt: "Global MSME Award", label: "Global MSME Award" },
                 ].map(({ id, src, alt, label }) => (
                   <div
                     key={id}
@@ -412,7 +412,7 @@ const Page = () => {
                       transform: tilt[id]
                         ? `perspective(600px) rotateX(${tilt[id].x}deg) rotateY(${tilt[id].y}deg)`
                         : "perspective(600px) rotateX(0deg) rotateY(0deg)",
-                      transition: "transform 0.15s ease",
+                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease",
                       boxShadow: "0 8px 32px rgba(0,0,0,0.16)",
                       animationDelay: id === "banks" ? "0s" : "0.4s",
                     }}
@@ -424,7 +424,7 @@ const Page = () => {
                       alt={alt}
                       width={300}
                       height={200}
-                      className="w-full h-full object-cover rounded-xl group-hover:scale-108 transition-transform duration-500"
+                      className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     {/* Overlay gradient on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end p-3">
@@ -480,7 +480,7 @@ const Page = () => {
                 flexDirection: "row",
                 alignItems: "center",
                 gap: "8px",
-                transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), padding 0.2s ease",
+                transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%) translateX(5px)";

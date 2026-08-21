@@ -59,10 +59,10 @@ const config = {
           deeper: "#006fa8",
           light: "#e0f5ff",
         },
-        coopOrange: {
-          DEFAULT: "#f97316",
-          light: "#fed7aa",
-          dark: "#ea6c00",
+        coopSky: {
+          DEFAULT: "#38bdf8",
+          light: "#e0f2fe",
+          dark: "#0284c7",
         },
       },
       borderRadius: {
@@ -71,9 +71,9 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        'blue-glow': '0 0 20px rgba(0, 173, 239, 0.3)',
-        'blue-glow-lg': '0 0 40px rgba(0, 173, 239, 0.25)',
-        'card-hover': '0 20px 40px rgba(0, 173, 239, 0.18), 0 8px 16px rgba(0,0,0,0.08)',
+        'blue-glow': '0 0 20px rgba(0, 173, 239, 0.25)',
+        'blue-glow-lg': '0 0 40px rgba(0, 173, 239, 0.2)',
+        'card-hover': '0 16px 32px rgba(0, 173, 239, 0.12), 0 4px 12px rgba(0,0,0,0.04)',
         'login-card': '0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)',
       },
       keyframes: {

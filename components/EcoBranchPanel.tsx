@@ -148,10 +148,10 @@ export default function EcoBranchPanel({
             style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)" }}
           >
             <div
-              className="text-orange-800 text-xs font-semibold py-1.5 px-3 rounded-full shadow-sm"
+              className="text-emerald-800 text-xs font-semibold py-1.5 px-3 rounded-full shadow-sm"
               style={{
-                background: "linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%)",
-                border: "1px solid rgba(249,115,22,0.2)",
+                background: "linear-gradient(135deg, #dcfce7 0%, #f0fdf4 100%)",
+                border: "1px solid rgba(16,185,129,0.25)",
               }}
             >
               ✦ Bank Smarter, Live Better

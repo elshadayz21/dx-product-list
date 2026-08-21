@@ -22,7 +22,7 @@ const CooperativeVision = () => {
               style={{
                 backgroundImage: `
                   radial-gradient(circle at 20% 50%, #00adef 0%, transparent 50%),
-                  radial-gradient(circle at 80% 30%, #f97316 0%, transparent 40%)
+                  radial-gradient(circle at 80% 30%, #38bdf8 0%, transparent 40%)
                 `,
               }}
             />
@@ -37,7 +37,7 @@ const CooperativeVision = () => {
             className="absolute top-3 left-3 text-coopBlue opacity-20 w-8 h-8 eco-sparkle"
           />
           <Sparkles
-            className="absolute bottom-3 right-3 text-orange-200 w-10 h-10 eco-sparkle"
+            className="absolute bottom-3 right-3 text-sky-200 w-10 h-10 eco-sparkle opacity-70"
             style={{ animationDelay: "2s" }}
           />
 
@@ -64,7 +64,7 @@ const CooperativeVision = () => {
                 and cooperatives&quot;
               </em>
               , as envisioned by{" "}
-              <span className="font-semibold text-coopOrange">
+              <span className="font-semibold text-coopBlue">
                 Obbo Haile Gebre Lube
               </span>
               , the founding father of CoopBank. He recognized the struggles
@@ -86,11 +86,11 @@ const CooperativeVision = () => {
               className={`flex justify-end transition-all duration-700 delay-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
             >
               <div
-                className="text-orange-800 text-xs font-semibold py-1.5 px-3 rounded-full inline-block shadow-md"
+                className="text-coopBlue-dark text-xs font-semibold py-1.5 px-3 rounded-full inline-block shadow-sm"
                 style={{
                   background:
-                    "linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%)",
-                  border: "1px solid rgba(249,115,22,0.2)",
+                    "linear-gradient(135deg, #e0f5ff 0%, #f0f9ff 100%)",
+                  border: "1px solid rgba(0,173,239,0.25)",
                 }}
               >
                 ✦ Empowering Communities, Transforming Lives

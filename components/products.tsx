@@ -1,6 +1,4 @@
-/** @format */
-
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
@@ -50,17 +48,16 @@ function ActionButton({
   return (
     <button
       onClick={onClick}
-      className={`btn-shimmer relative flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95 w-full ${
-        variant === "primary"
-          ? "text-white"
+      className={`btn-shimmer relative flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] w-full hover:-translate-y-0.5 ${variant === "primary"
+          ? "text-white hover:shadow-blue-glow"
           : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-      }`}
+        }`}
       style={
         variant === "primary"
           ? {
-              background: "linear-gradient(135deg, #00adef 0%, #0090c8 100%)",
-              boxShadow: "0 3px 12px rgba(0,173,239,0.3)",
-            }
+            background: "linear-gradient(135deg, #00adef 0%, #0090c8 100%)",
+            boxShadow: "0 3px 12px rgba(0,173,239,0.3)",
+          }
           : {}
       }
     >
@@ -140,7 +137,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
           <h2 className="text-white font-semibold text-sm truncate flex-1">
             {selectedProduct.name}
           </h2>
-          <span className="text-[11px] text-orange-300 font-semibold bg-orange-400/10 px-2 py-0.5 rounded-full border border-orange-400/20 flex-shrink-0">
+          <span className="text-[11px] text-sky-300 font-semibold bg-sky-400/10 px-2.5 py-0.5 rounded-full border border-sky-400/20 flex-shrink-0">
             {selectedProduct.moto ?? "Bank Smarter, Live Better"}
           </span>
         </div>
@@ -165,7 +162,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   height={180}
                   className="object-contain w-full max-h-44 p-4"
                 />
-                <Sparkles className="absolute bottom-2 right-2 text-orange-200 w-6 h-6 eco-sparkle opacity-60" />
+                <Sparkles className="absolute bottom-2 right-2 text-sky-300 w-6 h-6 eco-sparkle opacity-60" />
               </div>
 
               <div className="flex flex-col gap-2">
@@ -242,11 +239,10 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   <button
                     key={product.id}
                     onClick={() => handleProductSelect(product)}
-                    className={`relative p-1.5 rounded-xl transition-all duration-200 flex-shrink-0 ${
-                      selectedProduct?.id === product.id
+                    className={`relative p-1.5 rounded-xl transition-all duration-200 flex-shrink-0 ${selectedProduct?.id === product.id
                         ? "bg-[#00adef]/10 ring-2 ring-[#00adef]/40 scale-105"
                         : "hover:bg-slate-100"
-                    }`}
+                      }`}
                   >
                     <Image
                       src={product.imageUrl}
@@ -268,30 +264,62 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
     );
   }
 
-  /* ── PRODUCT GRID (card component inside) ──────────────── */
-  const ProductCard = ({ product }: { product: Product }) => (
-    <div
-      className="product-card animate-card-reveal cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-100"
-      style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
-      onClick={() => handleProductSelect(product)}
-    >
-      <div className="p-3 h-[160px] flex items-center justify-center bg-white overflow-hidden">
-        <Image
-          src={product.imageUrl}
-          alt={product.name}
-          width={260}
-          height={150}
-          className="product-img w-full h-full object-contain"
-        />
+  /* ── PRODUCT GRID (card component with smooth scroll-in transition) ── */
+  const ProductCard = ({ product, index = 0 }: { product: Product; index?: number }) => {
+    const [isVisible, setIsVisible] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+      const el = cardRef.current;
+      if (!el) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.unobserve(entry.target);
+          }
+        },
+        {
+          rootMargin: "60px 0px 60px 0px",
+          threshold: 0.05,
+        }
+      );
+
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, []);
+
+    return (
+      <div
+        ref={cardRef}
+        className={`product-card cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-100/90 group ${
+          isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-[0.97]"
+        }`}
+        style={{
+          boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
+          transitionDelay: isVisible ? `${(index % 6) * 45}ms` : "0ms",
+        }}
+        onClick={() => handleProductSelect(product)}
+      >
+        <div className="p-3 h-[160px] flex items-center justify-center bg-white overflow-hidden">
+          <Image
+            src={product.imageUrl}
+            alt={product.name}
+            width={260}
+            height={150}
+            className="product-img w-full h-full object-contain"
+          />
+        </div>
+        <div className="px-3 pb-2.5 pt-1.5 flex items-center justify-between border-t border-slate-50 transition-colors duration-300 group-hover:bg-slate-50/60">
+          <span className="text-[11px] font-medium text-slate-600 truncate pr-2 group-hover:text-coopBlue transition-colors duration-300">
+            {product.name}
+          </span>
+          <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity duration-300" />
+        </div>
       </div>
-      <div className="px-3 pb-2.5 pt-1 flex items-center justify-between border-t border-slate-50">
-        <span className="text-[11px] font-medium text-slate-500 truncate pr-2">
-          {product.name}
-        </span>
-        <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-50" />
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -301,7 +329,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
         className="h-full flex flex-col"
       >
         {/* Grid content */}
-        <div className="flex-1 overflow-auto p-4">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area">
           <TabsContent value="dxvalleyProducts" className="mt-0">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
@@ -311,7 +339,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     p?.type !== "underDevelopment" &&
                     p?.type !== "dropdownMenu"
                 )
-                .map((p) => <ProductCard key={p.id} product={p} />)}
+                .map((p, idx) => <ProductCard key={p.id} product={p} index={idx} />)}
             </div>
           </TabsContent>
 
@@ -319,7 +347,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
                 .filter((p) => p?.type === "corebankingapp")
-                .map((p) => <ProductCard key={p.id} product={p} />)}
+                .map((p, idx) => <ProductCard key={p.id} product={p} index={idx} />)}
             </div>
           </TabsContent>
 
@@ -327,7 +355,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
                 .filter((p) => p?.type === "underDevelopment")
-                .map((p) => <ProductCard key={p.id} product={p} />)}
+                .map((p, idx) => <ProductCard key={p.id} product={p} index={idx} />)}
             </div>
           </TabsContent>
 
@@ -375,11 +403,10 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
               <TabsTrigger
                 key={value}
                 value={value}
-                className={`relative text-[11px] font-medium py-2 px-1 rounded-lg transition-all duration-200 ${
-                  activeTab === value
+                className={`relative text-[11px] font-medium py-2 px-1 rounded-lg transition-all duration-200 ${activeTab === value
                     ? "text-white bg-white/10"
                     : "text-white/40 hover:text-white/70 hover:bg-white/5"
-                }`}
+                  }`}
               >
                 {label}
                 {activeTab === value && (
