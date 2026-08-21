@@ -393,4 +393,269 @@
   bottom: 35%; left: 25%;
   animation: float-particle 10s ease-in-out infinite;
   animation-delay: -5s;
-}
+}
+
+/* ═══════════════════════════════════════════════
+   EXTENDED PREMIUM ANIMATIONS v2
+═══════════════════════════════════════════════ */
+
+/* Typewriter cursor blink */
+@keyframes blink-cursor {
+  0%, 100% { border-right-color: #00adef; }
+  50% { border-right-color: transparent; }
+}
+
+/* Number counter roll-up */
+@keyframes count-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* Ripple expand */
+@keyframes ripple-expand {
+  0%   { transform: scale(0); opacity: 0.6; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* Morphing background blob */
+@keyframes blob-morph {
+  0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1) rotate(0deg); }
+  25%       { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: scale(1.05) rotate(3deg); }
+  50%       { border-radius: 50% 60% 30% 60% / 40% 30% 60% 50%; transform: scale(0.98) rotate(-2deg); }
+  75%       { border-radius: 40% 50% 60% 30% / 60% 40% 50% 30%; transform: scale(1.03) rotate(2deg); }
+}
+
+/* Orbit spinning dot */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(22px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(22px) rotate(-360deg); }
+}
+
+/* Gradient text sweep */
+@keyframes gradient-sweep {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Bounce in */
+@keyframes bounce-in {
+  0%   { opacity: 0; transform: scale(0.3); }
+  50%  { transform: scale(1.08); }
+  70%  { transform: scale(0.95); }
+  85%  { transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Slide-in from bottom with fade */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* Floating glow pulse for header stats */
+@keyframes stat-glow {
+  0%, 100% { text-shadow: 0 0 8px rgba(0,173,239,0.4); }
+  50%       { text-shadow: 0 0 24px rgba(0,173,239,0.9), 0 0 48px rgba(0,173,239,0.3); }
+}
+
+/* Left-to-right scan line */
+@keyframes scan-line {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+/* Marquee scroll */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Card flip (3D) */
+@keyframes flip-in {
+  from { transform: perspective(600px) rotateY(-90deg); opacity: 0; }
+  to   { transform: perspective(600px) rotateY(0deg);   opacity: 1; }
+}
+
+/* Jelly bounce */
+@keyframes jelly {
+  0%   { transform: scale(1,   1); }
+  30%  { transform: scale(1.25, 0.75); }
+  40%  { transform: scale(0.75, 1.25); }
+  50%  { transform: scale(1.15, 0.85); }
+  65%  { transform: scale(0.95, 1.05); }
+  75%  { transform: scale(1.05, 0.95); }
+  100% { transform: scale(1,   1); }
+}
+
+/* Dash draw (SVG stroke) */
+@keyframes dash-draw {
+  from { stroke-dashoffset: 400; }
+  to   { stroke-dashoffset: 0; }
+}
+
+/* Wipe reveal (clip-path) */
+@keyframes wipe-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+
+/* Hue rotate */
+@keyframes hue-spin {
+  from { filter: hue-rotate(0deg); }
+  to   { filter: hue-rotate(360deg); }
+}
+
+/* ── Utility classes ─────────────────────── */
+
+.typewriter {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid #00adef;
+  animation: blink-cursor 0.8s step-end infinite;
+}
+
+.animate-bounce-in { animation: bounce-in 0.7s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards; }
+.animate-reveal-up { animation: reveal-up 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-flip-in   { animation: flip-in   0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+.animate-jelly     { animation: jelly     0.6s ease forwards; }
+.animate-stat-glow { animation: stat-glow 2.5s ease-in-out infinite; }
+.animate-wipe      { animation: wipe-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+/* Stagger delays for reveal-up grid */
+.stagger-1  { animation-delay: 0ms; }
+.stagger-2  { animation-delay: 80ms; }
+.stagger-3  { animation-delay: 160ms; }
+.stagger-4  { animation-delay: 240ms; }
+.stagger-5  { animation-delay: 320ms; }
+.stagger-6  { animation-delay: 400ms; }
+.stagger-7  { animation-delay: 480ms; }
+.stagger-8  { animation-delay: 560ms; }
+.stagger-9  { animation-delay: 640ms; }
+
+/* Ripple button */
+.ripple-btn {
+  position: relative;
+  overflow: hidden;
+}
+.ripple-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: ripple-expand 0.6s linear forwards;
+  pointer-events: none;
+}
+
+/* Morphing blob */
+.blob {
+  animation: blob-morph 8s ease-in-out infinite;
+}
+
+/* Gradient animated text */
+.animated-gradient-text {
+  background: linear-gradient(270deg, #00adef, #f97316, #00adef, #0090c8);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-sweep 5s ease infinite;
+}
+
+/* Scan-line sweep overlay */
+.scan-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0,173,239,0.08), transparent);
+  animation: scan-line 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Orbit dot */
+.orbit-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00adef;
+  animation: orbit 3s linear infinite;
+  position: absolute;
+}
+
+/* Dashboard mesh background */
+.dashboard-bg {
+  background:
+    radial-gradient(ellipse at 10% 20%, rgba(0,173,239,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, rgba(249,115,22,0.06) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 50%, rgba(0,144,200,0.05) 0%, transparent 60%),
+    linear-gradient(160deg, #e8f4ff 0%, #f0f7ff 40%, #fff8f3 100%);
+}
+
+/* Animated border gradient for product panel */
+.animated-border {
+  position: relative;
+  z-index: 0;
+}
+.animated-border::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #00adef, #0090c8, transparent, #f97316, transparent, #00adef);
+  background-size: 300% 300%;
+  animation: gradient-sweep 4s ease infinite;
+  z-index: -1;
+}
+
+/* Tab content transition */
+.tab-enter {
+  animation: reveal-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Neon glow text */
+.neon-blue {
+  color: #00adef;
+  text-shadow: 0 0 10px rgba(0,173,239,0.7), 0 0 30px rgba(0,173,239,0.3);
+}
+
+/* Floating badge */
+@keyframes float-badge {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-6px) rotate(1deg); }
+}
+.float-badge {
+  animation: float-badge 3.5s ease-in-out infinite;
+}
+
+/* Wipe-in for header text */
+.wipe-in {
+  animation: wipe-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: 0.2s;
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+/* Marquee ticker */
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 20s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
+/* Hue-cycle accent (for fun) */
+.hue-cycle {
+  animation: hue-spin 6s linear infinite;
+}
+
+/* Dash draw SVG circle */
+.dash-circle {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: dash-draw 1.2s ease forwards;
+}
+
