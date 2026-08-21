@@ -710,7 +710,8 @@ export const products: Product[] = [
     imageUrl: "/products/furtuu-Raboo-Coop.png",
     type: "",
     iframeUrls: [],
-    link: "https://agrilm-pilot.agtuall.com/furtuu/login",
+    // link: "https://agrilm-pilot.agtuall.com/furtuu/login",
+    link:"http://10.8.101.121:3000/",
     produtType:"Internal"
   },
 
