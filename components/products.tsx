@@ -311,11 +311,11 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             className="product-img w-full h-full object-contain"
           />
         </div>
-        <div className="px-3 pb-2.5 pt-1.5 flex items-center justify-between border-t border-slate-50 transition-colors duration-300 group-hover:bg-slate-50/60">
-          <span className="text-[11px] font-medium text-slate-600 truncate pr-2 group-hover:text-coopBlue transition-colors duration-300">
+        <div className="px-3 pb-2.5 pt-1.5 flex items-center justify-between border-t border-slate-50 transition-colors duration-500 group-hover:bg-slate-50/60">
+          <span className="text-[11px] font-medium text-slate-600 truncate pr-2 group-hover:text-coopBlue transition-colors duration-500">
             {product.name}
           </span>
-          <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity duration-300" />
+          <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
       </div>
     );
