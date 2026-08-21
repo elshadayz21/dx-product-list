@@ -2,8 +2,6 @@
 
 import React, { useState, useMemo } from "react";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
   Download,
@@ -11,22 +9,18 @@ import {
   House,
   NotepadText,
   Sparkles,
-  Youtube,
+  ArrowLeft,
+  Play,
 } from "lucide-react";
 import { Product } from "@/types";
 import { products } from "@/constants";
 import YouTubePlayer from "./YouTubePlayer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Input } from "./ui/input";
-import ImageSlider from "./ImageSlider";
-import VideoSlider from "./VideoSlider";
 import MixedContentSlider from "./MixedContentSlider";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -41,25 +35,50 @@ interface ProductPageProps {
 }
 
 const MemoizedMixedContentSlider = React.memo(MixedContentSlider);
-const MemoizedImageSlider = React.memo(ImageSlider);
-const MemoizedVideoSlider = React.memo(VideoSlider);
 const MemoizedYouTubePlayer = React.memo(YouTubePlayer);
 
+/** Shimmer-hover action button */
+function ActionButton({
+  onClick,
+  children,
+  variant = "primary",
+}: {
+  onClick?: () => void;
+  children: React.ReactNode;
+  variant?: "primary" | "secondary";
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className={`btn-shimmer relative flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-200 active:scale-95 w-full ${
+        variant === "primary"
+          ? "text-white"
+          : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+      }`}
+      style={
+        variant === "primary"
+          ? {
+              background: "linear-gradient(135deg, #00adef 0%, #0090c8 100%)",
+              boxShadow: "0 3px 12px rgba(0,173,239,0.3)",
+            }
+          : {}
+      }
+    >
+      {children}
+    </button>
+  );
+}
 
 export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showVideo, setShowVideo] = useState(false);
   const [activeTab, setActiveTab] = useState("dxvalleyProducts");
-  const [pin, setPin] = useState("");
-  const [isPinVerified, setIsPinVerified] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
-    setShowVideo(false); // reset video view on product selection
+    setShowVideo(false);
   };
 
-  const [selectedImage, setSelectedImage] = useState("/image.jpeg");
   const handleOpenLink = (url: string | undefined) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
@@ -69,178 +88,177 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
     const link = document.createElement("a");
     link.href = filePath;
     link.download = `${file}`;
-    document.body.appendChild(link); // required for firefox
-    link.click(); // This will download the file
-    document.body.removeChild(link); // cleanup
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleBackToList = () => {
     if (selectedProduct) {
-      const tab =
+      setActiveTab(
         selectedProduct.type === "corebankingapp"
           ? "coreBankingProducts"
-          : "dxvalleyProducts";
-
-      setActiveTab(tab);
+          : "dxvalleyProducts"
+      );
     }
     setSelectedProduct(null);
   };
 
-  const toggleContent = () => {
-    setShowVideo((prev) => !prev);
-  };
-
   const mediaContent = useMemo(() => {
     if (!selectedProduct) return [];
-
     const items: ContentItem[] = [];
-    // if (selectedProduct.video) {
-    //   items.push({ type: 'video', src: selectedProduct.video });
-    // }
-    if (selectedProduct.videos) {
-      selectedProduct.videos.forEach(v => items.push({ type: 'video', src: v }));
-    }
-    if (selectedProduct.vslaPhotos) {
-      selectedProduct.vslaPhotos.forEach(p => items.push({ type: 'image', src: p.src, alt: p.alt }));
-    }
-
-    if (selectedProduct.iframeUrls) {
-      selectedProduct.iframeUrls.forEach(url => items.push({ type: 'iframe', src: url }));
-    } else if (selectedProduct.link && selectedProduct.link.includes('dashboard')) {
-      // items.push({ type: 'iframe', src: selectedProduct.link });
-    }
-
+    if (selectedProduct.videos)
+      selectedProduct.videos.forEach((v) => items.push({ type: "video", src: v }));
+    if (selectedProduct.vslaPhotos)
+      selectedProduct.vslaPhotos.forEach((p) =>
+        items.push({ type: "image", src: p.src, alt: p.alt })
+      );
+    if (selectedProduct.iframeUrls)
+      selectedProduct.iframeUrls.forEach((url) =>
+        items.push({ type: "iframe", src: url })
+      );
     return items;
   }, [selectedProduct]);
 
-
+  /* ── PRODUCT DETAIL VIEW ────────────────────────────────── */
   if (selectedProduct) {
     return (
-      <div className="flex flex-col h-[670px]">
-        <main className="flex-grow overflow-auto">
-          <Card className="h-full flex flex-col">
-            <CardHeader>
-              <CardTitle className="text-2xl mb-4">
-                {selectedProduct.name}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="relative flex-grow flex flex-col md:flex-row gap-6">
-              <div className="absolute bottom-0 right-0 text-orange-100 w-12 h-12 sm:w-16 sm:h-16">
-                <Sparkles className="w-full h-full" />
-              </div>
-              <div className="w-full md:w-1/3 flex flex-col space-y-4">
+      <div className="flex flex-col h-full animate-scale-in">
+        {/* Detail header */}
+        <div
+          className="shrink-0 px-4 py-3 flex items-center gap-3"
+          style={{ background: "linear-gradient(90deg, #0f172a 0%, #1e293b 100%)" }}
+        >
+          <button
+            onClick={handleBackToList}
+            className="flex items-center gap-1.5 text-white/60 hover:text-white transition-colors text-sm"
+          >
+            <ArrowLeft size={14} />
+            Back
+          </button>
+          <div className="h-4 w-px bg-white/10" />
+          <h2 className="text-white font-semibold text-sm truncate flex-1">
+            {selectedProduct.name}
+          </h2>
+          <span className="text-[11px] text-orange-300 font-semibold bg-orange-400/10 px-2 py-0.5 rounded-full border border-orange-400/20 flex-shrink-0">
+            {selectedProduct.moto ?? "Bank Smarter, Live Better"}
+          </span>
+        </div>
+
+        {/* Detail body */}
+        <main className="flex-1 overflow-auto p-4">
+          <div className="flex flex-col md:flex-row gap-5 h-full">
+            {/* Left — image + actions */}
+            <div className="w-full md:w-1/3 flex flex-col gap-3">
+              <div
+                className="relative rounded-2xl overflow-hidden bg-white flex items-center justify-center"
+                style={{
+                  boxShadow: "0 8px 32px rgba(0,173,239,0.12)",
+                  minHeight: 180,
+                  border: "1px solid rgba(0,173,239,0.1)",
+                }}
+              >
                 <Image
                   src={selectedProduct.imageUrl}
                   alt={selectedProduct.name}
-                  width={300}
-                  height={300}
-                  className="rounded-lg object-contain w-full h-full bg-white"
+                  width={280}
+                  height={180}
+                  className="object-contain w-full max-h-44 p-4"
                 />
+                <Sparkles className="absolute bottom-2 right-2 text-orange-200 w-6 h-6 eco-sparkle opacity-60" />
+              </div>
 
-                <div className="flex-grow overflow-auto mb-4"></div>
+              <div className="flex flex-col gap-2">
                 {selectedProduct.file && (
-                  <Button
-                    onClick={() => handleDownload(selectedProduct.file)}
-                    className="bg-[#00adef]"
-                  >
-                    <Download className="mr-2 h-4 w-4" /> Download PPT
-                  </Button>
+                  <ActionButton onClick={() => handleDownload(selectedProduct.file)}>
+                    <Download size={14} />
+                    Download PPT
+                  </ActionButton>
                 )}
                 {selectedProduct.video && (
-                  <Button onClick={toggleContent} className="bg-[#00adef]">
-                    {showVideo ? (
-                      <NotepadText className="mr-2 h-6 w-6" />
-                    ) : (
-                      <Youtube className="mr-2 h-6 w-6" />
-                    )}
-                    {showVideo ? "Description" : "Watch Video"}
-                  </Button>
+                  <ActionButton onClick={() => setShowVideo((v) => !v)}>
+                    {showVideo ? <NotepadText size={14} /> : <Play size={14} />}
+                    {showVideo ? "Show Description" : "Watch Video"}
+                  </ActionButton>
                 )}
-
                 {selectedProduct.link && (
-                  <Button
+                  <ActionButton
                     onClick={() => handleOpenLink(selectedProduct.link)}
-                    className="bg-[#00adef]"
+                    variant="secondary"
                   >
-                    <ExternalLink className="mr-2 h-4 w-4" /> Visit Site
-                  </Button>
+                    <ExternalLink size={14} />
+                    Visit Site
+                  </ActionButton>
                 )}
               </div>
-              <div className="w-full md:w-2/3 flex flex-col">
-                <div className="flex-grow overflow-none mb-4">
-                  {showVideo && selectedProduct.video ? (
-                    <div className="h-full min-h-[300px]">
-                      <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
-                    </div>
-                  ) : (
-                    <>
-                      <div className="text-muted-foreground mb-4">
-                        {selectedProduct.description}
-                      </div>
-                      {mediaContent.length > 0 && (
-                        <MemoizedMixedContentSlider
-                          key={selectedProduct.id}
-                          items={mediaContent}
-                        />
-                      )}
-                    </>
-                  )}
-                </div>
+            </div>
 
-                <div className="flex flex-col sm:flex-row justify-between items-end mt-4">
-                  <div className=""></div>
-                  <div className="z-10 bg-orange-100 text-orange-800 text-xs sm:text-sm font-semibold py-1 px-2 sm:py-1.5 sm:px-3 rounded-full inline-block font-['Open Sans'] shadow-md">
-                    {selectedProduct.moto
-                      ? selectedProduct.moto
-                      : " Bank Smarter, Live Better"}
-                  </div>
+            {/* Right — description / video / media */}
+            <div className="flex-1 min-w-0 flex flex-col gap-3">
+              {showVideo && selectedProduct.video ? (
+                <div className="rounded-2xl overflow-hidden" style={{ minHeight: 280 }}>
+                  <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
                 </div>
-              </div>
-            </CardContent>
-          </Card>
+              ) : (
+                <>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    {selectedProduct.description}
+                  </p>
+                  {mediaContent.length > 0 && (
+                    <MemoizedMixedContentSlider
+                      key={selectedProduct.id}
+                      items={mediaContent}
+                    />
+                  )}
+                </>
+              )}
+            </div>
+          </div>
         </main>
-        <nav className="mt-8">
-          <ScrollArea className="w-full whitespace-nowrap rounded-md border bg-white">
-            <div className="flex w-max justify-center items-center hover:cursor-pointer">
-              <div className="p-6 bg-white" onClick={handleBackToList}>
-                <House className="h-6 w-6 text-[#00adef]" />
-              </div>
+
+        {/* Thumbnail strip */}
+        <nav className="shrink-0 border-t bg-white/80 backdrop-blur-sm">
+          <ScrollArea className="w-full whitespace-nowrap">
+            <div className="flex w-max items-center px-2 py-2 gap-1">
+              <button
+                onClick={handleBackToList}
+                className="p-2.5 rounded-xl hover:bg-slate-100 transition-colors flex-shrink-0"
+              >
+                <House className="h-5 w-5 text-[#00adef]" />
+              </button>
+
               {products
-                .filter((product) => {
-                  if (activeTab === "coreBankingProducts") {
-                    return product?.type === "corebankingapp";
-                  }
-                  if (activeTab === "developmentProducts") {
-                    return product?.type === "underDevelopment";
-                  }
-                  if (activeTab === "dxvalleyProducts") {
-                    return (
-                      !product?.type ||
-                      (product.type !== "corebankingapp" &&
-                        product.type !== "underDevelopment" &&
-                        product.type !== "dropdownMenu")
-                    );
-                  }
-                  return false;
+                .filter((p) => {
+                  if (activeTab === "coreBankingProducts") return p?.type === "corebankingapp";
+                  if (activeTab === "developmentProducts") return p?.type === "underDevelopment";
+                  return (
+                    !p?.type ||
+                    (p.type !== "corebankingapp" &&
+                      p.type !== "underDevelopment" &&
+                      p.type !== "dropdownMenu")
+                  );
                 })
                 .map((product) => (
-                  <div
+                  <button
                     key={product.id}
-                    className={`p-3 bg-white ${selectedProduct && product.id === selectedProduct.id
-                      ? "bg-muted"
-                      : ""
-                      }`}
                     onClick={() => handleProductSelect(product)}
+                    className={`relative p-1.5 rounded-xl transition-all duration-200 flex-shrink-0 ${
+                      selectedProduct?.id === product.id
+                        ? "bg-[#00adef]/10 ring-2 ring-[#00adef]/40 scale-105"
+                        : "hover:bg-slate-100"
+                    }`}
                   >
                     <Image
                       src={product.imageUrl}
                       alt={product.name}
-                      width={64}
-                      height={64}
-                      className="rounded-md"
+                      width={48}
+                      height={48}
+                      className="rounded-lg object-contain w-12 h-12"
                     />
-                    <span className="sr-only">{product.name}</span>
-                  </div>
+                    {selectedProduct?.id === product.id && (
+                      <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#00adef] rounded-full" />
+                    )}
+                  </button>
                 ))}
             </div>
             <ScrollBar orientation="horizontal" />
@@ -250,200 +268,146 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
     );
   }
 
+  /* ── PRODUCT GRID (card component inside) ──────────────── */
+  const ProductCard = ({ product }: { product: Product }) => (
+    <div
+      className="product-card animate-card-reveal cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-100"
+      style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
+      onClick={() => handleProductSelect(product)}
+    >
+      <div className="p-3 h-[160px] flex items-center justify-center bg-white overflow-hidden">
+        <Image
+          src={product.imageUrl}
+          alt={product.name}
+          width={260}
+          height={150}
+          className="product-img w-full h-full object-contain"
+        />
+      </div>
+      <div className="px-3 pb-2.5 pt-1 flex items-center justify-between border-t border-slate-50">
+        <span className="text-[11px] font-medium text-slate-500 truncate pr-2">
+          {product.name}
+        </span>
+        <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-50" />
+      </div>
+    </div>
+  );
+
   return (
-    <div className="relative flex flex-col h-full">
+    <div className="flex flex-col h-full">
       <Tabs
-        defaultValue="dxvalleyProducts"
-        onValueChange={(value) => setActiveTab(value)}
+        value={activeTab}
+        onValueChange={setActiveTab}
         className="h-full flex flex-col"
       >
-        {/* Tab Contents */}
-        <div className="flex-grow overflow-auto">
-          <TabsContent value="dxvalleyProducts">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Grid content */}
+        <div className="flex-1 overflow-auto p-4">
+          <TabsContent value="dxvalleyProducts" className="mt-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
                 .filter(
-                  (product) =>
-                    product?.type !== "corebankingapp" &&
-                    product?.type !== "underDevelopment" &&
-                    product?.type !== "dropdownMenu"
+                  (p) =>
+                    p?.type !== "corebankingapp" &&
+                    p?.type !== "underDevelopment" &&
+                    p?.type !== "dropdownMenu"
                 )
-
-                .map((product) => (
-                  <Card
-                    key={product.id}
-                    className="cursor-pointer shadow-lg"
-                    onClick={() => handleProductSelect(product)}
-                  >
-                    <CardContent className="p-2 h-[190px] flex items-center">
-                      <Image
-                        src={product.imageUrl}
-                        alt={product.name}
-                        width={400}
-                        height={200}
-                        className="w-full h-full object-contain rounded-t-lg bg-white"
-                      />
-                    </CardContent>
-                    {/* <ImageSlider /> */}
-                  </Card>
-                ))}
+                .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
-          <TabsContent value="coreBankingProducts">
-            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+          <TabsContent value="coreBankingProducts" className="mt-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
-                .filter((product) => product?.type === "corebankingapp")
-
-                .map((product) => (
-                  <Card
-                    key={product.id}
-                    className="cursor-pointer shadow-lg"
-                    onClick={() => handleProductSelect(product)}
-                  >
-                    <CardContent className="p-2 h-[190px] flex items-center">
-                      <Image
-                        src={product.imageUrl}
-                        alt={product.name}
-                        width={400}
-                        height={200}
-                        className="w-full h-full object-contain rounded-t-lg bg-white"
-                      />
-                    </CardContent>
-                  </Card>
-                ))}
+                .filter((p) => p?.type === "corebankingapp")
+                .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
-          <TabsContent value="developmentProducts">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <TabsContent value="developmentProducts" className="mt-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
-                .filter((product) => product?.type === "underDevelopment")
+                .filter((p) => p?.type === "underDevelopment")
+                .map((p) => <ProductCard key={p.id} product={p} />)}
+            </div>
+          </TabsContent>
 
-                .map((product) => (
-                  <Card
-                    key={product.id}
-                    className="cursor-pointer shadow-lg"
-                    onClick={() => handleProductSelect(product)}
+          <TabsContent value="imageTab" className="mt-0">
+            <div className="flex justify-center items-start py-4">
+              <div
+                className="rounded-2xl overflow-hidden w-full max-w-xl"
+                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1)" }}
+              >
+                <Image
+                  src="/image.jpeg"
+                  alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto object-contain"
+                />
+                <div className="bg-white px-4 py-2 text-xs text-slate-500 border-t">
+                  Source:{" "}
+                  <a
+                    href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#00adef] underline"
                   >
-                    <CardContent className="p-2 h-[190px] flex items-center">
-                      <Image
-                        src={product.imageUrl}
-                        alt={product.name}
-                        width={400}
-                        height={200}
-                        className="w-full h-full object-contain rounded-t-lg bg-white"
-                      />
-                    </CardContent>
-                  </Card>
-                ))}
+                    Shega Media
+                  </a>
+                </div>
+              </div>
             </div>
           </TabsContent>
-          <TabsContent value="imageTab" id="imageTab">
-            <div className="flex justify-center items-center h-full">
-              <Card className="shadow-lg max-w-2xl">
-                <CardContent className="p-4">
-                  <Image
-                    // src="/Mobile-Money-ecosystem-shega.webp"
-                    src="/image.jpeg"
-                    alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
-                    width={400}
-                    height={100}
-                    className="w-full h-full object-contain rounded-lg bg-white"
-                  />
-                  <div className="mt-4">
-                    Source:{" "}
-                    <span className="text-blue-600 underline">
-                      <em>
-                        <a href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ?utm_source=share&utm_medium=member_android" target="_blank" rel="noopener noreferrer">
-                          Shega Media
-                        </a>
-                      </em>
-                    </span>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
-          {/* <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="px-4 py-2 rounded-md bg-blue-100 hover:bg-blue-200 text-sm">
-                CRM Tools ▾
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white shadow-lg rounded-md">
-              <DropdownMenuItem asChild>
-                <a href="/eco-branch" className="dropdown-item">
-                  EcoBranch
-                </a>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <a href="/smart-branch" className="dropdown-item">
-                  SmartBranch
-                </a>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <a href="/crm-analytics" className="dropdown-item">
-                  CRM Analytics
-                </a>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <a href="/eco-agent" className="dropdown-item">
-                  EcoAgent
-                </a>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu> */}
-          {/* <TabsContent value="crmTab">
-
-
-      </TabsContent> */}
         </div>
 
-        {/* Tabs List */}
-        <TabsList className="mt-auto shadow-md grid w-full grid-cols-5">
-          <TabsTrigger
-            value="dxvalleyProducts"
-            className={activeTab === "dxvalleyProducts" ? "bg-white" : ""}
-          >
-            CoopBank Products
-          </TabsTrigger>
-          <TabsTrigger
-            value="developmentProducts"
-            className={activeTab === "developmentProducts" ? "bg-white" : ""}
-          >
-            Experiments
-          </TabsTrigger>
-          <TabsTrigger
-            value="coreBankingProducts"
-            className={activeTab === "coreBankingProducts" ? "bg-white" : ""}
-          >
-            Core Platforms
-          </TabsTrigger>
+        {/* Dark tab bar */}
+        <div
+          className="shrink-0"
+          style={{ background: "linear-gradient(90deg, #0f172a 0%, #1e293b 100%)" }}
+        >
+          <TabsList className="w-full h-auto bg-transparent rounded-none px-1 py-1.5 grid grid-cols-5 gap-0.5">
+            {[
+              { value: "dxvalleyProducts", label: "CoopBank" },
+              { value: "developmentProducts", label: "Experiments" },
+              { value: "coreBankingProducts", label: "Core" },
+              { value: "imageTab", label: "Coopay Stat" },
+            ].map(({ value, label }) => (
+              <TabsTrigger
+                key={value}
+                value={value}
+                className={`relative text-[11px] font-medium py-2 px-1 rounded-lg transition-all duration-200 ${
+                  activeTab === value
+                    ? "text-white bg-white/10"
+                    : "text-white/40 hover:text-white/70 hover:bg-white/5"
+                }`}
+              >
+                {label}
+                {activeTab === value && (
+                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#00adef] rounded-full" />
+                )}
+              </TabsTrigger>
+            ))}
 
-          <TabsTrigger
-            value="imageTab"
-            className={activeTab === "imageTab" ? "bg-white" : ""}
-          >
-            Coopay Stat
-          </TabsTrigger>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="px-4 py-2 rounded-md hover:bg-blue-200 text-sm text-black">
-                Other Services
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-white shadow-lg rounded-md">
-              {products.map((product) => {
-                if (product.type === "dropdownMenu") {
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="text-[11px] font-medium py-2 px-1 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/5 transition-all duration-200">
+                  More ▾
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent
+                className="bg-white border border-slate-200 shadow-xl rounded-xl min-w-[140px]"
+                align="end"
+              >
+                {products.map((product) => {
+                  if (product.type !== "dropdownMenu") return null;
                   if (product.name === "EcoBranch" && onOpenEcoBranch) {
                     return (
                       <DropdownMenuItem
                         key={product.id}
                         onClick={onOpenEcoBranch}
-                        className="cursor-pointer"
+                        className="cursor-pointer text-sm text-slate-700"
                       >
-                        {product.name}
+                        🌿 {product.name}
                       </DropdownMenuItem>
                     );
                   }
@@ -451,37 +415,20 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     <DropdownMenuItem asChild key={product.id}>
                       <a
                         href={product.link}
-                        className="dropdown-item"
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="text-sm text-slate-700"
                       >
                         {product.name}
                       </a>
                     </DropdownMenuItem>
                   );
-                }
-              })}
-              {/* <DropdownMenuItem asChild>
-                <a
-                  href="/eco-branch"
-                  className="dropdown-item"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  EcoBranch
-                </a>
-              </DropdownMenuItem> */}
-            </DropdownMenuContent>
-          </DropdownMenu>
-          {/* <TabsTrigger
-            value="crmTab"
-            className={activeTab === "crmTab" ? "bg-white" : ""}
-          >
-            
-          </TabsTrigger> */}
-        </TabsList>
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </TabsList>
+        </div>
       </Tabs>
     </div>
   );
 }
-

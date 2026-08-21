@@ -92,19 +92,30 @@ export default function EcoBranchPanel({
             open ? "animate-in zoom-in-95 duration-200" : ""
           )}
         >
-          <div className="flex items-center justify-between px-4 py-2 border-b bg-[#00adef] text-white shrink-0">
+          <div
+            className="flex items-center justify-between px-4 py-3 border-b shrink-0 text-white"
+            style={{
+              background: "linear-gradient(90deg, #006633 0%, #00a550 50%, #009945 100%)",
+              boxShadow: "0 2px 12px rgba(0,100,40,0.3)",
+            }}
+          >
             <div className="flex items-center gap-2">
-              <Leaf className="h-4 w-4 eco-float" />
-              <h2 className="text-sm sm:text-base font-semibold font-['Open Sans']">
+              <div className="p-1 rounded-lg bg-white/10">
+                <Leaf className="h-4 w-4 eco-float" />
+              </div>
+              <h2 className="text-sm sm:text-base font-semibold">
                 CoopBank Eco-Branches
               </h2>
+              <span className="text-[10px] bg-white/15 px-2 py-0.5 rounded-full font-medium tracking-wide">
+                Live Map
+              </span>
             </div>
             <Button
               variant="ghost"
               size="icon"
               onClick={onClose}
               tabIndex={open ? 0 : -1}
-              className="text-white hover:bg-white/20 h-8 w-8"
+              className="text-white hover:bg-white/20 h-8 w-8 rounded-lg"
               aria-label="Close Eco-Branches modal"
             >
               <X className="h-5 w-5" />
@@ -132,18 +143,31 @@ export default function EcoBranchPanel({
             </main>
           </div>
 
-          <div className="shrink-0 border-t bg-white px-4 py-2 flex items-center justify-between gap-2">
-            <div className="bg-orange-100 text-orange-800 text-xs font-semibold py-1 px-2.5 rounded-full font-['Open Sans'] shadow-sm">
-              Bank Smarter, Live Better
+          <div
+            className="shrink-0 border-t px-4 py-2.5 flex items-center justify-between gap-2"
+            style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)" }}
+          >
+            <div
+              className="text-orange-800 text-xs font-semibold py-1.5 px-3 rounded-full shadow-sm"
+              style={{
+                background: "linear-gradient(135deg, #fed7aa 0%, #fef3c7 100%)",
+                border: "1px solid rgba(249,115,22,0.2)",
+              }}
+            >
+              ✦ Bank Smarter, Live Better
             </div>
             <Button
               onClick={onClose}
               size="sm"
               tabIndex={open ? 0 : -1}
-              className="bg-[#00adef] shrink-0 h-8 text-xs"
+              className="btn-shimmer shrink-0 h-8 text-xs text-white rounded-xl"
+              style={{
+                background: "linear-gradient(135deg, #00adef 0%, #0090c8 100%)",
+                boxShadow: "0 2px 8px rgba(0,173,239,0.3)",
+              }}
             >
               <House className="mr-1.5 h-3.5 w-3.5" />
-              Go back to home
+              Go back
             </Button>
           </div>
         </div>
