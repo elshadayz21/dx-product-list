@@ -376,17 +376,17 @@ const Page = () => {
 
             {/* Left panel */}
             <div className="h-[calc(100vh-155px)] flex flex-col gap-4 animate-slide-up">
-              <CooperativeVision className="flex-1 min-h-0" />
+              <CooperativeVision className="shrink-0" />
 
               {/* Award images with 3D tilt + glow trail */}
-              <div className="flex gap-3 shrink-0">
+              <div className="flex-1 min-h-0 flex gap-3">
                 {[
                   { id: "banks", src: "/top-100-african-banks.jpeg", alt: "Top 100 African Banks", label: "Top 100 African Banks" },
                   { id: "msme", src: "/global-msme-award.jpg", alt: "Global MSME Award", label: "Global MSME Award" },
                 ].map(({ id, src, alt, label }) => (
                   <div
                     key={id}
-                    className="flex-1 relative rounded-xl overflow-hidden cursor-pointer group float-badge"
+                    className="flex-1 relative rounded-xl overflow-hidden cursor-pointer group float-badge h-full"
                     style={{
                       transform: tilt[id]
                         ? `perspective(600px) rotateX(${tilt[id].x}deg) rotateY(${tilt[id].y}deg)`

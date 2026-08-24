@@ -10,8 +10,8 @@ const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
   return (
     <section className={`w-full flex flex-col ${className}`}>
       {/* Clean border wrapper */}
-      <div className="rounded-xl border border-slate-200/80 shadow-md h-full flex flex-col overflow-hidden">
-        <div className="relative bg-white rounded-xl p-5 overflow-auto flex-1 flex flex-col justify-between">
+      <div className="rounded-xl border border-slate-200/80 shadow-md flex flex-col overflow-hidden">
+        <div className="relative bg-white rounded-xl p-4 md:p-5 flex flex-col justify-between">
           {/* Background mesh / watermark */}
           <div className="absolute inset-0 pointer-events-none select-none">
             <div className="absolute inset-0 opacity-[0.03]"
