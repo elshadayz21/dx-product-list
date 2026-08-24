@@ -331,26 +331,28 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
           </TabsContent>
 
-          <TabsContent value="imageTab" className="mt-0">
-            <div className="flex justify-center items-start py-4">
+          <TabsContent value="imageTab" className="mt-0 h-full">
+            <div className="flex justify-center items-center py-2 h-full">
               <div
-                className="rounded-2xl overflow-hidden w-full max-w-xl"
-                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.1)" }}
+                className="rounded-2xl overflow-hidden max-w-md flex flex-col items-center bg-white border border-slate-200/80"
+                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}
               >
-                <Image
-                  src="/image.jpeg"
-                  alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-contain"
-                />
-                <div className="bg-white px-4 py-2 text-xs text-slate-500 border-t">
+                <div className="p-2 bg-slate-50 flex items-center justify-center">
+                  <Image
+                    src="/image.jpeg"
+                    alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
+                    width={450}
+                    height={300}
+                    className="max-h-[calc(100vh-280px)] w-auto h-auto object-contain rounded-xl"
+                  />
+                </div>
+                <div className="bg-white px-4 py-1.5 text-xs text-slate-500 border-t w-full text-center shrink-0">
                   Source:{" "}
                   <a
                     href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#00adef] underline"
+                    className="text-[#00adef] underline font-medium"
                   >
                     Shega Media
                   </a>

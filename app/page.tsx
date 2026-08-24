@@ -379,20 +379,20 @@ const Page = () => {
               <CooperativeVision className="shrink-0" />
 
               {/* Award images with 3D tilt + glow trail */}
-              <div className="flex-1 min-h-0 flex gap-3">
+              <div className="flex-1 min-h-0 flex gap-3 items-center justify-center">
                 {[
                   { id: "banks", src: "/top-100-african-banks.jpeg", alt: "Top 100 African Banks", label: "Top 100 African Banks" },
                   { id: "msme", src: "/global-msme-award.jpg", alt: "Global MSME Award", label: "Global MSME Award" },
                 ].map(({ id, src, alt, label }) => (
                   <div
                     key={id}
-                    className="flex-1 relative rounded-xl overflow-hidden cursor-pointer group float-badge h-full"
+                    className="flex-1 max-h-full aspect-[3/4] relative rounded-2xl overflow-hidden cursor-pointer group float-badge border border-slate-200/80 shadow-lg"
                     style={{
                       transform: tilt[id]
                         ? `perspective(600px) rotateX(${tilt[id].x}deg) rotateY(${tilt[id].y}deg)`
                         : "perspective(600px) rotateX(0deg) rotateY(0deg)",
                       transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease",
-                      boxShadow: "0 8px 32px rgba(0,0,0,0.16)",
+                      boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
                       animationDelay: id === "banks" ? "0s" : "0.4s",
                     }}
                     onMouseMove={(e) => handleTilt(e, id)}
@@ -402,7 +402,7 @@ const Page = () => {
                       src={src}
                       alt={alt}
                       layout="fill"
-                      className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-700 ease-out"
+                      className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     {/* Overlay gradient on hover */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end p-3">
