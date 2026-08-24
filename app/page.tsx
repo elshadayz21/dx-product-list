@@ -401,8 +401,7 @@ const Page = () => {
                     <Image
                       src={src}
                       alt={alt}
-                      width={300}
-                      height={200}
+                      layout="fill"
                       className="w-full h-full object-cover rounded-xl group-hover:scale-105 transition-transform duration-700 ease-out"
                     />
                     {/* Overlay gradient on hover */}
