@@ -1,6 +1,7 @@
 /** @format */
 
-import { Product } from "./types";
+import { Product, DashboardStat } from "./types";
+import { Zap, Users, CreditCard, Building2 } from "lucide-react";
 
 export const products: Product[] = [
   {
@@ -78,7 +79,7 @@ export const products: Product[] = [
   },
   {
     id: 2,
-    name: "Deboo",
+    name: "Deboo Fund",
     description: (
       <div>
         <p className="mb-2">
@@ -517,11 +518,11 @@ export const products: Product[] = [
   },
   {
     id: 15,
-    name: "SACCO-Link Core Banking Solutions",
+    name: "SACCO-Link Core Banking Solution",
     description: (
       <div>
         <p className="mb-2">
-          The SACCO-Link Core Banking Solutions is also one of the bank&apos;s
+          The SACCO-Link Core Banking Solution is also one of the bank&apos;s
           digital banking solutions, providing essential
           <strong>
             {" "}
@@ -925,7 +926,7 @@ export const products: Product[] = [
   },
   {
     id: 28,
-    name: "Ebirr",
+    name: "Coopay-Ebirr",
     description: (
       <div>
         <p className="mb-2"></p>
@@ -1057,5 +1058,12 @@ export const products: Product[] = [
   //   video: "",
   //   imageUrl: "/products/IBM-AppConnect.jpeg",
   //   type: "corebankingapp",
-  // },
 ];
+ 
+export const DASHBOARD_STATS: DashboardStat[] = [
+  { key: "products", label: "Products", target: 24, suffix: "+", icon: <Zap size={12} /> },
+  { key: "customers", label: "Customers", target: 20, suffix: "M+", icon: <Users size={12} /> },
+  { key: "atms", label: "ATMs", target: 600, suffix: "+", icon: <CreditCard size={12} /> },
+  { key: "branches", label: "Branches", target: 680, suffix: "+", icon: <Building2 size={12} /> },
+];
+

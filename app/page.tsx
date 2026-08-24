@@ -8,7 +8,25 @@ import { Input } from "@/components/ui/input";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { preloadEcoBranchAssets } from "@/lib/eco-branch";
-import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield, TrendingUp, Users, Award, Zap } from "lucide-react";
+import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield } from "lucide-react";
+import { DASHBOARD_STATS, products } from "@/constants";
+import { Product } from "@/types";
+
+const getProductFontColor = (product: Product) => {
+  const pType = (product.produtType || "").trim().toLowerCase();
+  const type = (product.type || "").trim().toLowerCase();
+
+  if (pType === "internal") {
+    return "#00adef"; // Cyan blue
+  }
+  if (type === "corebankingapp" || pType.includes("core")) {
+    return "#0f172a"; // Black / Dark slate
+  }
+  if (pType === "external") {
+    return "#e38524"; // #e38524 orange
+  }
+  return "#e38524";
+};
 
 
 const Page = () => {
@@ -22,7 +40,9 @@ const Page = () => {
   const [tilt, setTilt] = useState<{ [key: string]: { x: number; y: number } }>({});
   const [showSplash, setShowSplash] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
-  const [counter, setCounter] = useState({ products: 0, users: 0, awards: 0, uptime: 0 });
+  const [counter, setCounter] = useState<{ [key: string]: number }>(() =>
+    DASHBOARD_STATS.reduce((acc, s) => ({ ...acc, [s.key]: 0 }), {})
+  );
   const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +59,6 @@ const Page = () => {
   // Animated counter
   useEffect(() => {
     if (!statsVisible) return;
-    const targets = { products: 24, users: 5200, awards: 8, uptime: 99 };
     const duration = 1400;
     const steps = 50;
     const interval = duration / steps;
@@ -48,12 +67,11 @@ const Page = () => {
       step++;
       const progress = step / steps;
       const ease = 1 - Math.pow(1 - progress, 3); // cubic ease-out
-      setCounter({
-        products: Math.round(targets.products * ease),
-        users: Math.round(targets.users * ease),
-        awards: Math.round(targets.awards * ease),
-        uptime: Math.round(targets.uptime * ease),
+      const updated: { [key: string]: number } = {};
+      DASHBOARD_STATS.forEach((stat) => {
+        updated[stat.key] = Math.round(stat.target * ease);
       });
+      setCounter(updated);
       if (step >= steps) clearInterval(timer);
     }, interval);
     return () => clearInterval(timer);
@@ -237,7 +255,7 @@ const Page = () => {
             </button>
 
             <p className="text-slate-600 text-[11px] mt-6">
-              DX Valley Â· CoopBank Innovation Hub
+              DxValley ©  CoopBank Innovation Hub
             </p>
           </div>
         </div>
@@ -269,7 +287,7 @@ const Page = () => {
                 </svg>
                 <Image
                   src="/products/dxvalleylogo.png"
-                  alt="DX Valley"
+                  alt="DxValley"
                   width={160}
                   height={65}
                   className="animate-bounce-in drop-shadow-lg brightness-110"
@@ -308,7 +326,7 @@ const Page = () => {
             <div className="flex items-center gap-3">
               <Image
                 src="/products/dxvalleylogo.png"
-                alt="DX Valley"
+                alt="DxValley"
                 width={140}
                 height={55}
                 className="drop-shadow brightness-110 wipe-in"
@@ -321,16 +339,11 @@ const Page = () => {
 
             {/* Stats ticker */}
             <div className="flex items-center gap-5">
-              {[
-                { icon: <Zap size={12} />, label: "Products", val: counter.products, suffix: "+" },
-                { icon: <Users size={12} />, label: "Users", val: counter.users.toLocaleString(), suffix: "+" },
-                { icon: <Award size={12} />, label: "Awards", val: counter.awards, suffix: "" },
-                { icon: <TrendingUp size={12} />, label: "Uptime", val: counter.uptime, suffix: "%" },
-              ].map(({ icon, label, val, suffix }) => (
-                <div key={label} className="flex items-center gap-1.5 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+              {DASHBOARD_STATS.map(({ key, icon, label, suffix = "" }) => (
+                <div key={key || label} className="flex items-center gap-1.5 animate-fade-in" style={{ animationDelay: "0.6s" }}>
                   <span className="text-coopBlue/70">{icon}</span>
                   <span className="animate-stat-glow text-white font-bold text-sm tabular-nums">
-                    {val}{suffix}
+                    {(counter[key] ?? 0).toLocaleString()}{suffix}
                   </span>
                   <span className="text-white/30 text-[10px]">{label}</span>
                 </div>
@@ -360,12 +373,22 @@ const Page = () => {
             <div className="marquee-track">
               {[...Array(2)].map((_, repeat) => (
                 <div key={repeat} className="flex items-center gap-6 px-3">
-                  {["CoopPay", "Michu", "FarmPass", "SaccoPay", "EcoBranch", "CoopAmbition", "VSLA Pay", "CooPayRoll", "CoopBank Mobile"].map((name) => (
-                    <span key={name} className="flex items-center gap-2 text-[11px] text-slate-500 whitespace-nowrap">
-                      <span className="w-1 h-1 rounded-full bg-coopBlue/40 inline-block" />
-                      {name}
-                    </span>
-                  ))}
+                  {products.map((product, idx) => {
+                    const color = getProductFontColor(product);
+                    return (
+                      <span
+                        key={`${repeat}-${product.id ?? idx}`}
+                        className="flex items-center gap-1.5 text-[11px] font-semibold whitespace-nowrap"
+                        style={{ color }}
+                      >
+                        <span
+                          className="w-1.5 h-1.5 rounded-full inline-block shrink-0 opacity-80"
+                          style={{ backgroundColor: color }}
+                        />
+                        {product.name}
+                      </span>
+                    );
+                  })}
                 </div>
               ))}
             </div>
@@ -386,36 +409,39 @@ const Page = () => {
                 ].map(({ id, src, alt, label }) => (
                   <div
                     key={id}
-                    className="flex-1 max-h-full aspect-[3/4] relative rounded-2xl overflow-hidden cursor-pointer group float-badge border border-slate-200/80 shadow-lg"
+                    className="flex-1 h-full max-h-full relative rounded-2xl overflow-hidden cursor-pointer group float-badge border border-slate-200/80 shadow-lg bg-white p-2 flex flex-col items-center justify-center"
                     style={{
                       transform: tilt[id]
                         ? `perspective(600px) rotateX(${tilt[id].x}deg) rotateY(${tilt[id].y}deg)`
                         : "perspective(600px) rotateX(0deg) rotateY(0deg)",
                       transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease",
-                      boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
+                      boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
                       animationDelay: id === "banks" ? "0s" : "0.4s",
                     }}
                     onMouseMove={(e) => handleTilt(e, id)}
                     onMouseLeave={() => resetTilt(id)}
                   >
-                    <Image
-                      src={src}
-                      alt={alt}
-                      layout="fill"
-                      className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    {/* Overlay gradient on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end p-3">
-                      <span className="text-white text-xs font-bold wipe-in">{label}</span>
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={src}
+                        alt={alt}
+                        layout="fill"
+                        objectFit="contain"
+                        className="w-full h-full object-contain rounded-xl"
+                      />
+                    </div>
+                    {/* Hover badge at bottom */}
+                    <div className="absolute bottom-3 inset-x-3 py-1.5 px-2.5 bg-slate-900/85 backdrop-blur-md rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center shadow-md z-10">
+                      <span className="text-white text-xs font-semibold">{label}</span>
                     </div>
                     {/* Shine sweep */}
                     <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl z-20"
                       style={{ background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.22) 50%, transparent 65%)" }}
                     />
                     {/* Glow border on hover */}
                     <div
-                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20"
                       style={{ boxShadow: "inset 0 0 0 1.5px rgba(0,173,239,0.5), 0 0 24px rgba(0,173,239,0.2)" }}
                     />
                   </div>
