@@ -120,8 +120,20 @@ const Page = () => {
   return (
     <div className="min-h-screen w-full">
       {!isPinVerified ? (
-        /* â”€â”€ PREMIUM LOGIN SCREEN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+        /* ── PREMIUM LOGIN SCREEN ────────────────────────────── */
         <div className="login-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+          {/* Top-left corner logo */}
+          <div className="absolute top-6 left-6 z-20 flex items-center gap-3 animate-fade-in">
+            <Image
+              src="/products/dxvalleylogo.png"
+              alt="DxValley"
+              width={140}
+              height={55}
+              className="drop-shadow brightness-110"
+              priority
+            />
+          </div>
+
           {/* Floating ambient particles */}
           <div className="particle particle-1" />
           <div className="particle particle-2" />
