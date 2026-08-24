@@ -264,41 +264,13 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
     );
   }
 
-  /* ── PRODUCT GRID (card component with smooth scroll-in transition) ── */
-  const ProductCard = ({ product, index = 0 }: { product: Product; index?: number }) => {
-    const [isVisible, setIsVisible] = useState(false);
-    const cardRef = useRef<HTMLDivElement>(null);
-
-    useEffect(() => {
-      const el = cardRef.current;
-      if (!el) return;
-
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true);
-            observer.unobserve(entry.target);
-          }
-        },
-        {
-          rootMargin: "60px 0px 60px 0px",
-          threshold: 0.05,
-        }
-      );
-
-      observer.observe(el);
-      return () => observer.disconnect();
-    }, []);
-
+  /* ── PRODUCT GRID (clean hover card component) ── */
+  const ProductCard = ({ product }: { product: Product }) => {
     return (
       <div
-        ref={cardRef}
-        className={`product-card cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-100/90 group ${
-          isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-6 scale-[0.97]"
-        }`}
+        className="product-card cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200/80 group transition-all duration-300 hover:-translate-y-1.5 hover:border-[#00adef]/40"
         style={{
-          boxShadow: "0 2px 10px rgba(0,0,0,0.04)",
-          transitionDelay: isVisible ? `${(index % 6) * 45}ms` : "0ms",
+          boxShadow: "0 2px 10px rgba(0,0,0,0.03)",
         }}
         onClick={() => handleProductSelect(product)}
       >
@@ -308,14 +280,14 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             alt={product.name}
             width={260}
             height={150}
-            className="product-img w-full h-full object-contain"
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
           />
         </div>
-        <div className="px-3 pb-2.5 pt-1.5 flex items-center justify-between border-t border-slate-50 transition-colors duration-500 group-hover:bg-slate-50/60">
-          <span className="text-[11px] font-medium text-slate-600 truncate pr-2 group-hover:text-coopBlue transition-colors duration-500">
+        <div className="px-3 pb-2.5 pt-1.5 flex items-center justify-between border-t border-slate-100 transition-colors duration-300 group-hover:bg-slate-50/80">
+          <span className="text-[11px] font-semibold text-slate-600 truncate pr-2 group-hover:text-coopBlue transition-colors duration-300">
             {product.name}
           </span>
-          <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-40 group-hover:opacity-100 transition-opacity duration-500" />
+          <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
         </div>
       </div>
     );

@@ -1,21 +1,17 @@
 "use client";
 
-import { Users, Quote, Sparkles, Handshake } from "lucide-react";
-import { useState, useEffect } from "react";
+import { Users, Sparkles, Handshake } from "lucide-react";
 
-const CooperativeVision = () => {
-  const [visible, setVisible] = useState(false);
+interface CooperativeVisionProps {
+  className?: string;
+}
 
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(t);
-  }, []);
-
+const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
   return (
-    <section className="w-full">
-      {/* Gradient border wrapper */}
-      <div className="gradient-border shadow-lg">
-        <div className="relative bg-white rounded-xl p-5 overflow-hidden">
+    <section className={`w-full flex flex-col ${className}`}>
+      {/* Clean border wrapper */}
+      <div className="rounded-xl border border-slate-200/80 shadow-md h-full flex flex-col overflow-hidden">
+        <div className="relative bg-white rounded-xl p-5 overflow-auto flex-1 flex flex-col justify-between">
           {/* Background mesh / watermark */}
           <div className="absolute inset-0 pointer-events-none select-none">
             <div className="absolute inset-0 opacity-[0.03]"
@@ -32,10 +28,6 @@ const CooperativeVision = () => {
             />
           </div>
 
-          {/* Quote icon — animated */}
-          <Quote
-            className="absolute top-3 left-3 text-coopBlue opacity-20 w-8 h-8 eco-sparkle"
-          />
           <Sparkles
             className="absolute bottom-3 right-3 text-sky-200 w-10 h-10 eco-sparkle opacity-70"
             style={{ animationDelay: "2s" }}
@@ -44,9 +36,7 @@ const CooperativeVision = () => {
           {/* Content */}
           <div className="relative z-10">
             {/* Header */}
-            <div
-              className={`flex items-center gap-2 mb-3 transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
-            >
+            <div className="flex items-center gap-2 mb-3">
               <div className="p-1.5 rounded-lg bg-coopBlue/10">
                 <Users className="text-coopBlue w-4 h-4" />
               </div>
@@ -56,9 +46,7 @@ const CooperativeVision = () => {
             </div>
 
             {/* Quote body */}
-            <p
-              className={`text-sm text-gray-600 leading-relaxed mb-3 transition-all duration-700 delay-100 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
-            >
+            <p className="text-sm text-gray-600 leading-relaxed mb-3">
               <em className="text-gray-700">
                 &quot;The key to overcoming poverty lies in the power of cooperation
                 and cooperatives&quot;
@@ -71,9 +59,7 @@ const CooperativeVision = () => {
               and neglect faced by rural and underprivileged communities.
             </p>
 
-            <p
-              className={`text-sm text-gray-600 leading-relaxed mb-4 transition-all duration-700 delay-200 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
-            >
+            <p className="text-sm text-gray-600 leading-relaxed mb-4">
               Inspired by his vision, we believe that{" "}
               <em>a better tomorrow for our community</em> rests in the hands
               of young innovators from these very communities. That&apos;s why
@@ -82,9 +68,7 @@ const CooperativeVision = () => {
             </p>
 
             {/* Footer badge */}
-            <div
-              className={`flex justify-end transition-all duration-700 delay-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"}`}
-            >
+            <div className="flex justify-end">
               <div
                 className="text-coopBlue-dark text-xs font-semibold py-1.5 px-3 rounded-full inline-block shadow-sm"
                 style={{

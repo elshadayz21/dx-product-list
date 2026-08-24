@@ -292,28 +292,7 @@ const Page = () => {
             </div>
           )}
 
-          {/* Animated morphing blobs in background */}
-          <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
-            <div
-              className="blob absolute w-[500px] h-[500px] opacity-[0.04]"
-              style={{
-                background: "radial-gradient(circle, #00adef 0%, transparent 70%)",
-                top: "-100px",
-                left: "-100px",
-                animationDuration: "10s",
-              }}
-            />
-            <div
-              className="blob absolute w-[400px] h-[400px] opacity-[0.03]"
-              style={{
-                background: "radial-gradient(circle, #38bdf8 0%, transparent 70%)",
-                bottom: "0",
-                right: "-80px",
-                animationDuration: "13s",
-                animationDelay: "-5s",
-              }}
-            />
-          </div>
+
 
           {/* â”€â”€ HEADER â”€â”€ */}
           <header
@@ -396,11 +375,11 @@ const Page = () => {
           <div className="flex-1 container py-4 grid grid-cols-2 gap-5 relative z-10">
 
             {/* Left panel */}
-            <div className="flex flex-col gap-4 animate-slide-up">
-              <CooperativeVision />
+            <div className="h-[calc(100vh-155px)] flex flex-col gap-4 animate-slide-up">
+              <CooperativeVision className="flex-1 min-h-0" />
 
               {/* Award images with 3D tilt + glow trail */}
-              <div className="flex gap-3">
+              <div className="flex gap-3 shrink-0">
                 {[
                   { id: "banks", src: "/top-100-african-banks.jpeg", alt: "Top 100 African Banks", label: "Top 100 African Banks" },
                   { id: "msme", src: "/global-msme-award.jpg", alt: "Global MSME Award", label: "Global MSME Award" },
@@ -445,12 +424,12 @@ const Page = () => {
               </div>
             </div>
 
-            {/* Right panel â€” animated border product list */}
+            {/* Right panel — product list */}
             <div
-              className="h-[calc(100vh-155px)] rounded-2xl overflow-hidden flex flex-col animated-border animate-slide-in-right"
+              className="h-[calc(100vh-155px)] rounded-2xl overflow-hidden flex flex-col border border-slate-200/80 animate-slide-in-right"
               style={{
-                boxShadow: "0 4px 32px rgba(0,0,0,0.1)",
-                background: "rgba(255,255,255,0.55)",
+                boxShadow: "0 4px 32px rgba(0,0,0,0.06)",
+                background: "rgba(255,255,255,0.85)",
                 backdropFilter: "blur(12px)",
               }}
             >
