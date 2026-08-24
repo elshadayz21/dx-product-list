@@ -124,14 +124,16 @@ const Page = () => {
         <div className="login-bg min-h-screen flex items-center justify-center relative overflow-hidden">
           {/* Top-left corner logo */}
           <div className="absolute top-6 left-6 z-20 flex items-center gap-3 animate-fade-in">
-            <Image
-              src="/products/dxvalleylogo.png"
-              alt="DxValley"
-              width={140}
-              height={55}
-              className="drop-shadow brightness-110"
-              priority
-            />
+            <div className="bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-lg border border-white/30 flex items-center justify-center">
+              <Image
+                src="/products/dxvalleylogo.png"
+                alt="DxValley"
+                width={130}
+                height={50}
+                className="object-contain"
+                priority
+              />
+            </div>
           </div>
 
           {/* Floating ambient particles */}
@@ -336,15 +338,17 @@ const Page = () => {
             <div className="scan-line" />
 
             <div className="flex items-center gap-3">
-              <Image
-                src="/products/dxvalleylogo.png"
-                alt="DxValley"
-                width={140}
-                height={55}
-                className="drop-shadow brightness-110 wipe-in"
-              />
+              <div className="bg-white/95 backdrop-blur-md rounded-xl px-3 py-1 shadow-sm border border-white/20 flex items-center justify-center">
+                <Image
+                  src="/products/dxvalleylogo.png"
+                  alt="DxValley"
+                  width={125}
+                  height={45}
+                  className="object-contain wipe-in"
+                />
+              </div>
               <div className="h-5 w-px bg-white/10" />
-              <span className="text-white/50 text-xs font-medium tracking-widest uppercase wipe-in" style={{ animationDelay: "0.35s" }}>
+              <span className="text-white/60 text-xs font-medium tracking-widest uppercase wipe-in" style={{ animationDelay: "0.35s" }}>
                 Product Showcase
               </span>
             </div>
