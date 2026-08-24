@@ -311,7 +311,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     p?.type !== "underDevelopment" &&
                     p?.type !== "dropdownMenu"
                 )
-                .map((p, idx) => <ProductCard key={p.id} product={p} index={idx} />)}
+                .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
@@ -319,7 +319,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
                 .filter((p) => p?.type === "corebankingapp")
-                .map((p, idx) => <ProductCard key={p.id} product={p} index={idx} />)}
+                .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
@@ -327,7 +327,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {products
                 .filter((p) => p?.type === "underDevelopment")
-                .map((p, idx) => <ProductCard key={p.id} product={p} index={idx} />)}
+                .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
