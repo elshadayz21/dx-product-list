@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { preloadEcoBranchAssets } from "@/lib/eco-branch";
-import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield } from "lucide-react";
+import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield, X, Maximize2 } from "lucide-react";
 import { DASHBOARD_STATS, products } from "@/constants";
 import { Product } from "@/types";
 
@@ -40,6 +40,7 @@ const Page = () => {
   const [tilt, setTilt] = useState<{ [key: string]: { x: number; y: number } }>({});
   const [showSplash, setShowSplash] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
+  const [activeImageModal, setActiveImageModal] = useState<{ src: string; title: string } | null>(null);
   const [counter, setCounter] = useState<{ [key: string]: number }>(() =>
     DASHBOARD_STATS.reduce((acc, s) => ({ ...acc, [s.key]: 0 }), {})
   );
@@ -120,8 +121,8 @@ const Page = () => {
   return (
     <div className="min-h-screen w-full">
       {!isPinVerified ? (
-        /* ── PREMIUM LOGIN SCREEN ────────────────────────────── */
         <div className="login-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+          {/* ── PREMIUM LOGIN SCREEN ────────────────────────────── */}
           {/* Top-left corner logo */}
           <div className="absolute top-6 left-6 z-20 flex items-center gap-3 animate-fade-in">
             <div className="bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2 shadow-lg border border-white/30 flex items-center justify-center">
@@ -274,10 +275,10 @@ const Page = () => {
           </div>
         </div>
       ) : (
-        /* â”€â”€ MAIN DASHBOARD (fully animated) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
         <div className="min-h-screen dashboard-bg flex flex-col relative overflow-hidden">
+          {/* ── MAIN DASHBOARD (fully animated) ─────────────────── */}
 
-          {/* â”€â”€ ENTRANCE SPLASH OVERLAY â”€â”€ */}
+          {/* ── ENTRANCE SPLASH OVERLAY ── */}
           {showSplash && (
             <div
               className="fixed inset-0 z-[200] flex items-center justify-center"
@@ -337,20 +338,15 @@ const Page = () => {
             {/* Scan-line sweep on header */}
             <div className="scan-line" />
 
-            <div className="flex items-center gap-3">
-              <div className="bg-white/95 backdrop-blur-md rounded-xl px-3 py-1 shadow-sm border border-white/20 flex items-center justify-center">
-                <Image
-                  src="/products/dxvalleylogo.png"
-                  alt="DxValley"
-                  width={125}
-                  height={45}
-                  className="object-contain wipe-in"
-                />
-              </div>
-              <div className="h-5 w-px bg-white/10" />
-              <span className="text-white/60 text-xs font-medium tracking-widest uppercase wipe-in" style={{ animationDelay: "0.35s" }}>
-                Product Showcase
-              </span>
+            <div className="flex items-center">
+              <Image
+                src="/products/dxvalleylogo.png"
+                alt="DxValley"
+                width={85}
+                height={28}
+                className="h-5 w-auto object-contain brightness-110 drop-shadow-sm"
+                priority
+              />
             </div>
 
             {/* Stats ticker */}
@@ -417,49 +413,74 @@ const Page = () => {
             <div className="h-[calc(100vh-155px)] flex flex-col justify-between gap-4 animate-slide-up">
               <CooperativeVision className="shrink-0" />
 
-              {/* Award images with 3D tilt + glow trail */}
-              <div className="flex-1 min-h-0 flex gap-4 items-center justify-center w-full">
+              {/* Prominent award cards with continuous floating movement and immediate full visibility */}
+              <div className="flex-1 min-h-[220px] flex gap-5 items-center justify-center w-full py-1">
                 {[
-                  { id: "banks", src: "/top-100-african-banks.jpeg", alt: "Top 100 African Banks", label: "Top 100 African Banks" },
-                  { id: "msme", src: "/global-msme-award.jpg", alt: "Global MSME Award", label: "Global MSME Award" },
-                ].map(({ id, src, alt, label }) => (
+                  {
+                    id: "banks",
+                    src: "/top-100-african-banks.jpeg",
+                    alt: "Top 100 African Banks",
+                    label: "Top 100 African Banks",
+                    width: 1080,
+                    height: 1350,
+                    floatClass: "float-card-1",
+                  },
+                  {
+                    id: "msme",
+                    src: "/global-msme-award.jpg",
+                    alt: "Global MSME Award",
+                    label: "Global MSME Award",
+                    width: 864,
+                    height: 1080,
+                    floatClass: "float-card-2",
+                  },
+                ].map(({ id, src, alt, label, width, height, floatClass }) => (
                   <div
                     key={id}
-className="flex-1 max-h-full relative rounded-2xl overflow-hidden cursor-pointer group float-badge border border-slate-200/80 shadow-lg bg-white p-2 flex flex-col items-center justify-center"
+                    onClick={() => setActiveImageModal({ src, title: label })}
+                    className={`relative aspect-[4/5] h-full max-h-full flex-1 max-w-[280px] sm:max-w-[340px] md:max-w-[390px] rounded-2xl overflow-hidden cursor-pointer group ${floatClass} border border-slate-300/80 dark:border-slate-800 shadow-xl bg-slate-900 flex items-center justify-center transition-all duration-300 hover:shadow-2xl hover:border-coopBlue/60 hover:scale-[1.02]`}
                     style={{
                       transform: tilt[id]
                         ? `perspective(600px) rotateX(${tilt[id].x}deg) rotateY(${tilt[id].y}deg)`
-                        : "perspective(600px) rotateX(0deg) rotateY(0deg)",
-                      transition: "transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease",
-                      boxShadow: "0 8px 32px rgba(0,0,0,0.08)",
-                      animationDelay: id === "banks" ? "0s" : "0.4s",
+                        : undefined,
+                      boxShadow: "0 12px 36px rgba(0,0,0,0.14), 0 4px 16px rgba(0,173,239,0.12)",
                     }}
                     onMouseMove={(e) => handleTilt(e, id)}
                     onMouseLeave={() => resetTilt(id)}
                   >
-<div className="relative w-full h-full">
-  <Image
-    src={src}
-    alt={alt}
-    layout="fill"
-    objectFit="contain"
-    className="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-700 ease-out z-10"
-  />
-</div>
-{/* Hover badge at bottom */}
-<div className="absolute bottom-3 inset-x-3 py-1.5 px-2.5 bg-slate-900/85 backdrop-blur-md rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center text-center shadow-md z-20">
-  <span className="text-white text-xs font-semibold">{label}</span>
-</div>
+                    {/* Main Image - Full Proportional Display */}
+                    <Image
+                      src={src}
+                      alt={alt}
+                      width={width}
+                      height={height}
+                      className="w-full h-full object-contain transition-transform duration-700 ease-out z-10"
+                      priority
+                    />
+
+                    {/* Top Right Expand Icon Button - Always Visible Immediately */}
+                    <div className="absolute top-2.5 right-2.5 z-20 bg-slate-900/80 backdrop-blur-md rounded-full p-2 text-white shadow-md border border-white/10 hover:bg-coopBlue transition-colors duration-200">
+                      <Maximize2 size={14} />
                     </div>
-                    {/* Shine sweep */}
+
+                    {/* Bottom Title Bar - Always Visible Immediately */}
+                    <div className="absolute bottom-2.5 inset-x-2.5 py-2 px-3 bg-slate-900/90 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-between text-center shadow-lg z-20">
+                      <span className="text-white text-xs font-bold truncate tracking-tight">{label}</span>
+                      <div className="p-1 rounded-lg bg-coopBlue/20 border border-coopBlue/30 text-coopBlue shrink-0 ml-1">
+                        <Maximize2 size={11} />
+                      </div>
+                    </div>
+
+                    {/* Shine sweep effect on hover */}
                     <div
                       className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl z-20"
-                      style={{ background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.22) 50%, transparent 65%)" }}
+                      style={{ background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.25) 50%, transparent 65%)" }}
                     />
-                    {/* Glow border on hover */}
+
+                    {/* Glow border outline */}
                     <div
-                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20"
-                      style={{ boxShadow: "inset 0 0 0 1.5px rgba(0,173,239,0.5), 0 0 24px rgba(0,173,239,0.2)" }}
+                      className="absolute inset-0 rounded-2xl opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20"
+                      style={{ boxShadow: "inset 0 0 0 1.5px rgba(0,173,239,0.4), 0 0 20px rgba(0,173,239,0.15)" }}
                     />
                   </div>
                 ))}
@@ -525,6 +546,42 @@ className="flex-1 max-h-full relative rounded-2xl overflow-hidden cursor-pointer
             open={showEcoBranch}
             onClose={() => setShowEcoBranch(false)}
           />
+
+          {/* ── IMAGE LIGHTBOX MODAL ── */}
+          {activeImageModal && (
+            <div
+              className="fixed inset-0 z-[300] bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 md:p-6 animate-fade-in"
+              onClick={() => setActiveImageModal(null)}
+            >
+              <div
+                className="relative bg-slate-900 border border-slate-700/80 rounded-3xl max-w-3xl w-full p-5 md:p-6 shadow-2xl flex flex-col items-center animate-scale-in"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="w-full flex items-center justify-between mb-4 border-b border-slate-800 pb-3">
+                  <h3 className="text-base md:text-lg font-bold text-white flex items-center gap-2">
+                    <Sparkles className="text-coopBlue w-5 h-5" />
+                    {activeImageModal.title}
+                  </h3>
+                  <button
+                    onClick={() => setActiveImageModal(null)}
+                    className="p-2 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+                  >
+                    <X size={18} />
+                  </button>
+                </div>
+                <div className="relative w-full h-[65vh] rounded-2xl overflow-hidden bg-slate-950/60 flex items-center justify-center border border-slate-800">
+                  <Image
+                    src={activeImageModal.src}
+                    alt={activeImageModal.title}
+                    width={1200}
+                    height={800}
+                    className="w-full h-full object-contain rounded-2xl p-2"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

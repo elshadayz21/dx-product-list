@@ -819,6 +819,33 @@
   }
 }
 
+/* Continuous smooth floating keyframes for prominent card movement */
+@keyframes float-continuous-1 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(0.4deg);
+  }
+}
+
+@keyframes float-continuous-2 {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-11px) rotate(-0.4deg);
+  }
+}
+
+.float-card-1 {
+  animation: float-continuous-1 4.5s ease-in-out infinite;
+}
+
+.float-card-2 {
+  animation: float-continuous-2 5.2s ease-in-out infinite 0.6s;
+}
+
 /* Marquee scroll */
 @keyframes marquee {
   from {
