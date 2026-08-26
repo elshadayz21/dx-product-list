@@ -29,4 +29,14 @@ vslaPhotos: VslaPhoto[];
 
 
 export interface ImageSliderProps {
-  vslaPhotos: VslaPhoto[];}
+  vslaPhotos: VslaPhoto[];
+}
+
+export interface DashboardStat {
+  key: string;
+  label: string;
+  target: number;
+  suffix?: string;
+  icon: ReactNode;
+}
+

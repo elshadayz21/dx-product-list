@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "DX Valley — CoopBank Product Showcase",
+  title: "DxValley — CoopBank Product Showcase",
   description: "Explore CoopBank's innovative digital products and solutions.",
 };
 
