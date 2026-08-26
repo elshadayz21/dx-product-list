@@ -101,7 +101,7 @@ export default function EcoBranchPanel({
           >
             <div className="flex items-center gap-2">
               <div className="p-1 rounded-lg bg-white/10">
-                <Leaf className="h-4 w-4 eco-float" />
+                <Leaf className="h-4 w-4" />
               </div>
               <h2 className="text-sm sm:text-base font-semibold">
                 CoopBank Eco-Branches

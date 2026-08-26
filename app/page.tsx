@@ -3,13 +3,14 @@
 "use client";
 import CooperativeVision from "@/components/cooperativevision";
 import EcoBranchPanel from "@/components/EcoBranchPanel";
+import GameHubPanel from "@/components/GameHubPanel";
 import ProductPage from "@/components/products";
 import { Input } from "@/components/ui/input";
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { preloadEcoBranchAssets } from "@/lib/eco-branch";
-import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield, X, Maximize2 } from "lucide-react";
-import { DASHBOARD_STATS, products } from "@/constants";
+import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield, X, Maximize2, Gamepad2 } from "lucide-react";
+import { DASHBOARD_STATS, products, AWARD_CARDS } from "@/constants";
 import { Product } from "@/types";
 
 const getProductFontColor = (product: Product) => {
@@ -34,6 +35,7 @@ const Page = () => {
   const [isPinVerified, setIsPinVerified] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [showEcoBranch, setShowEcoBranch] = useState(false);
+  const [showGameHub, setShowGameHub] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isShaking, setIsShaking] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -363,13 +365,16 @@ const Page = () => {
 
               <div className="h-4 w-px bg-white/10" />
 
-              {/* Live pulse with orbit dot */}
-              <div className="relative flex items-center gap-2">
-                <div className="relative w-4 h-4 flex items-center justify-center">
-                  <div className="orbit-dot" />
-                  <div className="w-2 h-2 rounded-full bg-emerald-400" style={{ animation: "eco-pulse-ring 1.5s ease-in-out infinite" }} />
-                </div>
-                <span className="text-white/40 text-xs">Live</span>
+              {/* CoopBank Logo */}
+              <div className="flex items-center">
+                <Image
+                  src="/coop-bank-logo.png"
+                  alt="CoopBank"
+                  width={90}
+                  height={32}
+                  className="h-6 w-auto object-contain brightness-110 drop-shadow-sm"
+                  priority
+                />
               </div>
             </div>
           </header>
@@ -415,29 +420,10 @@ const Page = () => {
 
               {/* Prominent award cards with continuous floating movement and immediate full visibility */}
               <div className="flex-1 min-h-[220px] flex gap-5 items-center justify-center w-full py-1">
-                {[
-                  {
-                    id: "banks",
-                    src: "/top-100-african-banks.jpeg",
-                    alt: "Top 100 African Banks",
-                    label: "Top 100 African Banks",
-                    width: 1080,
-                    height: 1350,
-                    floatClass: "float-card-1",
-                  },
-                  {
-                    id: "msme",
-                    src: "/global-msme-award.jpg",
-                    alt: "Global MSME Award",
-                    label: "Global MSME Award",
-                    width: 864,
-                    height: 1080,
-                    floatClass: "float-card-2",
-                  },
-                ].map(({ id, src, alt, label, width, height, floatClass }) => (
+                {AWARD_CARDS.map(({ id, src, alt, width = 1080, height = 1350, floatClass = "float-card-1" }) => (
                   <div
                     key={id}
-                    onClick={() => setActiveImageModal({ src, title: label })}
+                    onClick={() => setActiveImageModal({ src, title: alt })}
                     className={`relative aspect-[4/5] h-full max-h-full flex-1 max-w-[280px] sm:max-w-[340px] md:max-w-[390px] rounded-2xl overflow-hidden cursor-pointer group ${floatClass} border border-slate-300/80 dark:border-slate-800 shadow-xl bg-slate-900 flex items-center justify-center transition-all duration-300 hover:shadow-2xl hover:border-coopBlue/60 hover:scale-[1.02]`}
                     style={{
                       transform: tilt[id]
@@ -458,17 +444,9 @@ const Page = () => {
                       priority
                     />
 
-                    {/* Top Right Expand Icon Button - Always Visible Immediately */}
-                    <div className="absolute top-2.5 right-2.5 z-20 bg-slate-900/80 backdrop-blur-md rounded-full p-2 text-white shadow-md border border-white/10 hover:bg-coopBlue transition-colors duration-200">
+                    {/* Expand Icon Button on Hover */}
+                    <div className="absolute top-2.5 right-2.5 z-20 bg-slate-900/80 backdrop-blur-md rounded-full p-2 text-white shadow-md border border-white/10 opacity-0 group-hover:opacity-100 hover:bg-coopBlue transition-all duration-200">
                       <Maximize2 size={14} />
-                    </div>
-
-                    {/* Bottom Title Bar - Always Visible Immediately */}
-                    <div className="absolute bottom-2.5 inset-x-2.5 py-2 px-3 bg-slate-900/90 backdrop-blur-md rounded-xl border border-white/10 flex items-center justify-between text-center shadow-lg z-20">
-                      <span className="text-white text-xs font-bold truncate tracking-tight">{label}</span>
-                      <div className="p-1 rounded-lg bg-coopBlue/20 border border-coopBlue/30 text-coopBlue shrink-0 ml-1">
-                        <Maximize2 size={11} />
-                      </div>
                     </div>
 
                     {/* Shine sweep effect on hover */}
@@ -500,8 +478,8 @@ const Page = () => {
             </div>
           </div>
 
-          {/* â”€â”€ FLOATING ECO TAB (with ripple) â”€â”€ */}
-          {!showEcoBranch && (
+          {/* ── FLOATING ECO TAB (with ripple) ── */}
+          {!showEcoBranch && !showGameHub && (
             <button
               onClick={(e) => { createRipple(e); setShowEcoBranch(true); }}
               title="View ECO Branches"
@@ -509,42 +487,91 @@ const Page = () => {
               style={{
                 position: "fixed",
                 left: 0,
-                top: "50%",
+                top: "calc(50% - 34px)",
                 transform: "translateY(-50%)",
                 zIndex: 9999,
                 background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
                 color: "#fff",
                 border: "none",
                 borderRadius: "0 16px 16px 0",
-                padding: "16px 22px 16px 16px",
+                padding: "14px 20px 14px 14px",
                 cursor: "pointer",
                 display: "flex",
                 flexDirection: "row",
                 alignItems: "center",
                 gap: "8px",
+                boxShadow: "0 4px 16px rgba(0,165,80,0.3)",
                 transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%) translateX(5px)";
-                (e.currentTarget as HTMLButtonElement).style.paddingLeft = "20px";
+                (e.currentTarget as HTMLButtonElement).style.paddingLeft = "18px";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%)";
-                (e.currentTarget as HTMLButtonElement).style.paddingLeft = "16px";
+                (e.currentTarget as HTMLButtonElement).style.paddingLeft = "14px";
               }}
             >
               <span
                 className="absolute w-full h-full rounded-r-2xl eco-pulse-ring opacity-40"
                 style={{ background: "rgba(0,165,80,0.35)", inset: 0, borderRadius: "0 16px 16px 0", zIndex: -1 }}
               />
-              <Leaf size={18} strokeWidth={2.5} className="eco-float" style={{ flexShrink: 0 }} />
+              <Leaf size={18} strokeWidth={2.5} style={{ flexShrink: 0 }} />
               <span style={{ fontWeight: 900, fontSize: "12px", letterSpacing: "0.2em" }}>ECO</span>
+            </button>
+          )}
+
+          {/* ── FLOATING GAMEHUB TAB (with ripple) ── */}
+          {!showEcoBranch && !showGameHub && (
+            <button
+              onClick={(e) => { createRipple(e); setShowGameHub(true); }}
+              title="Open GameHub"
+              className="ripple-btn"
+              style={{
+                position: "fixed",
+                left: 0,
+                top: "calc(50% + 34px)",
+                transform: "translateY(-50%)",
+                zIndex: 9999,
+                background: "linear-gradient(180deg, #0284c7 0%, #00adef 100%)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "0 16px 16px 0",
+                padding: "14px 20px 14px 14px",
+                cursor: "pointer",
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                gap: "8px",
+                boxShadow: "0 4px 16px rgba(0,173,239,0.35)",
+                transition: "transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.25s cubic-bezier(0.16, 1, 0.3, 1)",
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%) translateX(5px)";
+                (e.currentTarget as HTMLButtonElement).style.paddingLeft = "18px";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-50%)";
+                (e.currentTarget as HTMLButtonElement).style.paddingLeft = "14px";
+              }}
+            >
+              <span
+                className="absolute w-full h-full rounded-r-2xl eco-pulse-ring opacity-40"
+                style={{ background: "rgba(0,173,239,0.35)", inset: 0, borderRadius: "0 16px 16px 0", zIndex: -1 }}
+              />
+              <Gamepad2 size={18} strokeWidth={2.5} style={{ flexShrink: 0 }} />
+              {/* <span style={{ fontWeight: 900, fontSize: "12px", letterSpacing: "0.15em" }}>GAMEHUB</span> */}
             </button>
           )}
 
           <EcoBranchPanel
             open={showEcoBranch}
             onClose={() => setShowEcoBranch(false)}
+          />
+
+          <GameHubPanel
+            open={showGameHub}
+            onClose={() => setShowGameHub(false)}
           />
 
           {/* ── IMAGE LIGHTBOX MODAL ── */}

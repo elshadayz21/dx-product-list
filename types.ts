@@ -39,4 +39,14 @@ export interface DashboardStat {
   suffix?: string;
   icon: ReactNode;
 }
+
+export interface AwardCard {
+  id: string;
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  floatClass?: string;
+}
+
 

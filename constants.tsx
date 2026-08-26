@@ -1,6 +1,6 @@
 /** @format */
 
-import { Product, DashboardStat } from "./types";
+import { Product, DashboardStat, AwardCard } from "./types";
 import { Zap, Users, CreditCard, Building2 } from "lucide-react";
 
 export const products: Product[] = [
@@ -1066,4 +1066,27 @@ export const DASHBOARD_STATS: DashboardStat[] = [
   { key: "atms", label: "ATMs", target: 600, suffix: "+", icon: <CreditCard size={12} /> },
   { key: "branches", label: "Branches", target: 680, suffix: "+", icon: <Building2 size={12} /> },
 ];
+
+export const AWARD_CARDS: AwardCard[] = [
+  {
+    id: "banks",
+    src: "/top-100-african-banks.jpeg",
+    alt: "Top 100 African Banks",
+    width: 1080,
+    height: 1350,
+    floatClass: "float-card-1",
+  },
+  {
+    id: "msme",
+    src: "/global-msme-award.jpg",
+    alt: "Global MSME Award",
+    width: 864,
+    height: 1080,
+    floatClass: "float-card-2",
+  },
+];
+
+export const GAMEHUB_URL = "http://10.12.53.62:8080";
+
+
 
