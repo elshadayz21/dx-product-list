@@ -414,9 +414,14 @@ export const products: Product[] = [
     videos: ["/wro. genet michu testimonial.mp4"],
     imageUrl: "/products/MICHU.png",
     type: "",
-    iframeUrls: [
-      "https://metabase.michu.com.et/public/dashboard/14c647bf-d063-49d9-b868-41b53b4334fa?tab=25-michu-commercial",
+      vslaPhotos: [
+      {
+        src: "/michu-comparision-to-other-Digital-lending-providers.png",
+        alt: "michu-comparision-to-other-Digital-lending-providers",
+      },
+     
     ],
+    iframeUrls: [ ],
      produtType:"External"
   },
   {
@@ -1063,7 +1068,7 @@ export const products: Product[] = [
 export const DASHBOARD_STATS: DashboardStat[] = [
   { key: "products", label: "Products", target: 24, suffix: "+", icon: <Zap size={12} /> },
   { key: "customers", label: "Customers", target: 20, suffix: "M+", icon: <Users size={12} /> },
-  { key: "atms", label: "ATMs", target: 600, suffix: "+", icon: <CreditCard size={12} /> },
+  { key: "atms", label: "CRMs & ATMs", target: 900, suffix: "+", icon: <CreditCard size={12} /> },
   { key: "branches", label: "Branches", target: 680, suffix: "+", icon: <Building2 size={12} /> },
 ];
 
