@@ -375,18 +375,18 @@ const Page = () => {
           <div className="flex-1 container py-4 grid grid-cols-2 gap-5 relative z-10">
 
             {/* Left panel */}
-            <div className="h-[calc(100vh-155px)] flex flex-col gap-4 animate-slide-up">
+            <div className="h-[calc(100vh-155px)] flex flex-col justify-between gap-4 animate-slide-up">
               <CooperativeVision className="shrink-0" />
 
               {/* Award images with 3D tilt + glow trail */}
-              <div className="flex-1 min-h-0 flex gap-3 items-center justify-center">
+              <div className="flex-1 min-h-0 flex gap-4 items-center justify-center w-full">
                 {[
                   { id: "banks", src: "/top-100-african-banks.jpeg", alt: "Top 100 African Banks", label: "Top 100 African Banks" },
                   { id: "msme", src: "/global-msme-award.jpg", alt: "Global MSME Award", label: "Global MSME Award" },
                 ].map(({ id, src, alt, label }) => (
                   <div
                     key={id}
-                    className="flex-1 max-h-full aspect-[3/4] relative rounded-2xl overflow-hidden cursor-pointer group float-badge border border-slate-200/80 shadow-lg"
+                    className="flex-1 max-h-full aspect-[4/5] relative rounded-2xl overflow-hidden cursor-pointer group float-badge border border-slate-200/80 shadow-lg bg-slate-900"
                     style={{
                       transform: tilt[id]
                         ? `perspective(600px) rotateX(${tilt[id].x}deg) rotateY(${tilt[id].y}deg)`
@@ -402,20 +402,21 @@ const Page = () => {
                       src={src}
                       alt={alt}
                       layout="fill"
-                      className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out"
+                      objectFit="cover"
+                      className="w-full h-full rounded-2xl group-hover:scale-105 transition-transform duration-700 ease-out z-10"
                     />
                     {/* Overlay gradient on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-end p-3">
-                      <span className="text-white text-xs font-bold wipe-in">{label}</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl flex items-end p-4 z-20">
+                      <span className="text-white text-xs font-bold wipe-in drop-shadow">{label}</span>
                     </div>
                     {/* Shine sweep */}
                     <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl"
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl z-20"
                       style={{ background: "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.22) 50%, transparent 65%)" }}
                     />
                     {/* Glow border on hover */}
                     <div
-                      className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-20"
                       style={{ boxShadow: "inset 0 0 0 1.5px rgba(0,173,239,0.5), 0 0 24px rgba(0,173,239,0.2)" }}
                     />
                   </div>

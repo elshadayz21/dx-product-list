@@ -49,8 +49,8 @@ function ActionButton({
     <button
       onClick={onClick}
       className={`btn-shimmer relative flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] w-full hover:-translate-y-0.5 ${variant === "primary"
-          ? "text-white hover:shadow-blue-glow"
-          : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+        ? "text-white hover:shadow-blue-glow"
+        : "bg-slate-100 text-slate-700 hover:bg-slate-200"
         }`}
       style={
         variant === "primary"
@@ -240,8 +240,8 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     key={product.id}
                     onClick={() => handleProductSelect(product)}
                     className={`relative p-1.5 rounded-xl transition-all duration-200 flex-shrink-0 ${selectedProduct?.id === product.id
-                        ? "bg-[#00adef]/10 ring-2 ring-[#00adef]/40 scale-105"
-                        : "hover:bg-slate-100"
+                      ? "bg-[#00adef]/10 ring-2 ring-[#00adef]/40 scale-105"
+                      : "hover:bg-slate-100"
                       }`}
                   >
                     <Image
@@ -268,26 +268,23 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const ProductCard = ({ product }: { product: Product }) => {
     return (
       <div
-        className="product-card cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200/80 group transition-all duration-300 hover:-translate-y-1.5 hover:border-[#00adef]/40"
-        style={{
-          boxShadow: "0 2px 10px rgba(0,0,0,0.03)",
-        }}
+        className="product-card cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200/80 group transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#00adef]/60 h-full flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(0,173,239,0.18)]"
         onClick={() => handleProductSelect(product)}
       >
-        <div className="p-3 h-[160px] flex items-center justify-center bg-white overflow-hidden">
+        <div className="p-2 flex-1 min-h-[150px] w-full flex items-center justify-center bg-gradient-to-b from-slate-50/40 to-white overflow-hidden relative">
           <Image
             src={product.imageUrl}
             alt={product.name}
-            width={260}
-            height={150}
-            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 ease-out"
+            width={350}
+            height={220}
+            className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-500 ease-out"
           />
         </div>
-        <div className="px-3 pb-2.5 pt-1.5 flex items-center justify-between border-t border-slate-100 transition-colors duration-300 group-hover:bg-slate-50/80">
-          <span className="text-[11px] font-semibold text-slate-600 truncate pr-2 group-hover:text-coopBlue transition-colors duration-300">
+        <div className="px-3.5 py-2.5 flex items-center justify-between border-t border-slate-100 bg-white group-hover:bg-slate-50/80 transition-colors duration-300 shrink-0">
+          <span className="text-[12px] font-bold text-slate-700 truncate pr-2 group-hover:text-[#00adef] transition-colors duration-300">
             {product.name}
           </span>
-          <ExternalLink size={11} className="text-[#00adef] flex-shrink-0 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
+          <ExternalLink size={12} className="text-[#00adef] flex-shrink-0 opacity-40 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all duration-300" />
         </div>
       </div>
     );
@@ -301,9 +298,9 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
         className="h-full flex flex-col"
       >
         {/* Grid content */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area">
-          <TabsContent value="dxvalleyProducts" className="mt-0">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area flex flex-col">
+          <TabsContent value="dxvalleyProducts" className="mt-0 flex-1 flex flex-col">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 items-stretch auto-rows-fr">
               {products
                 .filter(
                   (p) =>
@@ -315,38 +312,37 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
           </TabsContent>
 
-          <TabsContent value="coreBankingProducts" className="mt-0">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <TabsContent value="coreBankingProducts" className="mt-0 flex-1 flex flex-col">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 items-stretch auto-rows-fr">
               {products
                 .filter((p) => p?.type === "corebankingapp")
                 .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
-          <TabsContent value="developmentProducts" className="mt-0">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <TabsContent value="developmentProducts" className="mt-0 flex-1 flex flex-col">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 items-stretch auto-rows-fr">
               {products
                 .filter((p) => p?.type === "underDevelopment")
                 .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
-          <TabsContent value="imageTab" className="mt-0 h-full">
-            <div className="flex justify-center items-center py-2 h-full">
+          <TabsContent value="imageTab" className="mt-0 flex-1 flex flex-col">
+            <div className="flex justify-center items-center py-2 flex-1 h-full">
               <div
-                className="rounded-2xl overflow-hidden max-w-md flex flex-col items-center bg-white border border-slate-200/80"
-                style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.08)" }}
+                className="rounded-2xl overflow-hidden max-w-md w-full h-full flex flex-col items-center bg-white border border-slate-200/80 shadow-md"
               >
-                <div className="p-2 bg-slate-50 flex items-center justify-center">
+                <div className="p-3 bg-slate-50 flex-1 flex items-center justify-center w-full min-h-[220px]">
                   <Image
                     src="/image.jpeg"
                     alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
                     width={450}
                     height={300}
-                    className="max-h-[calc(100vh-280px)] w-auto h-auto object-contain rounded-xl"
+                    className="max-h-[calc(100vh-280px)] w-full h-full object-contain rounded-xl"
                   />
                 </div>
-                <div className="bg-white px-4 py-1.5 text-xs text-slate-500 border-t w-full text-center shrink-0">
+                <div className="bg-white px-4 py-2 text-xs text-slate-500 border-t w-full text-center shrink-0">
                   Source:{" "}
                   <a
                     href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ"
@@ -378,8 +374,8 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                 key={value}
                 value={value}
                 className={`relative text-[11px] font-medium py-2 px-1 rounded-lg transition-all duration-200 ${activeTab === value
-                    ? "text-white bg-white/10"
-                    : "text-white/40 hover:text-white/70 hover:bg-white/5"
+                  ? "text-white bg-white/10"
+                  : "text-white/40 hover:text-white/70 hover:bg-white/5"
                   }`}
               >
                 {label}
