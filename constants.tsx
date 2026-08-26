@@ -1091,7 +1091,9 @@ export const AWARD_CARDS: AwardCard[] = [
   },
 ];
 
-export const GAMEHUB_URL = "http://10.12.53.62:8080";
+// export const GAMEHUB_URL = "http://10.12.53.62:8080";
+export const GAMEHUB_URL = "http://gamehub.coopbank.local/";
+
 
 
 
