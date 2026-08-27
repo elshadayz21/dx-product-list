@@ -3,6 +3,9 @@
 import { Product, DashboardStat, AwardCard } from "./types";
 import { Zap, Users, CreditCard, Building2 } from "lucide-react";
 
+// export const GAMEHUB_URL = "http://10.12.53.62:8080";
+export const GAMEHUB_URL = "http://gamehub.coopbank.local";
+
 export const products: Product[] = [
   {
     id: 1,
@@ -1042,6 +1045,23 @@ export const products: Product[] = [
     imageUrl: "/products/global-msme award.jpg",
     type: "dropdownMenu",
   },
+  {
+    id: 33,
+    name: "GameHub",
+    description: (
+      <div>
+        <p className="mb-2">
+          CoopBank Interactive GameHub for engaging visitor experiences and learning.
+        </p>
+      </div>
+    ),
+    link: GAMEHUB_URL,
+    file: "",
+    moto: "Play, Engage & Experience",
+    video: "",
+    imageUrl: "",
+    type: "dropdownMenu",
+  },
   // {
   //   id: 20,
   //   name: "App Connect",
@@ -1090,10 +1110,3 @@ export const AWARD_CARDS: AwardCard[] = [
     floatClass: "float-card-2",
   },
 ];
-
-// export const GAMEHUB_URL = "http://10.12.53.62:8080";
-export const GAMEHUB_URL = "http://gamehub.coopbank.local";
-
-
-
-

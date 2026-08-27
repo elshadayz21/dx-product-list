@@ -408,6 +408,20 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                       </DropdownMenuItem>
                     );
                   }
+                  if (product.name === "GameHub") {
+                    return (
+                      <DropdownMenuItem asChild key={product.id}>
+                        <a
+                          href={product.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="cursor-pointer text-sm text-slate-700 flex items-center gap-1.5"
+                        >
+                          🎮 {product.name}
+                        </a>
+                      </DropdownMenuItem>
+                    );
+                  }
                   return (
                     <DropdownMenuItem asChild key={product.id}>
                       <a

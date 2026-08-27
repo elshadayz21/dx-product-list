@@ -10,7 +10,7 @@ import React, { useEffect, useState, useRef, useCallback } from "react";
 import Image from "next/image";
 import { preloadEcoBranchAssets } from "@/lib/eco-branch";
 import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield, X, Maximize2, Gamepad2 } from "lucide-react";
-import { DASHBOARD_STATS, products, AWARD_CARDS } from "@/constants";
+import { DASHBOARD_STATS, products, AWARD_CARDS, GAMEHUB_URL } from "@/constants";
 import { Product } from "@/types";
 
 const getProductFontColor = (product: Product) => {
@@ -522,9 +522,12 @@ const Page = () => {
           )}
 
           {/* ── FLOATING GAMEHUB TAB (with ripple) ── */}
-          {!showEcoBranch && !showGameHub && (
+          {!showEcoBranch && (
             <button
-              onClick={(e) => { createRipple(e); setShowGameHub(true); }}
+              onClick={(e) => {
+                createRipple(e);
+                window.open(GAMEHUB_URL, "_blank", "noopener,noreferrer");
+              }}
               title="Open GameHub"
               className="ripple-btn"
               style={{

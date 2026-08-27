@@ -2,7 +2,7 @@
 
 "use client";
 
-import { X, House, Gamepad2 } from "lucide-react";
+import { X, House, Gamepad2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { GAMEHUB_URL } from "@/constants";
@@ -114,19 +114,34 @@ export default function GameHubPanel({
             <span>🎮</span>
             <span>Play, Engage &amp; Experience</span>
           </div>
-          <Button
-            onClick={onClose}
-            size="sm"
-            tabIndex={open ? 0 : -1}
-            className="btn-shimmer shrink-0 h-8 text-xs text-white rounded-xl font-medium"
-            style={{
-              background: "linear-gradient(135deg, #00adef 0%, #0090c8 100%)",
-              boxShadow: "0 2px 8px rgba(0,173,239,0.35)",
-            }}
-          >
-            <House className="mr-1.5 h-3.5 w-3.5" />
-            Go back
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={() => window.open(iframeUrl, "_blank", "noopener,noreferrer")}
+              size="sm"
+              tabIndex={open ? 0 : -1}
+              className="btn-shimmer shrink-0 h-8 text-xs text-white rounded-xl font-medium"
+              style={{
+                background: "linear-gradient(135deg, #0284c7 0%, #00adef 100%)",
+                boxShadow: "0 2px 8px rgba(0,173,239,0.35)",
+              }}
+            >
+              <ExternalLink className="mr-1.5 h-3.5 w-3.5" />
+              Open in New Tab
+            </Button>
+            <Button
+              onClick={onClose}
+              size="sm"
+              tabIndex={open ? 0 : -1}
+              className="btn-shimmer shrink-0 h-8 text-xs text-white rounded-xl font-medium"
+              style={{
+                background: "linear-gradient(135deg, #00adef 0%, #0090c8 100%)",
+                boxShadow: "0 2px 8px rgba(0,173,239,0.35)",
+              }}
+            >
+              <House className="mr-1.5 h-3.5 w-3.5" />
+              Go back
+            </Button>
+          </div>
         </div>
       </div>
     </div>
