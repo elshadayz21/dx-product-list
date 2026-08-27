@@ -3,8 +3,8 @@
 import { Product, DashboardStat, AwardCard } from "./types";
 import { Zap, Users, CreditCard, Building2 } from "lucide-react";
 
-// export const GAMEHUB_URL = "http://10.12.53.62:8080";
-export const GAMEHUB_URL = "http://gamehub.coopbank.local";
+export const GAMEHUB_URL = "http://10.12.53.62:8080";
+// export const GAMEHUB_URL = "http://gamehub.coopbank.local";
 
 export const products: Product[] = [
   {
