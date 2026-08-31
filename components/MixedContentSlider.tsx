@@ -112,7 +112,7 @@ export default function MixedContentSlider({
   return (
     <div
       className={cn(
-        "relative w-full h-full min-h-[360px] mx-auto overflow-hidden rounded-lg select-none",
+        "relative w-full h-full min-h-[360px] mx-auto rounded-lg select-none overflow-hidden",
         className
       )}
       aria-roledescription="carousel"
@@ -124,25 +124,39 @@ export default function MixedContentSlider({
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseLeave}
     >
-      <div
-        className="flex transition-transform duration-500 ease-in-out h-full"
-        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-      >
-        {items.map((item, index) => {
-          const itemKey = `${item.type}-${item.src}`;
-          return (
+      {/*
+       * ANDROID FIX: Absolute-positioned stacking instead of translateX flex strip.
+       * On Android Chrome/Brave, iframes get their own GPU compositing layer and
+       * do NOT render when moved off-screen via CSS transform inside overflow:hidden.
+       * By stacking all slides at position:absolute inset-0 and toggling opacity,
+       * every iframe stays in the visible viewport (just transparent) so it loads
+       * and paints correctly on every Android browser.
+       */}
+      {items.map((item, index) => {
+        const itemKey = `${item.type}-${item.src}`;
+        const isActive = index === currentIndex;
+        return (
           <div
             key={itemKey}
-            className="flex-shrink-0 w-full h-full"
+            style={{
+              position: "absolute",
+              inset: 0,
+              opacity: isActive ? 1 : 0,
+              pointerEvents: isActive ? "auto" : "none",
+              zIndex: isActive ? 1 : 0,
+              // Instant switch — no CSS transition so global animation-kill CSS
+              // rules have zero effect and the iframe paints on the first frame.
+            }}
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${items.length}`}
+            aria-hidden={!isActive}
           >
             {item.type === "video" && (
               <YouTubePlayer
                 key={itemKey}
                 url={item.src}
-                autoplay={index === currentIndex}
-                muted={true} // keep autoplay stable across slides
+                autoplay={isActive}
+                muted={true}
               />
             )}
             {item.type === "image" && (
@@ -171,32 +185,72 @@ export default function MixedContentSlider({
             {item.type === "iframe" && (
               <iframe
                 src={item.src}
-                className="w-full h-full border-0"
+                style={{ width: "100%", height: "100%", border: "none" }}
                 title={item.alt || `Slide ${index + 1}`}
                 allowFullScreen
-              ></iframe>
+              />
             )}
           </div>
-          );
-        })}
-      </div>
+        );
+      })}
+
+      {/* Slide counter badge */}
+      {items.length > 1 && (
+        <div
+          style={{
+            position: "absolute",
+            top: 10,
+            right: 12,
+            zIndex: 20,
+            background: "rgba(0,0,0,0.45)",
+            color: "#fff",
+            fontSize: 11,
+            fontWeight: 600,
+            padding: "2px 8px",
+            borderRadius: 99,
+            pointerEvents: "none",
+          }}
+        >
+          {currentIndex + 1} / {items.length}
+        </div>
+      )}
 
       {items.length > 1 && (
         <>
           <button
-            className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors"
+            style={{ position: "absolute", left: 12, top: "50%", transform: "translateY(-50%)", zIndex: 20, background: "rgba(0,0,0,0.35)", border: "none", borderRadius: "50%", padding: 8, color: "#fff", cursor: "pointer" }}
             onClick={goToPrevSlide}
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
           <button
-            className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors"
+            style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", zIndex: 20, background: "rgba(0,0,0,0.35)", border: "none", borderRadius: "50%", padding: 8, color: "#fff", cursor: "pointer" }}
             onClick={goToNextSlide}
             aria-label="Next slide"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
+
+          {/* Dot indicators */}
+          <div style={{ position: "absolute", bottom: 10, left: "50%", transform: "translateX(-50%)", zIndex: 20, display: "flex", gap: 6 }}>
+            {items.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                style={{
+                  width: i === currentIndex ? 20 : 8,
+                  height: 8,
+                  borderRadius: 99,
+                  background: i === currentIndex ? "#fff" : "rgba(255,255,255,0.45)",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                }}
+              />
+            ))}
+          </div>
         </>
       )}
     </div>

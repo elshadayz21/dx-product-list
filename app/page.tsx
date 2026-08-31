@@ -52,11 +52,12 @@ const Page = () => {
     }
   }, [isPinVerified]);
 
-  // Animated counter
+  // Animated counter — 8 steps keeps it smooth without causing 50 rapid
+  // React re-renders that jitter the layout on Android TV browsers.
   useEffect(() => {
     if (!statsVisible) return;
     const duration = 1400;
-    const steps = 50;
+    const steps = 8;
     const interval = duration / steps;
     let step = 0;
 
@@ -221,13 +222,22 @@ const Page = () => {
             </div>
 
             {/* Stats ticker */}
-            <div className="flex items-center gap-5">
+            {/*
+             * contain:layout style — tells the browser nothing inside this element
+             * can affect outside layout. The counter numbers changing width during
+             * animation are completely isolated; the product card grid below never
+             * gets a reflow signal from these updates.
+             */}
+            <div
+              className="flex items-center gap-5"
+              style={{ contain: "layout style", minWidth: "max-content" }}
+            >
               {DASHBOARD_STATS.map(({ key, icon, label, suffix = "", target }) => (
                 <div key={key || label} className="flex items-center gap-1.5">
                   <span className="text-coopBlue/70">{icon}</span>
                   <span
                     className="stat-counter text-white font-bold text-sm"
-                    style={{ minWidth: `${(target.toLocaleString() + suffix).length}ch` }}
+                    style={{ minWidth: `${(target.toLocaleString() + suffix).length + 1}ch` }}
                   >
                     {(counter[key] ?? 0).toLocaleString()}{suffix}
                   </span>
