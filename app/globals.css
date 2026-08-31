@@ -218,14 +218,29 @@
   text-shadow: 0 0 10px rgba(0, 173, 239, 0.7), 0 0 30px rgba(0, 173, 239, 0.3);
 }
 
-/* Marquee ticker container (now static / scrollable) */
+/* Marquee scroll animation */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Marquee continuous scrolling carousel */
 .marquee-track {
   display: flex;
   width: max-content;
+  animation: marquee 70s linear infinite !important;
 }
 
-/* System-wide rule: Disable all animations and keyframe executions */
-*,
+.marquee-track:hover {
+  animation-play-state: paused !important;
+}
+
+/* System-wide rule: Disable unwanted animations, except for the marquee track */
+*:not(.marquee-track):not(.marquee-track *),
 *::before,
 *::after {
   animation: none !important;

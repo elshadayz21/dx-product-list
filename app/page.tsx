@@ -38,17 +38,41 @@ const Page = () => {
   const [showGameHub, setShowGameHub] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statsVisible, setStatsVisible] = useState(false);
   const [activeImageModal, setActiveImageModal] = useState<{ src: string; title: string } | null>(null);
-  const [counter] = useState<{ [key: string]: number }>(() =>
-    DASHBOARD_STATS.reduce((acc, s) => ({ ...acc, [s.key]: s.target }), {})
+  const [counter, setCounter] = useState<{ [key: string]: number }>(() =>
+    DASHBOARD_STATS.reduce((acc, s) => ({ ...acc, [s.key]: 0 }), {})
   );
   const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (isPinVerified) {
       preloadEcoBranchAssets();
+      setStatsVisible(true);
     }
   }, [isPinVerified]);
+
+  // Animated counter
+  useEffect(() => {
+    if (!statsVisible) return;
+    const duration = 1400;
+    const steps = 50;
+    const interval = duration / steps;
+    let step = 0;
+
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const updated: { [key: string]: number } = {};
+      DASHBOARD_STATS.forEach((stat) => {
+        updated[stat.key] = Math.round(stat.target * ease);
+      });
+      setCounter(updated);
+      if (step >= steps) clearInterval(timer);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [statsVisible]);
 
   const handlePinSubmit = async () => {
     setIsSubmitting(true);
@@ -224,31 +248,35 @@ const Page = () => {
             </div>
           </header>
 
-          {/* ── PRODUCT TICKER BAR (Static) ── */}
+          {/* ── MARQUEE TICKER (continuous scrolling carousel) ── */}
           <div
-            className="w-full overflow-x-auto py-1.5 relative z-10"
+            className="w-full overflow-hidden py-1.5 relative z-10"
             style={{
               background: "linear-gradient(90deg, rgba(0,173,239,0.08), rgba(0,144,200,0.05), rgba(0,173,239,0.08))",
               borderBottom: "1px solid rgba(0,173,239,0.1)",
             }}
           >
-            <div className="flex items-center gap-6 px-4">
-              {products.map((product, idx) => {
-                const color = getProductFontColor(product);
-                return (
-                  <span
-                    key={`${product.id ?? idx}`}
-                    className="flex items-center gap-1.5 text-[11px] font-semibold whitespace-nowrap"
-                    style={{ color }}
-                  >
-                    <span
-                      className="w-1.5 h-1.5 rounded-full inline-block shrink-0 opacity-80"
-                      style={{ backgroundColor: color }}
-                    />
-                    {product.name}
-                  </span>
-                );
-              })}
+            <div className="marquee-track">
+              {[...Array(2)].map((_, repeat) => (
+                <div key={repeat} className="flex items-center gap-6 px-3">
+                  {products.map((product, idx) => {
+                    const color = getProductFontColor(product);
+                    return (
+                      <span
+                        key={`${repeat}-${product.id ?? idx}`}
+                        className="flex items-center gap-1.5 text-[11px] font-semibold whitespace-nowrap"
+                        style={{ color }}
+                      >
+                        <span
+                          className="w-1.5 h-1.5 rounded-full inline-block shrink-0 opacity-80"
+                          style={{ backgroundColor: color }}
+                        />
+                        {product.name}
+                      </span>
+                    );
+                  })}
+                </div>
+              ))}
             </div>
           </div>
 
