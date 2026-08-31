@@ -718,7 +718,7 @@ export const products: Product[] = [
     videos: ["/furtuu-testimonial-video.mp4"],
     imageUrl: "/products/furtuu-Raboo-Coop.png",
     type: "",
-    iframeUrls: [],
+    iframeUrls: ["http://10.2.125.7:8089/superset/dashboard/84/?native_filters_key=zHklMBPs3FBuxRurICCWrO84YVruzob2-51kiwZ3b9ZSG3p-d321jw8k9mqMtf5v"],
     // link: "https://agrilm-pilot.agtuall.com/furtuu/login",
     link:"http://10.8.101.121:3000/",
     produtType:"Internal"
@@ -1099,7 +1099,6 @@ export const AWARD_CARDS: AwardCard[] = [
     alt: "Top 100 African Banks",
     width: 1080,
     height: 1350,
-    floatClass: "float-card-1",
   },
   {
     id: "msme",
@@ -1107,6 +1106,5 @@ export const AWARD_CARDS: AwardCard[] = [
     alt: "Global MSME Award",
     width: 864,
     height: 1080,
-    floatClass: "float-card-2",
   },
 ];

@@ -33,8 +33,7 @@ const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
           </div>
 
           <Sparkles
-            className="absolute top-4 right-4 text-sky-400 w-5 h-5 eco-sparkle opacity-60"
-            style={{ animationDelay: "1.5s" }}
+            className="absolute top-4 right-4 text-sky-400 w-5 h-5 opacity-60"
           />
 
           {/* Content */}

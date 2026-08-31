@@ -48,7 +48,7 @@ function ActionButton({
   return (
     <button
       onClick={onClick}
-      className={`btn-shimmer relative flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] w-full hover:-translate-y-0.5 ${variant === "primary"
+      className={`relative flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] w-full hover:-translate-y-0.5 ${variant === "primary"
         ? "text-white hover:shadow-blue-glow"
         : "bg-slate-100 text-slate-700 hover:bg-slate-200"
         }`}
@@ -120,7 +120,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   /* ── PRODUCT DETAIL VIEW ────────────────────────────────── */
   if (selectedProduct) {
     return (
-      <div className="flex flex-col h-full animate-scale-in">
+      <div className="flex flex-col h-full">
         {/* Detail header */}
         <div
           className="shrink-0 px-4 py-3 flex items-center gap-3"
@@ -162,7 +162,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   height={180}
                   className="object-contain w-full max-h-44 p-4"
                 />
-                <Sparkles className="absolute bottom-2 right-2 text-sky-300 w-6 h-6 eco-sparkle opacity-60" />
+                <Sparkles className="absolute bottom-2 right-2 text-sky-300 w-6 h-6 opacity-60" />
               </div>
 
               <div className="flex flex-col gap-2">

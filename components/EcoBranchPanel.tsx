@@ -76,9 +76,9 @@ export default function EcoBranchPanel({
     <>
       <div
         className={cn(
-          "fixed inset-0 flex items-center justify-center p-3 sm:p-4 transition-opacity duration-200",
+          "fixed inset-0 flex items-center justify-center p-3 sm:p-4",
           open
-            ? "z-50 visible opacity-100 bg-black/65 animate-in fade-in"
+            ? "z-50 visible opacity-100 bg-black/65"
             : "z-[-1] invisible opacity-0 pointer-events-none bg-transparent"
         )}
         role="dialog"
@@ -88,8 +88,7 @@ export default function EcoBranchPanel({
       >
         <div
           className={cn(
-            "flex flex-col w-full h-full max-h-full bg-white rounded-xl shadow-2xl overflow-hidden border",
-            open ? "animate-in zoom-in-95 duration-200" : ""
+            "flex flex-col w-full h-full max-h-full bg-white rounded-xl shadow-2xl overflow-hidden border"
           )}
         >
           <div

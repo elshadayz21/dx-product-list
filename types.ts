@@ -46,7 +46,6 @@ export interface AwardCard {
   alt: string;
   width?: number;
   height?: number;
-  floatClass?: string;
 }
 
 

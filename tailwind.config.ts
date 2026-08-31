@@ -76,44 +76,8 @@ const config = {
         'card-hover': '0 16px 32px rgba(0, 173, 239, 0.12), 0 4px 12px rgba(0,0,0,0.04)',
         'login-card': '0 32px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)',
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "slide-up": {
-          from: { opacity: "0", transform: "translateY(20px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        "scale-in": {
-          from: { opacity: "0", transform: "scale(0.92)" },
-          to: { opacity: "1", transform: "scale(1)" },
-        },
-        "shimmer-sweep": {
-          "0%": { transform: "translateX(-100%) skewX(-12deg)" },
-          "100%": { transform: "translateX(200%) skewX(-12deg)" },
-        },
-        "pulse-ring": {
-          "0%, 100%": { boxShadow: "0 0 0 0 rgba(0, 173, 239, 0)" },
-          "50%": { boxShadow: "0 0 0 8px rgba(0, 173, 239, 0.15)" },
-        },
-      },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
-        "slide-up": "slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "fade-in": "fade-in 0.4s ease forwards",
-        "scale-in": "scale-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-        "pulse-ring": "pulse-ring 2s ease-in-out infinite",
-      },
+      keyframes: {},
+      animation: {},
       fontFamily: {
         inter: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
       },
