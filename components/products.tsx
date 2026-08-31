@@ -9,6 +9,7 @@ import {
   Sparkles,
   ArrowLeft,
   Play,
+  LayoutDashboard,
 } from "lucide-react";
 import { Product } from "@/types";
 import { products } from "@/constants";
@@ -69,11 +70,13 @@ function ActionButton({
 export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showVideo, setShowVideo] = useState(false);
+  const [showDashboard, setShowDashboard] = useState(false);
   const [activeTab, setActiveTab] = useState("dxvalleyProducts");
 
   const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
     setShowVideo(false);
+    setShowDashboard(false);
   };
 
   const handleOpenLink = (url: string | undefined) => {
@@ -99,6 +102,8 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
       );
     }
     setSelectedProduct(null);
+    setShowVideo(false);
+    setShowDashboard(false);
   };
 
   const mediaContent = useMemo(() => {
@@ -173,9 +178,21 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   </ActionButton>
                 )}
                 {selectedProduct.video && (
-                  <ActionButton onClick={() => setShowVideo((v) => !v)}>
+                  <ActionButton onClick={() => {
+                    setShowVideo((v) => !v);
+                    setShowDashboard(false);
+                  }}>
                     {showVideo ? <NotepadText size={14} /> : <Play size={14} />}
                     {showVideo ? "Show Description" : "Watch Video"}
+                  </ActionButton>
+                )}
+                {selectedProduct.dashboard && (
+                  <ActionButton onClick={() => {
+                    setShowDashboard((d) => !d);
+                    setShowVideo(false);
+                  }}>
+                    {showDashboard ? <NotepadText size={14} /> : <LayoutDashboard size={14} />}
+                    {showDashboard ? "Show Description" : "Dashboard"}
                   </ActionButton>
                 )}
                 {selectedProduct.link && (
@@ -190,9 +207,18 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
               </div>
             </div>
 
-            {/* Right — description / video / media */}
+            {/* Right — description / video / dashboard / media */}
             <div className="flex-1 min-w-0 flex flex-col gap-3">
-              {showVideo && selectedProduct.video ? (
+              {showDashboard && selectedProduct.dashboard ? (
+                <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm w-full h-full min-h-[380px] bg-slate-900">
+                  <iframe
+                    src={selectedProduct.dashboard}
+                    title={`${selectedProduct.name} Dashboard`}
+                    className="w-full h-full min-h-[380px] border-0"
+                    allowFullScreen
+                  />
+                </div>
+              ) : showVideo && selectedProduct.video ? (
                 <div className="rounded-2xl overflow-hidden" style={{ minHeight: 280 }}>
                   <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
                 </div>

@@ -12,6 +12,7 @@ export interface Product {
   iframeUrls?: string[];
   imageUrl: string;
   type?:string;
+  dashboard?: string;
   vslaPhotos?: VslaPhoto[];
   produtType?:string;
 
