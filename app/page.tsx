@@ -222,13 +222,16 @@ const Page = () => {
 
             {/* Stats ticker */}
             <div className="flex items-center gap-5">
-              {DASHBOARD_STATS.map(({ key, icon, label, suffix = "" }) => (
+              {DASHBOARD_STATS.map(({ key, icon, label, suffix = "", target }) => (
                 <div key={key || label} className="flex items-center gap-1.5">
                   <span className="text-coopBlue/70">{icon}</span>
-                  <span className="text-white font-bold text-sm tabular-nums">
+                  <span
+                    className="stat-counter text-white font-bold text-sm"
+                    style={{ minWidth: `${(target.toLocaleString() + suffix).length}ch` }}
+                  >
                     {(counter[key] ?? 0).toLocaleString()}{suffix}
                   </span>
-                  <span className="text-white/30 text-[10px]">{label}</span>
+                  <span className="text-white/30 text-[10px] whitespace-nowrap">{label}</span>
                 </div>
               ))}
 

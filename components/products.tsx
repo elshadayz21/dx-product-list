@@ -223,17 +223,19 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
                 </div>
               ) : (
-                <>
-                  <p className="text-sm text-slate-600 leading-relaxed">
+                <div className="flex flex-col gap-3 h-full">
+                  <p className="text-sm text-slate-600 leading-relaxed shrink-0">
                     {selectedProduct.description}
                   </p>
                   {mediaContent.length > 0 && (
-                    <MemoizedMixedContentSlider
-                      key={selectedProduct.id}
-                      items={mediaContent}
-                    />
+                    <div className="flex-1 min-h-[360px]">
+                      <MemoizedMixedContentSlider
+                        key={selectedProduct.id}
+                        items={mediaContent}
+                      />
+                    </div>
                   )}
-                </>
+                </div>
               )}
             </div>
           </div>

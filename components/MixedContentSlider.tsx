@@ -112,7 +112,7 @@ export default function MixedContentSlider({
   return (
     <div
       className={cn(
-        "relative w-full h-48 md:h-48 mx-auto overflow-hidden rounded-lg select-none",
+        "relative w-full h-full min-h-[360px] mx-auto overflow-hidden rounded-lg select-none",
         className
       )}
       aria-roledescription="carousel"
