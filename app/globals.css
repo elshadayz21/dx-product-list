@@ -239,15 +239,6 @@
   animation-play-state: paused !important;
 }
 
-/* System-wide rule: Disable CSS keyframe animations except for the marquee track.
-   NOTE: We intentionally do NOT kill `transition` here — that would break
-   product-card hover/scale effects and the slider transform. */
-*:not(.marquee-track):not(.marquee-track *) {
-  animation-name: none !important;
-  animation-duration: 0s !important;
-  animation-delay: 0s !important;
-  animation-iteration-count: 1 !important;
-}
 
 /* Fix stat counter layout shift: reserve space for the widest possible number
    so the header never reflows when the counter animates. */
