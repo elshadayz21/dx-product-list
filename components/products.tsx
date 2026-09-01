@@ -210,11 +210,24 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             {/* Right — description / video / dashboard / media */}
             <div className="flex-1 min-w-0 flex flex-col gap-3">
               {showDashboard && selectedProduct.dashboard ? (
-                <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm w-full h-full min-h-[380px] bg-slate-900">
+                <div
+                  style={{
+                    borderRadius: "1rem",
+                    overflow: "hidden",
+                    border: "1px solid rgba(226,232,240,0.8)",
+                    boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
+                    width: "100%",
+                    height: "100%",
+                    minHeight: 420,
+                    background: "#0f172a",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
                   <iframe
                     src={selectedProduct.dashboard}
                     title={`${selectedProduct.name} Dashboard`}
-                    className="w-full h-full min-h-[380px] border-0"
+                    style={{ width: "100%", flex: 1, minHeight: 420, border: "none" }}
                     allowFullScreen
                   />
                 </div>
