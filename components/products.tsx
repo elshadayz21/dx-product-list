@@ -255,7 +255,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
         </main>
 
         {/* Thumbnail strip */}
-        <nav className="shrink-0 border-t bg-white/80 backdrop-blur-sm">
+        <nav className="shrink-0 border-t bg-white">
           <ScrollArea className="w-full whitespace-nowrap">
             <div className="flex w-max items-center px-2 py-2 gap-1">
               <button
