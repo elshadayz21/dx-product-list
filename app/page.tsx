@@ -232,7 +232,7 @@ const Page = () => {
               className="flex items-center gap-5"
               style={{ contain: "layout style", minWidth: "max-content" }}
             >
-              {DASHBOARD_STATS.map(({ key, icon, label, suffix = "", target }) => (
+              {/* {DASHBOARD_STATS.map(({ key, icon, label, suffix = "", target }) => (
                 <div key={key || label} className="flex items-center gap-1.5">
                   <span className="text-coopBlue/70">{icon}</span>
                   <span
@@ -243,7 +243,7 @@ const Page = () => {
                   </span>
                   <span className="text-white/30 text-[10px] whitespace-nowrap">{label}</span>
                 </div>
-              ))}
+              ))} */}
 
               <div className="h-4 w-px bg-white/10" />
 
@@ -262,7 +262,7 @@ const Page = () => {
           </header>
 
           {/* ── MARQUEE TICKER (continuous scrolling carousel) ── */}
-          <div
+          {/* <div
             className="w-full overflow-hidden py-1.5 relative z-10"
             style={{
               background: "linear-gradient(90deg, rgba(0,173,239,0.08), rgba(0,144,200,0.05), rgba(0,173,239,0.08))",
@@ -291,7 +291,7 @@ const Page = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* ── CONTENT ── */}
           <div className="flex-1 container py-4 grid grid-cols-2 gap-5 relative z-10">
