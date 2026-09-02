@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from "react";
+import React, { useState, useMemo, useRef } from "react";
 import Image from "next/image";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
@@ -16,6 +16,7 @@ import { products } from "@/constants";
 import YouTubePlayer from "./YouTubePlayer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MixedContentSlider from "./MixedContentSlider";
+import IframePortal from "./IframePortal";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -72,6 +73,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const [showVideo, setShowVideo] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
   const [activeTab, setActiveTab] = useState("dxvalleyProducts");
+  const dashboardHostRef = useRef<HTMLDivElement>(null);
 
   const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
@@ -210,13 +212,19 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             {/* Right — description / video / dashboard / media */}
             <div className="flex-1 min-w-0 flex flex-col gap-3">
               {showDashboard && selectedProduct.dashboard ? (
-                <div className="iframe-host rounded-2xl border border-slate-200/80 shadow-sm">
-                  <iframe
+                <>
+                  <div
+                    ref={dashboardHostRef}
+                    className="iframe-host rounded-2xl border border-slate-200/80 shadow-sm min-h-[360px]"
+                    aria-hidden
+                  />
+                  <IframePortal
                     src={selectedProduct.dashboard}
                     title={`${selectedProduct.name} Dashboard`}
-                    allowFullScreen
+                    anchorRef={dashboardHostRef}
+                    visible={showDashboard}
                   />
-                </div>
+                </>
               ) : showVideo && selectedProduct.video ? (
                 <div className="rounded-2xl overflow-hidden" style={{ minHeight: 280 }}>
                   <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
@@ -304,7 +312,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             alt={product.name}
             width={350}
             height={220}
-            className="w-full h-full object-contain group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+            className="w-full h-full object-contain group-hover:scale-[1.03] transition-[transform] duration-500 ease-out"
           />
         </div>
         <div className="px-3.5 py-2.5 flex items-center justify-between border-t border-slate-100 bg-white group-hover:bg-slate-50/80 transition-colors duration-300 shrink-0">
@@ -325,7 +333,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
         className="h-full flex flex-col"
       >
         {/* Grid content */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area flex flex-col">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area flex flex-col product-grid-stable">
           <TabsContent value="dxvalleyProducts" className="mt-0">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products

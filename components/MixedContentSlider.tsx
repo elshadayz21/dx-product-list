@@ -8,6 +8,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import YouTubePlayer from "./YouTubePlayer";
 import Image from "next/image";
+import IframePortal from "./IframePortal";
 
 type ContentItem = {
   type: "video" | "image" | "iframe";
@@ -32,6 +33,7 @@ export default function MixedContentSlider({
   const mouseStartX = useRef<number | null>(null);
   const isDragging = useRef(false);
   const didSwipe = useRef(false);
+  const sliderHostRef = useRef<HTMLDivElement>(null);
 
   // Ensure we start from the first slide whenever the content set changes
   useEffect(() => {
@@ -109,8 +111,13 @@ export default function MixedContentSlider({
     return null;
   }
 
+  const activeItem = items[currentIndex];
+  const activeIframe =
+    activeItem?.type === "iframe" ? activeItem : null;
+
   return (
     <div
+      ref={sliderHostRef}
       className={cn(
         "relative w-full h-full min-h-[360px] mx-auto rounded-lg select-none overflow-hidden",
         className
@@ -134,7 +141,10 @@ export default function MixedContentSlider({
         return (
           <div
             key={itemKey}
-            className="iframe-host absolute inset-0"
+            className={cn(
+              "absolute inset-0",
+              item.type === "iframe" ? "iframe-host" : ""
+            )}
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${items.length}`}
           >
@@ -170,11 +180,9 @@ export default function MixedContentSlider({
               </button>
             )}
             {item.type === "iframe" && (
-              <iframe
-                key={item.src}
-                src={item.src}
-                title={item.alt || `Slide ${index + 1}`}
-                allowFullScreen
+              <div
+                className="w-full h-full min-h-[360px] bg-white rounded-lg border border-slate-200/80"
+                aria-label={item.alt || `Slide ${index + 1}`}
               />
             )}
           </div>
@@ -239,6 +247,15 @@ export default function MixedContentSlider({
             ))}
           </div>
         </>
+      )}
+
+      {activeIframe && (
+        <IframePortal
+          src={activeIframe.src}
+          title={activeIframe.alt || `Slide ${currentIndex + 1}`}
+          anchorRef={sliderHostRef}
+          visible
+        />
       )}
     </div>
   );
