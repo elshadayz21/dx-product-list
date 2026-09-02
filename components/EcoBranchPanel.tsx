@@ -76,11 +76,22 @@ export default function EcoBranchPanel({
     <>
       <div
         className={cn(
-          "fixed inset-0 flex items-center justify-center p-3 sm:p-4",
+          "fixed inset-0 flex items-center justify-center p-3 sm:p-4 transition-[visibility,background-color] duration-200",
           open
-            ? "z-50 visible opacity-100 bg-black/65"
-            : "z-[-1] invisible opacity-0 pointer-events-none bg-transparent"
+            ? "z-50 visible bg-black/65"
+            : "z-[-1] invisible pointer-events-none bg-transparent"
         )}
+        style={
+          open
+            ? undefined
+            : {
+                // Keep iframe warm without opacity:0 — Android WebView skips painting
+                // iframes inside transparent ancestors.
+                left: "-200vw",
+                width: "100vw",
+                height: "100vh",
+              }
+        }
         role="dialog"
         aria-modal="true"
         aria-hidden={!open}
@@ -132,10 +143,9 @@ export default function EcoBranchPanel({
               />
             </aside>
 
-            <main className="flex-1 min-w-0 min-h-0 bg-slate-50">
+            <main className="flex-1 min-w-0 min-h-0 bg-slate-50 iframe-host">
               <iframe
                 src={iframeUrl}
-                className="w-full h-full border-0"
                 title="CoopBank Eco-Branches Map"
                 allowFullScreen
               />
@@ -143,8 +153,7 @@ export default function EcoBranchPanel({
           </div>
 
           <div
-            className="shrink-0 border-t px-4 py-2.5 flex items-center justify-between gap-2"
-            style={{ background: "rgba(255,255,255,0.95)", backdropFilter: "blur(8px)" }}
+            className="shrink-0 border-t px-4 py-2.5 flex items-center justify-between gap-2 bg-white"
           >
             <div
               className="text-emerald-800 text-xs font-semibold py-1.5 px-3 rounded-full shadow-sm"

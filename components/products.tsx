@@ -210,24 +210,10 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             {/* Right — description / video / dashboard / media */}
             <div className="flex-1 min-w-0 flex flex-col gap-3">
               {showDashboard && selectedProduct.dashboard ? (
-                <div
-                  style={{
-                    borderRadius: "1rem",
-                    overflow: "hidden",
-                    border: "1px solid rgba(226,232,240,0.8)",
-                    boxShadow: "0 1px 2px rgba(0,0,0,0.05)",
-                    width: "100%",
-                    height: "100%",
-                    minHeight: 420,
-                    background: "#0f172a",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
+                <div className="iframe-host rounded-2xl border border-slate-200/80 shadow-sm">
                   <iframe
                     src={selectedProduct.dashboard}
                     title={`${selectedProduct.name} Dashboard`}
-                    style={{ width: "100%", flex: 1, minHeight: 420, border: "none" }}
                     allowFullScreen
                   />
                 </div>
@@ -309,7 +295,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const ProductCard = ({ product }: { product: Product }) => {
     return (
       <div
-        className="product-card cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200/80 group transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-[#00adef]/60 h-full flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(0,173,239,0.18)]"
+        className="product-card cursor-pointer rounded-2xl overflow-hidden bg-white border border-slate-200/80 group transition-shadow duration-300 ease-out hover:border-[#00adef]/60 h-[190px] flex flex-col justify-between shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_12px_32px_rgba(0,173,239,0.18)]"
         onClick={() => handleProductSelect(product)}
       >
         <div className="p-2 flex-1 min-h-[150px] w-full flex items-center justify-center bg-gradient-to-b from-slate-50/40 to-white overflow-hidden relative">
@@ -340,8 +326,8 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
       >
         {/* Grid content */}
         <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area flex flex-col">
-          <TabsContent value="dxvalleyProducts" className="mt-0 flex-1 flex flex-col">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 items-stretch auto-rows-fr">
+          <TabsContent value="dxvalleyProducts" className="mt-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products
                 .filter(
                   (p) =>
@@ -353,16 +339,16 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
           </TabsContent>
 
-          <TabsContent value="coreBankingProducts" className="mt-0 flex-1 flex flex-col">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 items-stretch auto-rows-fr">
+          <TabsContent value="coreBankingProducts" className="mt-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products
                 .filter((p) => p?.type === "corebankingapp")
                 .map((p) => <ProductCard key={p.id} product={p} />)}
             </div>
           </TabsContent>
 
-          <TabsContent value="developmentProducts" className="mt-0 flex-1 flex flex-col">
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 flex-1 items-stretch auto-rows-fr">
+          <TabsContent value="developmentProducts" className="mt-0">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products
                 .filter((p) => p?.type === "underDevelopment")
                 .map((p) => <ProductCard key={p.id} product={p} />)}

@@ -52,27 +52,15 @@ const Page = () => {
     }
   }, [isPinVerified]);
 
-  // Animated counter — 8 steps keeps it smooth without causing 50 rapid
-  // React re-renders that jitter the layout on Android TV browsers.
   useEffect(() => {
     if (!statsVisible) return;
-    const duration = 1400;
-    const steps = 8;
-    const interval = duration / steps;
-    let step = 0;
 
-    const timer = setInterval(() => {
-      step++;
-      const progress = step / steps;
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const updated: { [key: string]: number } = {};
-      DASHBOARD_STATS.forEach((stat) => {
-        updated[stat.key] = Math.round(stat.target * ease);
-      });
-      setCounter(updated);
-      if (step >= steps) clearInterval(timer);
-    }, interval);
-    return () => clearInterval(timer);
+    // Set final values immediately to avoid header/grid reflow on TV browsers.
+    const finalValues = DASHBOARD_STATS.reduce(
+      (acc, stat) => ({ ...acc, [stat.key]: stat.target }),
+      {} as { [key: string]: number }
+    );
+    setCounter(finalValues);
   }, [statsVisible]);
 
   const handlePinSubmit = async () => {
@@ -338,7 +326,7 @@ const Page = () => {
 
             {/* Right panel — product list */}
             <div
-              className="h-[calc(100vh-155px)] rounded-2xl overflow-hidden flex flex-col border border-slate-200/80"
+              className="h-[calc(100vh-155px)] rounded-2xl overflow-y-auto flex flex-col border border-slate-200/80"
               style={{
                 boxShadow: "0 4px 32px rgba(0,0,0,0.06)",
                 background: "#fff",
@@ -353,16 +341,17 @@ const Page = () => {
             <button
               onClick={() => setShowEcoBranch(true)}
               title="View ECO Branches"
+              className="eco-tab-blink"
               style={{
                 position: "fixed",
-                left: 0,
+                right: 0,
                 top: "calc(50% - 34px)",
                 transform: "translateY(-50%)",
                 zIndex: 9999,
                 background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
                 color: "#fff",
                 border: "none",
-                borderRadius: "0 16px 16px 0",
+                borderRadius: "16px 0 0 16px",
                 padding: "14px 20px 14px 14px",
                 cursor: "pointer",
                 display: "flex",

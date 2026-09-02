@@ -10,7 +10,7 @@ const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
   return (
     <section className={`w-full flex flex-col ${className}`}>
       {/* Modern Card Container with top accent gradient */}
-      <div className="rounded-2xl border border-slate-200/90 shadow-xl flex flex-col overflow-hidden bg-white/95 backdrop-blur-md relative group transition-all duration-300 hover:shadow-2xl hover:border-coopBlue/30">
+      <div className="rounded-2xl border border-slate-200/90 shadow-xl flex flex-col overflow-hidden bg-white relative group transition-shadow duration-300 hover:shadow-2xl hover:border-coopBlue/30">
         {/* Top Accent Gradient Bar */}
         <div className="h-1.5 w-full bg-gradient-to-r from-coopBlue via-sky-400 to-amber-500" />
 

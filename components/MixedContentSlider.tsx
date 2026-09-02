@@ -125,37 +125,24 @@ export default function MixedContentSlider({
       onMouseLeave={handleMouseLeave}
     >
       {/*
-       * ANDROID FIX: Absolute-positioned stacking instead of translateX flex strip.
-       * On Android Chrome/Brave, iframes get their own GPU compositing layer and
-       * do NOT render when moved off-screen via CSS transform inside overflow:hidden.
-       * By stacking all slides at position:absolute inset-0 and toggling opacity,
-       * every iframe stays in the visible viewport (just transparent) so it loads
-       * and paints correctly on every Android browser.
+       * ANDROID TV: render only the active slide. Stacked slides (opacity/transform)
+       * and off-screen iframes often paint blank in Android WebView/Brave.
        */}
       {items.map((item, index) => {
+        if (index !== currentIndex) return null;
         const itemKey = `${item.type}-${item.src}`;
-        const isActive = index === currentIndex;
         return (
           <div
             key={itemKey}
-            style={{
-              position: "absolute",
-              inset: 0,
-              opacity: isActive ? 1 : 0,
-              pointerEvents: isActive ? "auto" : "none",
-              zIndex: isActive ? 1 : 0,
-              // Instant switch — no CSS transition so global animation-kill CSS
-              // rules have zero effect and the iframe paints on the first frame.
-            }}
+            className="iframe-host absolute inset-0"
             aria-roledescription="slide"
             aria-label={`${index + 1} of ${items.length}`}
-            aria-hidden={!isActive}
           >
             {item.type === "video" && (
               <YouTubePlayer
                 key={itemKey}
                 url={item.src}
-                autoplay={isActive}
+                autoplay={true}
                 muted={true}
               />
             )}
@@ -163,7 +150,7 @@ export default function MixedContentSlider({
               <button
                 type="button"
                 className={cn(
-                  "w-full h-full block",
+                  "w-full h-full block bg-white",
                   onImageClick ? "cursor-zoom-in" : ""
                 )}
                 onClick={() => {
@@ -184,8 +171,8 @@ export default function MixedContentSlider({
             )}
             {item.type === "iframe" && (
               <iframe
+                key={item.src}
                 src={item.src}
-                style={{ width: "100%", height: "100%", border: "none" }}
                 title={item.alt || `Slide ${index + 1}`}
                 allowFullScreen
               />

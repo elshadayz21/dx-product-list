@@ -41,11 +41,20 @@ export default function GameHubPanel({
   return (
     <div
       className={cn(
-        "fixed inset-0 flex items-center justify-center p-3 sm:p-4",
+        "fixed inset-0 flex items-center justify-center p-3 sm:p-4 transition-[visibility,background-color] duration-200",
         open
-          ? "z-50 visible opacity-100 bg-black/65"
-          : "z-[-1] invisible opacity-0 pointer-events-none bg-transparent"
+          ? "z-50 visible bg-black/65"
+          : "z-[-1] invisible pointer-events-none bg-transparent"
       )}
+      style={
+        open
+          ? undefined
+          : {
+              left: "-200vw",
+              width: "100vw",
+              height: "100vh",
+            }
+      }
       role="dialog"
       aria-modal="true"
       aria-hidden={!open}
@@ -88,10 +97,9 @@ export default function GameHubPanel({
         </div> */}
 
         {/* Main Full-Size Iframe */}
-        <main className="flex-1 min-w-0 min-h-0 bg-slate-900 w-full h-full relative">
+        <main className="flex-1 min-w-0 min-h-0 bg-slate-900 w-full h-full relative iframe-host">
           <iframe
             src={iframeUrl}
-            className="w-full h-full border-0"
             title="CoopBank GameHub"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
             allowFullScreen
@@ -99,10 +107,7 @@ export default function GameHubPanel({
         </main>
 
         {/* Bottom Bar */}
-        <div
-          className="shrink-0 border-t px-4 py-2.5 flex items-center justify-between gap-2"
-          style={{ background: "rgba(15, 23, 42, 0.95)", backdropFilter: "blur(8px)", borderColor: "rgba(255,255,255,0.08)" }}
-        >
+        <div className="shrink-0 border-t border-white/10 px-4 py-2.5 flex items-center justify-between gap-2 bg-slate-950">
           <div
             className="text-sky-300 text-xs font-semibold py-1.5 px-3 rounded-full shadow-sm flex items-center gap-1.5"
             style={{
