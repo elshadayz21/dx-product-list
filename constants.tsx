@@ -132,41 +132,41 @@ export const products: Product[] = [
     type: "",
      produtType:"External"
   },
-  {
-    id: 4,
-    name: "Coop Remit",
-    description: (
-      <div>
-        <p className="mb-2">
-          Our innovative Coop Remittance app is the first of its kind in
-          Ethiopia, <strong>leveraging blockchain technology</strong> to enable
-          fast, secure, and cost-effective money transfers. Here&apos;s what
-          distinguishes it:
-        </p>
-        <ul className="list-disc pl-6 space-y-2">
-          <li>
-            <strong>Very small latency:</strong> Transactions are processed
-            within 3–5 seconds.
-          </li>
-          <li>
-            <strong>Very low transfer limits:</strong> Send amounts as small
-            as 5 Euros effortlessly.
-          </li>
-          <li>
-            <strong>Extremely low transfer cost:</strong> Transfer cost is
-            very significantly low compared to other remittance apps locally.
-          </li>
-        </ul>
-      </div>
-    ),
-    link: "https://coopremit.coopbankoromiasc.com",
-    file: "",
-    moto: "",
-    video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
-    imageUrl: "/products/Coop-remit-new.png",
-    type: "",
-     produtType:"External"
-  },
+  // {
+  //   id: 4,
+  //   name: "Coop Remit",
+  //   description: (
+  //     <div>
+  //       <p className="mb-2">
+  //         Our innovative Coop Remittance app is the first of its kind in
+  //         Ethiopia, <strong>leveraging blockchain technology</strong> to enable
+  //         fast, secure, and cost-effective money transfers. Here&apos;s what
+  //         distinguishes it:
+  //       </p>
+  //       <ul className="list-disc pl-6 space-y-2">
+  //         <li>
+  //           <strong>Very small latency:</strong> Transactions are processed
+  //           within 3–5 seconds.
+  //         </li>
+  //         <li>
+  //           <strong>Very low transfer limits:</strong> Send amounts as small
+  //           as 5 Euros effortlessly.
+  //         </li>
+  //         <li>
+  //           <strong>Extremely low transfer cost:</strong> Transfer cost is
+  //           very significantly low compared to other remittance apps locally.
+  //         </li>
+  //       </ul>
+  //     </div>
+  //   ),
+  //   link: "https://coopremit.coopbankoromiasc.com",
+  //   file: "",
+  //   moto: "",
+  //   video: "https://www.youtube.com/watch?v=AByE7sa6Bmk",
+  //   imageUrl: "/products/Coop-remit-new.png",
+  //   type: "",
+  //    produtType:"External"
+  // },
   {
     id: 5,
     name: "VSLA",

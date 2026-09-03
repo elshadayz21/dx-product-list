@@ -333,8 +333,8 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
         className="h-full flex flex-col"
       >
         {/* Grid content */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area flex flex-col product-grid-stable">
-          <TabsContent value="dxvalleyProducts" className="mt-0">
+        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area flex flex-col justify-start product-grid-stable">
+          <TabsContent value="dxvalleyProducts" className="mt-0 w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products
                 .filter(
@@ -347,7 +347,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
           </TabsContent>
 
-          <TabsContent value="coreBankingProducts" className="mt-0">
+          <TabsContent value="coreBankingProducts" className="mt-0 w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products
                 .filter((p) => p?.type === "corebankingapp")
@@ -355,7 +355,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
           </TabsContent>
 
-          <TabsContent value="developmentProducts" className="mt-0">
+          <TabsContent value="developmentProducts" className="mt-0 w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products
                 .filter((p) => p?.type === "underDevelopment")
