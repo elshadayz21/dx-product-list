@@ -119,7 +119,7 @@ export default function MixedContentSlider({
     <div
       ref={sliderHostRef}
       className={cn(
-        "relative w-full h-full min-h-[360px] mx-auto rounded-lg select-none overflow-hidden",
+        "relative w-full h-full min-h-0 mx-auto rounded-xl select-none overflow-hidden bg-white",
         className
       )}
       aria-roledescription="carousel"
@@ -142,7 +142,7 @@ export default function MixedContentSlider({
           <div
             key={itemKey}
             className={cn(
-              "absolute inset-0",
+              "absolute inset-0 flex items-center justify-center bg-white",
               item.type === "iframe" ? "iframe-host" : ""
             )}
             aria-roledescription="slide"
@@ -160,7 +160,7 @@ export default function MixedContentSlider({
               <button
                 type="button"
                 className={cn(
-                  "w-full h-full block bg-white",
+                  "w-full h-full flex items-center justify-center p-2.5 bg-white",
                   onImageClick ? "cursor-zoom-in" : ""
                 )}
                 onClick={() => {
@@ -175,13 +175,13 @@ export default function MixedContentSlider({
                   alt={item.alt || `Slide ${index + 1}`}
                   width={800}
                   height={600}
-                  className="w-full h-full object-contain pointer-events-none select-none bg-white"
+                  className="max-h-full max-w-full w-auto h-auto object-contain pointer-events-none select-none"
                 />
               </button>
             )}
             {item.type === "iframe" && (
               <div
-                className="w-full h-full min-h-[360px] bg-white rounded-lg border border-slate-200/80"
+                className="w-full h-full bg-white rounded-lg border border-slate-200/80"
                 aria-label={item.alt || `Slide ${index + 1}`}
               />
             )}

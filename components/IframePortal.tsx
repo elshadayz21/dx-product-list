@@ -65,6 +65,13 @@ export default function IframePortal({
     return null;
   }
 
+  // Prevent iframe from ever overflowing past the bottom navigation/slidertab (reserve 70px from viewport bottom)
+  const maxAllowedHeight =
+    typeof window !== "undefined"
+      ? Math.max(80, window.innerHeight - rect.top - 68)
+      : rect.height;
+  const effectiveHeight = Math.min(rect.height, maxAllowedHeight);
+
   return createPortal(
     <div
       className="iframe-host iframe-portal"
@@ -73,7 +80,7 @@ export default function IframePortal({
         top: rect.top,
         left: rect.left,
         width: rect.width,
-        height: rect.height,
+        height: effectiveHeight,
         zIndex,
         margin: 0,
         padding: 0,

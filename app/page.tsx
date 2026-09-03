@@ -326,7 +326,7 @@ const Page = () => {
 
             {/* Right panel — product list */}
             <div
-              className="h-[calc(100vh-155px)] rounded-2xl overflow-y-auto flex flex-col border border-slate-200/80 tv-iframe-shell"
+              className="h-[calc(100vh-155px)] rounded-2xl overflow-hidden flex flex-col border border-slate-200/80 tv-iframe-shell"
               style={{
                 boxShadow: "0 4px 32px rgba(0,0,0,0.06)",
                 background: "rgba(255,255,255,0.85)",

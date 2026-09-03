@@ -50,7 +50,7 @@ function ActionButton({
   return (
     <button
       onClick={onClick}
-      className={`relative flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 ease-out active:scale-[0.98] w-full hover:-translate-y-0.5 ${variant === "primary"
+      className={`relative flex items-center justify-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold transition-all duration-300 ease-out active:scale-[0.98] w-full hover:-translate-y-0.5 ${variant === "primary"
         ? "text-white hover:shadow-blue-glow"
         : "bg-slate-100 text-slate-700 hover:bg-slate-200"
         }`}
@@ -58,7 +58,7 @@ function ActionButton({
         variant === "primary"
           ? {
             background: "linear-gradient(135deg, #00adef 0%, #0090c8 100%)",
-            boxShadow: "0 3px 12px rgba(0,173,239,0.3)",
+            boxShadow: "0 2px 8px rgba(0,173,239,0.25)",
           }
           : {}
       }
@@ -127,55 +127,55 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   /* ── PRODUCT DETAIL VIEW ────────────────────────────────── */
   if (selectedProduct) {
     return (
-      <div className="flex flex-col h-full">
+      <div className="flex flex-col h-full overflow-hidden">
         {/* Detail header */}
         <div
-          className="shrink-0 px-4 py-3 flex items-center gap-3"
+          className="shrink-0 px-4 py-2.5 flex items-center gap-3"
           style={{ background: "linear-gradient(90deg, #0f172a 0%, #1e293b 100%)" }}
         >
           <button
             onClick={handleBackToList}
-            className="flex items-center gap-1.5 text-white/60 hover:text-white transition-colors text-sm"
+            className="flex items-center gap-1.5 text-white/60 hover:text-white transition-colors text-xs md:text-sm font-medium"
           >
             <ArrowLeft size={14} />
             Back
           </button>
-          <div className="h-4 w-px bg-white/10" />
-          <h2 className="text-white font-semibold text-sm truncate flex-1">
+          <div className="h-3.5 w-px bg-white/10" />
+          <h2 className="text-white font-semibold text-xs md:text-sm truncate flex-1">
             {selectedProduct.name}
           </h2>
-          <span className="text-[11px] text-sky-300 font-semibold bg-sky-400/10 px-2.5 py-0.5 rounded-full border border-sky-400/20 flex-shrink-0">
+          <span className="text-[10px] md:text-[11px] text-sky-300 font-semibold bg-sky-400/10 px-2 py-0.5 rounded-full border border-sky-400/20 flex-shrink-0">
             {selectedProduct.moto ?? "Bank Smarter, Live Better"}
           </span>
         </div>
 
         {/* Detail body */}
-        <main className="flex-1 overflow-auto p-4">
-          <div className="flex flex-col md:flex-row gap-5 h-full">
+        <main className="flex-1 min-h-0 overflow-hidden p-3 md:p-3.5">
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 h-full min-h-0">
             {/* Left — image + actions */}
-            <div className="w-full md:w-1/3 flex flex-col gap-3">
+            <div className="w-full md:w-[210px] lg:w-[230px] shrink-0 flex flex-col gap-2 h-full min-h-0">
               <div
-                className="relative rounded-2xl overflow-hidden bg-white flex items-center justify-center"
+                className="relative rounded-xl overflow-hidden bg-white flex items-center justify-center shrink-0"
                 style={{
-                  boxShadow: "0 8px 32px rgba(0,173,239,0.12)",
-                  minHeight: 180,
+                  boxShadow: "0 4px 16px rgba(0,173,239,0.1)",
+                  height: 120,
                   border: "1px solid rgba(0,173,239,0.1)",
                 }}
               >
                 <Image
                   src={selectedProduct.imageUrl}
                   alt={selectedProduct.name}
-                  width={280}
-                  height={180}
-                  className="object-contain w-full max-h-44 p-4"
+                  width={240}
+                  height={120}
+                  className="object-contain w-full h-full p-2.5 max-h-24"
                 />
-                <Sparkles className="absolute bottom-2 right-2 text-sky-300 w-6 h-6 opacity-60" />
+                <Sparkles className="absolute bottom-1.5 right-1.5 text-sky-300 w-4 h-4 opacity-60" />
               </div>
 
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1.5 shrink-0">
                 {selectedProduct.file && (
                   <ActionButton onClick={() => handleDownload(selectedProduct.file)}>
-                    <Download size={14} />
+                    <Download size={13} />
                     Download PPT
                   </ActionButton>
                 )}
@@ -184,7 +184,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     setShowVideo((v) => !v);
                     setShowDashboard(false);
                   }}>
-                    {showVideo ? <NotepadText size={14} /> : <Play size={14} />}
+                    {showVideo ? <NotepadText size={13} /> : <Play size={13} />}
                     {showVideo ? "Show Description" : "Watch Video"}
                   </ActionButton>
                 )}
@@ -193,7 +193,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     setShowDashboard((d) => !d);
                     setShowVideo(false);
                   }}>
-                    {showDashboard ? <NotepadText size={14} /> : <LayoutDashboard size={14} />}
+                    {showDashboard ? <NotepadText size={13} /> : <LayoutDashboard size={13} />}
                     {showDashboard ? "Show Description" : "Dashboard"}
                   </ActionButton>
                 )}
@@ -202,7 +202,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     onClick={() => handleOpenLink(selectedProduct.link)}
                     variant="secondary"
                   >
-                    <ExternalLink size={14} />
+                    <ExternalLink size={13} />
                     Visit Site
                   </ActionButton>
                 )}
@@ -210,12 +210,12 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
 
             {/* Right — description / video / dashboard / media */}
-            <div className="flex-1 min-w-0 flex flex-col gap-3">
+            <div className="flex-1 min-w-0 flex flex-col gap-2 h-full min-h-0">
               {showDashboard && selectedProduct.dashboard ? (
-                <>
+                <div className="flex-1 h-full min-h-0 w-full rounded-xl overflow-hidden border border-slate-200/80 shadow-sm relative bg-slate-900">
                   <div
                     ref={dashboardHostRef}
-                    className="iframe-host rounded-2xl border border-slate-200/80 shadow-sm min-h-[360px]"
+                    className="iframe-host w-full h-full"
                     aria-hidden
                   />
                   <IframePortal
@@ -224,21 +224,22 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     anchorRef={dashboardHostRef}
                     visible={showDashboard}
                   />
-                </>
+                </div>
               ) : showVideo && selectedProduct.video ? (
-                <div className="rounded-2xl overflow-hidden" style={{ minHeight: 280 }}>
+                <div className="flex-1 h-full min-h-0 rounded-xl overflow-hidden">
                   <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
                 </div>
               ) : (
-                <div className="flex flex-col gap-3 h-full">
-                  <p className="text-sm text-slate-600 leading-relaxed shrink-0">
+                <div className="flex flex-col gap-2 h-full min-h-0">
+                  <div className="text-xs md:text-sm text-slate-600 leading-relaxed shrink-0 max-h-24 overflow-y-auto pr-1">
                     {selectedProduct.description}
-                  </p>
+                  </div>
                   {mediaContent.length > 0 && (
-                    <div className="flex-1 min-h-[360px]">
+                    <div className="flex-1 min-h-0 h-full w-full relative overflow-hidden rounded-xl border border-slate-200/80">
                       <MemoizedMixedContentSlider
                         key={selectedProduct.id}
                         items={mediaContent}
+                        className="h-full w-full"
                       />
                     </div>
                   )}
@@ -249,14 +250,14 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
         </main>
 
         {/* Thumbnail strip */}
-        <nav className="shrink-0 border-t bg-white">
+        <nav className="shrink-0 border-t bg-white relative z-50">
           <ScrollArea className="w-full whitespace-nowrap">
-            <div className="flex w-max items-center px-2 py-2 gap-1">
+            <div className="flex w-max items-center px-2 py-1.5 gap-1">
               <button
                 onClick={handleBackToList}
-                className="p-2.5 rounded-xl hover:bg-slate-100 transition-colors flex-shrink-0"
+                className="p-2 rounded-lg hover:bg-slate-100 transition-colors flex-shrink-0"
               >
-                <House className="h-5 w-5 text-[#00adef]" />
+                <House className="h-4 w-4 text-[#00adef]" />
               </button>
 
               {products
@@ -274,7 +275,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   <button
                     key={product.id}
                     onClick={() => handleProductSelect(product)}
-                    className={`relative p-1.5 rounded-xl transition-all duration-200 flex-shrink-0 ${selectedProduct?.id === product.id
+                    className={`relative p-1 rounded-lg transition-all duration-200 flex-shrink-0 ${selectedProduct?.id === product.id
                       ? "bg-[#00adef]/10 ring-2 ring-[#00adef]/40 scale-105"
                       : "hover:bg-slate-100"
                       }`}
@@ -282,9 +283,9 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     <Image
                       src={product.imageUrl}
                       alt={product.name}
-                      width={48}
-                      height={48}
-                      className="rounded-lg object-contain w-12 h-12"
+                      width={40}
+                      height={40}
+                      className="rounded-md object-contain w-10 h-10"
                     />
                     {selectedProduct?.id === product.id && (
                       <span className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#00adef] rounded-full" />
@@ -363,21 +364,21 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
           </TabsContent>
 
-          <TabsContent value="imageTab" className="mt-0 flex-1 flex flex-col">
-            <div className="flex justify-center items-center py-2 flex-1 h-full">
+          <TabsContent value="imageTab" className="mt-0 flex-1 flex flex-col justify-center items-center p-2">
+            <div className="flex justify-center items-center py-2 flex-1 h-full w-full max-w-sm">
               <div
-                className="rounded-2xl overflow-hidden max-w-md w-full h-full flex flex-col items-center bg-white border border-slate-200/80 shadow-md"
+                className="rounded-xl overflow-hidden w-full flex flex-col items-center bg-white border border-slate-200/80 shadow-md"
               >
-                <div className="p-3 bg-slate-50 flex-1 flex items-center justify-center w-full min-h-[220px]">
+                <div className="p-3 bg-slate-50 flex items-center justify-center w-full max-h-[340px] overflow-hidden">
                   <Image
                     src="/image.jpeg"
                     alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
                     width={450}
                     height={300}
-                    className="max-h-[calc(100vh-280px)] w-full h-full object-contain rounded-xl"
+                    className="max-h-[300px] w-auto h-auto max-w-full object-contain rounded-lg"
                   />
                 </div>
-                <div className="bg-white px-4 py-2 text-xs text-slate-500 border-t w-full text-center shrink-0">
+                <div className="bg-white px-3 py-1.5 text-[11px] text-slate-500 border-t w-full text-center shrink-0">
                   Source:{" "}
                   <a
                     href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ"
