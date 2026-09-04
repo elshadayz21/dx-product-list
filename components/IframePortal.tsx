@@ -38,7 +38,22 @@ export default function IframePortal({
       setRect(null);
       return;
     }
-    setRect(anchor.getBoundingClientRect());
+
+    const anchorRect = anchor.getBoundingClientRect();
+    const parentContainer = anchor.closest("main") || anchor.closest(".tv-iframe-shell");
+
+    if (parentContainer) {
+      const parentRect = parentContainer.getBoundingClientRect();
+      const top = Math.max(anchorRect.top, parentRect.top);
+      const bottom = Math.min(anchorRect.bottom, parentRect.bottom);
+      const left = Math.max(anchorRect.left, parentRect.left);
+      const right = Math.min(anchorRect.right, parentRect.right);
+      const width = Math.max(0, right - left);
+      const height = Math.max(0, bottom - top);
+      setRect(new DOMRect(left, top, width, height));
+    } else {
+      setRect(anchorRect);
+    }
   }, [anchorRef]);
 
   useEffect(() => {
@@ -65,13 +80,6 @@ export default function IframePortal({
     return null;
   }
 
-  // Prevent iframe from ever overflowing past the bottom navigation/slidertab (reserve 70px from viewport bottom)
-  const maxAllowedHeight =
-    typeof window !== "undefined"
-      ? Math.max(80, window.innerHeight - rect.top - 68)
-      : rect.height;
-  const effectiveHeight = Math.min(rect.height, maxAllowedHeight);
-
   return createPortal(
     <div
       className="iframe-host iframe-portal"
@@ -80,10 +88,12 @@ export default function IframePortal({
         top: rect.top,
         left: rect.left,
         width: rect.width,
-        height: effectiveHeight,
+        height: rect.height,
         zIndex,
         margin: 0,
         padding: 0,
+        borderRadius: "12px",
+        overflow: "hidden",
       }}
     >
       <iframe src={src} title={title} allowFullScreen />

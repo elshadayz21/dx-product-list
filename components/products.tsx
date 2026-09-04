@@ -214,10 +214,10 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                 (showVideo && selectedProduct.video) ||
                 mediaContent.length > 0) && (
                 <div
-                  className={`w-full relative overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm shrink-0 ${
+                  className={`w-full relative overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm ${
                     showDashboard && selectedProduct.dashboard
-                      ? "flex-1 min-h-[240px]"
-                      : "h-[170px] sm:h-[190px] md:h-[210px]"
+                      ? "flex-1 min-h-0"
+                      : "h-[170px] sm:h-[190px] md:h-[210px] shrink-0"
                   }`}
                 >
                   {showDashboard && selectedProduct.dashboard ? (
