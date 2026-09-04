@@ -475,9 +475,9 @@ export const products: Product[] = [
     ),
     link: "http://dfs.coopbank.local/coopay-ebirr",
     // dashboard: "http://dfs.coopbank.local/coopay-ebirr",
-    iframeUrls: [
-      "http://dfs.coopbank.local/coopay-ebirr",
-    ],
+    // iframeUrls: [
+    //   "http://dfs.coopbank.local/coopay-ebirr",
+    // ],
     file: "",
     moto: "",
     // video: "/4-trillion.mp4",
@@ -545,7 +545,7 @@ export const products: Product[] = [
     file: "Saccolink_Product_Material.pptx",
     moto: "",
     video: "",
-    iframeUrls: ["http://dfs.coopbank.local/saccolink"],
+    // iframeUrls: ["http://dfs.coopbank.local/saccolink"],
     imageUrl: "/products/sacco-link.png",
     type: "",
     vslaPhotos: [
@@ -720,7 +720,7 @@ export const products: Product[] = [
     imageUrl: "/products/furtuu-Raboo-Coop.png",
     type: "",
     // dashboard: "http://10.2.125.7:8089/superset/dashboard/84/?native_filters_key=zHklMBPs3FBuxRurICCWrO84YVruzob2-51kiwZ3b9ZSG3p-d321jw8k9mqMtf5v",
-    iframeUrls: ["http://10.2.125.7:8089/superset/dashboard/84/?native_filters_key=zHklMBPs3FBuxRurICCWrO84YVruzob2-51kiwZ3b9ZSG3p-d321jw8k9mqMtf5v"],
+    // iframeUrls: ["http://10.2.125.7:8089/superset/dashboard/84/?native_filters_key=zHklMBPs3FBuxRurICCWrO84YVruzob2-51kiwZ3b9ZSG3p-d321jw8k9mqMtf5v"],
     // link: "https://agrilm-pilot.agtuall.com/furtuu/login",
     link:"http://10.8.101.121:3000/",
     produtType:"Internal"
@@ -948,7 +948,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "",
     type: "dropdownMenu",
-    iframeUrls:["http://dfs.coopbank.local/coopay-ebirr"],
+    // iframeUrls:["http://dfs.coopbank.local/coopay-ebirr"],
     // dashboard: "http://dfs.coopbank.local/coopay-ebirr",
 
   },
