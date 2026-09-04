@@ -626,14 +626,14 @@ export const products: Product[] = [
       </div>
     ),
     link: "",
-    file: "Updated_Product_Catalog_Template_ARMING_C[1].docx(Farmpass)[1][1].pdf",
+    file: "public/slides/FarmPass1.pptx",
     moto: "",
     video: "",
     imageUrl: "/products/Farmpass.jpg",
     vslaPhotos: [
       {
         // src: "/numbers-on-farmpass.jpg",
-        src: "/farmpass-number-04-06-2026.png",
+        src: "/Farmpass-2026-09-04 161401.png",
 
         alt: "numbers-on-farmpass",
       },

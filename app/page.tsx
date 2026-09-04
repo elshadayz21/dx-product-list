@@ -338,6 +338,7 @@ const Page = () => {
           </div>
 
           {/* ── FLOATING ECO TAB ── */}
+          {/* ── FLOATING ECO TAB ── */}
           {!showEcoBranch && !showGameHub && (
             <button
               onClick={() => setShowEcoBranch(true)}
@@ -345,14 +346,14 @@ const Page = () => {
               className="eco-tab-blink"
               style={{
                 position: "fixed",
-                right: 0,
+                left: 0,
                 top: "calc(50% - 34px)",
                 transform: "translateY(-50%)",
                 zIndex: 9999,
                 background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
                 color: "#fff",
                 border: "none",
-                borderRadius: "16px 0 0 16px",
+                borderRadius: "0 16px 16px 0",
                 padding: "14px 20px 14px 14px",
                 cursor: "pointer",
                 display: "flex",

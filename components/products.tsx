@@ -185,7 +185,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     setShowDashboard(false);
                   }}>
                     {showVideo ? <NotepadText size={13} /> : <Play size={13} />}
-                    {showVideo ? "Show Description" : "Watch Video"}
+                    {showVideo ? "Hide Video" : "Watch Video"}
                   </ActionButton>
                 )}
                 {selectedProduct.dashboard && (
@@ -194,7 +194,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                     setShowVideo(false);
                   }}>
                     {showDashboard ? <NotepadText size={13} /> : <LayoutDashboard size={13} />}
-                    {showDashboard ? "Show Description" : "Dashboard"}
+                    {showDashboard ? "Close Dashboard" : "Dashboard"}
                   </ActionButton>
                 )}
                 {selectedProduct.link && (
@@ -209,40 +209,55 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
               </div>
             </div>
 
-            {/* Right — description / video / dashboard / media */}
-            <div className="flex-1 min-w-0 flex flex-col gap-2 h-full min-h-0">
-              {showDashboard && selectedProduct.dashboard ? (
-                <div className="flex-1 h-full min-h-0 w-full rounded-xl overflow-hidden border border-slate-200/80 shadow-sm relative bg-slate-900">
-                  <div
-                    ref={dashboardHostRef}
-                    className="iframe-host w-full h-full"
-                    aria-hidden
-                  />
-                  <IframePortal
-                    src={selectedProduct.dashboard}
-                    title={`${selectedProduct.name} Dashboard`}
-                    anchorRef={dashboardHostRef}
-                    visible={showDashboard}
-                  />
-                </div>
-              ) : showVideo && selectedProduct.video ? (
-                <div className="flex-1 h-full min-h-0 rounded-xl overflow-hidden">
-                  <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
-                </div>
-              ) : (
-                <div className="flex flex-col gap-2 h-full min-h-0">
-                  <div className="text-xs md:text-sm text-slate-600 leading-relaxed shrink-0 max-h-24 overflow-y-auto pr-1">
+            {/* Right — description (always visible) & media viewer */}
+            <div className="flex-1 min-w-0 flex flex-col gap-2.5 h-full min-h-0">
+              {/* Description section: dedicated, clean, scrollable, never overridden or covered */}
+              {selectedProduct.description && (
+                <div
+                  className={`bg-slate-50/80 rounded-xl p-3 border border-slate-200/70 overflow-y-auto z-20 relative shadow-sm ${
+                    (showDashboard && selectedProduct.dashboard) ||
+                    (showVideo && selectedProduct.video) ||
+                    mediaContent.length > 0
+                      ? "shrink-0 max-h-28 lg:max-h-32"
+                      : "flex-1 min-h-0"
+                  }`}
+                >
+                  <div className="text-xs md:text-sm text-slate-700 leading-relaxed font-normal">
                     {selectedProduct.description}
                   </div>
-                  {mediaContent.length > 0 && (
-                    <div className="flex-1 min-h-0 h-full w-full relative overflow-hidden rounded-xl border border-slate-200/80">
-                      <MemoizedMixedContentSlider
-                        key={selectedProduct.id}
-                        items={mediaContent}
-                        className="h-full w-full"
+                </div>
+              )}
+
+              {/* Media viewer container: holds dashboard iframe, video player, or mixed content pictures slider */}
+              {((showDashboard && selectedProduct.dashboard) ||
+                (showVideo && selectedProduct.video) ||
+                mediaContent.length > 0) && (
+                <div className="flex-1 min-h-0 w-full relative overflow-hidden rounded-xl border border-slate-200/80 bg-white">
+                  {showDashboard && selectedProduct.dashboard ? (
+                    <div className="w-full h-full relative bg-slate-900 overflow-hidden">
+                      <div
+                        ref={dashboardHostRef}
+                        className="iframe-host w-full h-full"
+                        aria-hidden
+                      />
+                      <IframePortal
+                        src={selectedProduct.dashboard}
+                        title={`${selectedProduct.name} Dashboard`}
+                        anchorRef={dashboardHostRef}
+                        visible={showDashboard}
                       />
                     </div>
-                  )}
+                  ) : showVideo && selectedProduct.video ? (
+                    <div className="w-full h-full overflow-hidden">
+                      <MemoizedYouTubePlayer url={selectedProduct.video} autoplay={true} />
+                    </div>
+                  ) : mediaContent.length > 0 ? (
+                    <MemoizedMixedContentSlider
+                      key={selectedProduct.id}
+                      items={mediaContent}
+                      className="h-full w-full"
+                    />
+                  ) : null}
                 </div>
               )}
             </div>
