@@ -337,64 +337,66 @@ const Page = () => {
             </div>
           </div>
 
-          {/* ── FLOATING ECO TAB ── */}
+          {/* ── FLOATING ECO + GAME TABS ── */}
           {!showEcoBranch && !showGameHub && (
-            <button
-              onClick={() => setShowEcoBranch(true)}
-              title="View ECO Branches"
-              className="eco-tab-blink"
+            <div
               style={{
                 position: "fixed",
                 left: 0,
-                top: "calc(50% - 34px)",
+                top: "50%",
                 transform: "translateY(-50%)",
                 zIndex: 9999,
-                background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "0 16px 16px 0",
-                padding: "14px 20px 14px 14px",
-                cursor: "pointer",
                 display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "8px",
-                boxShadow: "0 4px 16px rgba(0,165,80,0.3)",
+                flexDirection: "column",
+                gap: "10px",
+                pointerEvents: "none",
               }}
             >
-              <Leaf size={18} strokeWidth={2.5} style={{ flexShrink: 0 }} />
-              <span style={{ fontWeight: 900, fontSize: "12px", letterSpacing: "0.2em" }}>ECO</span>
-            </button>
-          )}
-
-          {/* ── FLOATING GAMEHUB TAB ── */}
-          {!showEcoBranch && (
-            <button
-              onClick={() => {
-                window.open(GAMEHUB_URL, "_blank", "noopener,noreferrer");
-              }}
-              title="Open GameHub"
-              style={{
-                position: "fixed",
-                left: 0,
-                top: "calc(50% + 34px)",
-                transform: "translateY(-50%)",
-                zIndex: 9999,
-                background: "linear-gradient(180deg, #0284c7 0%, #00adef 100%)",
-                color: "#fff",
-                border: "none",
-                borderRadius: "0 16px 16px 0",
-                padding: "14px 20px 14px 14px",
-                cursor: "pointer",
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                gap: "8px",
-                boxShadow: "0 4px 16px rgba(0,173,239,0.35)",
-              }}
-            >
-              <Gamepad2 size={18} strokeWidth={2.5} style={{ flexShrink: 0 }} />
-            </button>
+              <button
+                onClick={() => setShowEcoBranch(true)}
+                title="View ECO Branches"
+                className="eco-tab-blink"
+                style={{
+                  pointerEvents: "auto",
+                  background: "linear-gradient(180deg, #006633 0%, #00a550 100%)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "0 14px 14px 0",
+                  padding: "12px 18px 12px 14px",
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "8px",
+                  boxShadow: "0 4px 16px rgba(0,165,80,0.35)",
+                }}
+              >
+                <Leaf size={18} strokeWidth={2.5} style={{ flexShrink: 0 }} />
+                <span style={{ fontWeight: 900, fontSize: "12px", letterSpacing: "0.2em" }}>ECO</span>
+              </button>
+              <button
+                onClick={() => {
+                  window.open(GAMEHUB_URL, "_blank", "noopener,noreferrer");
+                }}
+                title="Open GameHub"
+                style={{
+                  pointerEvents: "auto",
+                  background: "linear-gradient(180deg, #0284c7 0%, #00adef 100%)",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "0 14px 14px 0",
+                  padding: "12px 18px 12px 14px",
+                  cursor: "pointer",
+                  display: "flex",
+                  flexDirection: "row",
+                  alignItems: "center",
+                  gap: "8px",
+                  boxShadow: "0 4px 16px rgba(0,173,239,0.35)",
+                }}
+              >
+                <Gamepad2 size={18} strokeWidth={2.5} style={{ flexShrink: 0 }} />
+              </button>
+            </div>
           )}
 
           <EcoBranchPanel

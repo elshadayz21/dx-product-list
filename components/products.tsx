@@ -214,15 +214,16 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
               {/* Description section: dedicated, clean, scrollable, never overridden or covered */}
               {selectedProduct.description && (
                 <div
-                  className={`bg-slate-50/80 rounded-xl p-3 border border-slate-200/70 overflow-y-auto z-20 relative shadow-sm ${
+                  className={`bg-slate-50/80 rounded-xl p-3 border border-slate-200/70 overflow-y-auto overflow-x-hidden z-20 relative shadow-sm ${
                     (showDashboard && selectedProduct.dashboard) ||
                     (showVideo && selectedProduct.video) ||
                     mediaContent.length > 0
-                      ? "shrink-0 max-h-28 lg:max-h-32"
-                      : "flex-1 min-h-0"
+                      ? "shrink-0 max-h-24 lg:max-h-28"
+                      : "flex-1 min-h-0 overflow-y-auto"
                   }`}
+                  style={{ scrollbarWidth: "thin" }}
                 >
-                  <div className="text-xs md:text-sm text-slate-700 leading-relaxed font-normal">
+                  <div className="text-xs md:text-sm text-slate-700 leading-relaxed font-normal overflow-hidden">
                     {selectedProduct.description}
                   </div>
                 </div>
