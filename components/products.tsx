@@ -6,7 +6,6 @@ import {
   ExternalLink,
   House,
   NotepadText,
-  Sparkles,
   ArrowLeft,
   Play,
   LayoutDashboard,
@@ -152,24 +151,16 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
         {/* Detail body */}
         <main className="flex-1 min-h-0 overflow-hidden p-3 md:p-3.5">
           <div className="flex flex-col md:flex-row gap-3 md:gap-4 h-full min-h-0">
-            {/* Left — image + actions */}
-            <div className="w-full md:w-[210px] lg:w-[230px] shrink-0 flex flex-col gap-2 h-full min-h-0">
-              <div
-                className="relative rounded-xl overflow-hidden bg-white flex items-center justify-center shrink-0"
-                style={{
-                  boxShadow: "0 4px 16px rgba(0,173,239,0.1)",
-                  height: 120,
-                  border: "1px solid rgba(0,173,239,0.1)",
-                }}
-              >
+            {/* Left — logo + actions */}
+            <div className="w-full md:w-[210px] lg:w-[230px] shrink-0 flex flex-col gap-3 h-full min-h-0">
+              <div className="flex items-center justify-center shrink-0 py-2 px-1">
                 <Image
                   src={selectedProduct.imageUrl}
                   alt={selectedProduct.name}
-                  width={240}
-                  height={120}
-                  className="object-contain w-full h-full p-2.5 max-h-24"
+                  width={220}
+                  height={100}
+                  className="object-contain w-full h-auto max-h-24"
                 />
-                <Sparkles className="absolute bottom-1.5 right-1.5 text-sky-300 w-4 h-4 opacity-60" />
               </div>
 
               <div className="flex flex-col gap-1.5 shrink-0">
@@ -210,30 +201,25 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
 
             {/* Right — description (always visible) & media viewer */}
-            <div className="flex-1 min-w-0 flex flex-col gap-2.5 h-full min-h-0">
-              {/* Description section: dedicated, clean, scrollable, never overridden or covered */}
+            <div className="flex-1 min-w-0 flex flex-col gap-4 h-full min-h-0 overflow-y-auto pr-1 pt-2">
+              {/* Description section: plain clean text with comfortable spacing */}
               {selectedProduct.description && (
-                <div
-                  className={`bg-slate-50/80 rounded-xl p-3 border border-slate-200/70 overflow-y-auto overflow-x-hidden z-20 relative shadow-sm ${
-                    (showDashboard && selectedProduct.dashboard) ||
-                    (showVideo && selectedProduct.video) ||
-                    mediaContent.length > 0
-                      ? "shrink-0 max-h-24 lg:max-h-28"
-                      : "flex-1 min-h-0 overflow-y-auto"
-                  }`}
-                  style={{ scrollbarWidth: "thin" }}
-                >
-                  <div className="text-xs md:text-sm text-slate-700 leading-relaxed font-normal overflow-hidden">
-                    {selectedProduct.description}
-                  </div>
+                <div className="shrink-0 text-xs md:text-sm text-slate-700 leading-relaxed font-normal space-y-3 [&_p]:mb-2.5 [&_p:last-child]:mb-0 [&_div]:mb-2 [&_div:last-child]:mb-0">
+                  {selectedProduct.description}
                 </div>
               )}
 
-              {/* Media viewer container: holds dashboard iframe, video player, or mixed content pictures slider */}
+              {/* Media viewer container: compact image/video section */}
               {((showDashboard && selectedProduct.dashboard) ||
                 (showVideo && selectedProduct.video) ||
                 mediaContent.length > 0) && (
-                <div className="flex-1 min-h-0 w-full relative overflow-hidden rounded-xl border border-slate-200/80 bg-white">
+                <div
+                  className={`w-full relative overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm shrink-0 ${
+                    showDashboard && selectedProduct.dashboard
+                      ? "flex-1 min-h-[240px]"
+                      : "h-[170px] sm:h-[190px] md:h-[210px]"
+                  }`}
+                >
                   {showDashboard && selectedProduct.dashboard ? (
                     <div className="w-full h-full relative bg-slate-900 overflow-hidden">
                       <div
