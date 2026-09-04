@@ -338,7 +338,6 @@ const Page = () => {
           </div>
 
           {/* ── FLOATING ECO TAB ── */}
-          {/* ── FLOATING ECO TAB ── */}
           {!showEcoBranch && !showGameHub && (
             <button
               onClick={() => setShowEcoBranch(true)}
