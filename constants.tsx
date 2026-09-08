@@ -167,6 +167,24 @@ export const products: Product[] = [
   //   type: "",
   //    produtType:"External"
   // },
+
+
+   {
+    id: 4,
+    name: "Coop Remit",
+    description: (
+      <div>
+        The Smarter Way to Send Money Home. Support your family and loved ones with a remittance service you can trust. Coop Remit makes international money transfers fast, simple, and affordable. Whether it&apos;s for school fees, medical bills, or monthly support, we ensure your hard-earned money reaches its destination safely.
+      </div>
+    ),
+    link: "https://coopremit.coopbankoromiasc.com",
+    file: "",
+    moto: "",
+    video: "",
+    imageUrl: "/products/coop-remit-new-mobile-app-logo.png",
+    type: "",
+     produtType:"External"
+  },
   {
     id: 5,
     name: "VSLA",
