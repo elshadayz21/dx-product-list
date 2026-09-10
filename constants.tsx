@@ -78,7 +78,7 @@ export const products: Product[] = [
       //   alt: "numbers-on-coopay-ebirr",
       // },
     ],
-     produtType:"Internal"
+    produtType: "Internal"
   },
   {
     id: 2,
@@ -106,7 +106,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/debbo.png",
     type: "",
-     produtType:"External"
+    produtType: "External"
   },
   {
     id: 3,
@@ -130,7 +130,7 @@ export const products: Product[] = [
     video: "https://www.youtube.com/watch?v=_eW0O2Kbz78",
     imageUrl: "/products/diaspora.png",
     type: "",
-     produtType:"External"
+    produtType: "External"
   },
   // {
   //   id: 4,
@@ -169,7 +169,7 @@ export const products: Product[] = [
   // },
 
 
-   {
+  {
     id: 4,
     name: "Coop Remit",
     description: (
@@ -183,7 +183,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/coop-remit-new-mobile-app-logo.png",
     type: "",
-     produtType:"External"
+    produtType: "External"
   },
   {
     id: 5,
@@ -226,7 +226,7 @@ export const products: Product[] = [
       },
     ],
     type: "",
-     produtType:"External"
+    produtType: "External"
   },
   {
     id: 6,
@@ -255,7 +255,28 @@ export const products: Product[] = [
     video: "https://www.youtube.com/watch?v=gSOe5oowXcc",
     imageUrl: "/products/souqpass.png",
     type: "",
-     produtType:"External"
+    produtType: "External"
+  },
+  {
+    id: 6,
+    name: "SouqChain",
+    description: (
+      <div>
+        <p className="mb-2">
+          SouqChain is a digital supply chain platform designed to connect suppliers, merchants, consumers, institutions, and financial services within one integrated ecosystem. The platform helps streamline the movement of goods, manage transactions and inventory, and create opportunities for accessible supply chain financing.
+          By bringing supply chain activities and financial services together, SouqChain promotes a more connected, transparent, and efficient way of doing business. It empowers different participants across the supply chain to grow while creating a seamless flow of products, information, and finance.
+        </p>
+            <p className="mb-2">  </p>
+      </div>
+    ),
+    link: "https://souqpass.coopbankoromiasc.com/supply/",
+    file: "",
+    // file: "souqpass.pptx",
+    moto: "",
+    video: "",
+    imageUrl: "/products/souqchain-logo-preview.png",
+    type: "",
+    produtType: "External"
   },
   {
     id: 7,
@@ -277,7 +298,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/recon.png",
     type: "",
-     produtType:"Internal"
+    produtType: "Internal"
   },
   {
     id: 8,
@@ -322,7 +343,7 @@ export const products: Product[] = [
     ],
     imageUrl: "/products/coopayroll.png",
     type: "",
-     produtType:"External"
+    produtType: "External"
   },
   {
     id: 10,
@@ -406,7 +427,7 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/mycard-logo.png",
     type: "",
-     produtType:"External"
+    produtType: "External"
   },
   {
     id: 11,
@@ -435,15 +456,15 @@ export const products: Product[] = [
     videos: ["/wro. genet michu testimonial.mp4"],
     imageUrl: "/products/MICHU.png",
     type: "",
-      vslaPhotos: [
+    vslaPhotos: [
       {
         src: "/michu-comparision-to-other-Digital-lending-providers.png",
         alt: "michu-comparision-to-other-Digital-lending-providers",
       },
-     
+
     ],
-    iframeUrls: [ ],
-     produtType:"External"
+    iframeUrls: [],
+    produtType: "External"
   },
   {
     id: 12,
@@ -469,7 +490,7 @@ export const products: Product[] = [
     imageUrl: "/products/Michu-mizan-logo.png",
     type: "",
     iframeUrls: [],
-    produtType:"External"
+    produtType: "External"
   },
   {
     id: 50,
@@ -516,7 +537,7 @@ export const products: Product[] = [
       //   alt: "numbers-on-coopay-ebirr",
       // },
     ],
-    produtType:"External"
+    produtType: "External"
   },
   {
     id: 9,
@@ -576,7 +597,7 @@ export const products: Product[] = [
         alt: "saccopay-mobile-app",
       },
     ],
-     produtType:"External"
+    produtType: "External"
   },
   {
     id: 16,
@@ -659,7 +680,7 @@ export const products: Product[] = [
     //  imageUrl: "/products/Mastercard Community Pass Hi-Res Logo.png",
     type: "",
     // iframeUrls: ["https://agrilm-pilot.agtuall.com/"],
-     produtType:"External"
+    produtType: "External"
   },
   {
     id: 14,
@@ -701,14 +722,14 @@ export const products: Product[] = [
       <div className="text-sm space-y-3">
         <p className="mb-2">
           {/* <strong>Furtuu</strong> is a closed ecosystem agri‑financing solution. It provides input financing through cashless, in‑kind loans bundled with insurance and market linkages, delivered via cooperatives and partner ecosystems. */}
-        <strong>Furtuu</strong> is a closed ecosystem agri‑financing solution. It offers input financing through cashless, in‑kind loans bundled with insurance and market linkages, delivered via cooperatives and partner networks. Loans are credit‑scored and monitored with satellite systems, using internal and external datasets, and designed for both conventional and IFB models.
+          <strong>Furtuu</strong> is a closed ecosystem agri‑financing solution. It offers input financing through cashless, in‑kind loans bundled with insurance and market linkages, delivered via cooperatives and partner networks. Loans are credit‑scored and monitored with satellite systems, using internal and external datasets, and designed for both conventional and IFB models.
 
         </p>
         <div className="mb-1 flex items-start gap-2">
           <p className="mr-2 font-bold">•</p>
           <p className="text-sm">
-            Cashless, in‑kind loans with insurance 
-        </p>
+            Cashless, in‑kind loans with insurance
+          </p>
         </div>
         <div className="mb-1 flex items-start gap-2">
           <p className="mr-2 font-bold">•</p>
@@ -740,8 +761,8 @@ export const products: Product[] = [
     // dashboard: "http://10.2.125.7:8089/superset/dashboard/84/?native_filters_key=zHklMBPs3FBuxRurICCWrO84YVruzob2-51kiwZ3b9ZSG3p-d321jw8k9mqMtf5v",
     // iframeUrls: ["http://10.2.125.7:8089/superset/dashboard/84/?native_filters_key=zHklMBPs3FBuxRurICCWrO84YVruzob2-51kiwZ3b9ZSG3p-d321jw8k9mqMtf5v"],
     // link: "https://agrilm-pilot.agtuall.com/furtuu/login",
-    link:"http://10.8.101.121:3000/",
-    produtType:"Internal"
+    link: "http://10.8.101.121:3000/",
+    produtType: "Internal"
   },
 
   {
@@ -986,7 +1007,7 @@ export const products: Product[] = [
     imageUrl: "",
     type: "dropdownMenu",
   },
-   {
+  {
     id: 31,
     name: "Visit Hub",
     description: (
@@ -1108,7 +1129,7 @@ export const products: Product[] = [
   //   imageUrl: "/products/IBM-AppConnect.jpeg",
   //   type: "corebankingapp",
 ];
- 
+
 export const DASHBOARD_STATS: DashboardStat[] = [
   { key: "products", label: "Products", target: 24, suffix: "+", icon: <Zap size={12} /> },
   { key: "customers", label: "Customers", target: 20, suffix: "M+", icon: <Users size={12} /> },
