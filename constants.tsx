@@ -276,7 +276,7 @@ export const products: Product[] = [
     // file: "souqpass.pptx",
     moto: "",
     video: "",
-    videos: ["/souqchain_flow_animated_corrected.gif"],
+    // videos: ["/souqchain_flow_animated_corrected.gif"],
 
     imageUrl: "/products/souqchain-logo-preview.png",
     type: "",
