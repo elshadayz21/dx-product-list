@@ -276,6 +276,8 @@ export const products: Product[] = [
     // file: "souqpass.pptx",
     moto: "",
     video: "",
+    videos: ["/souqchain_flow_animated_corrected.gif"],
+
     imageUrl: "/products/souqchain-logo-preview.png",
     type: "",
     produtType: "External"
@@ -456,6 +458,7 @@ export const products: Product[] = [
     moto: "",
     video: "",
     videos: ["/wro. genet michu testimonial.mp4"],
+
     imageUrl: "/products/MICHU.png",
     type: "",
     vslaPhotos: [
