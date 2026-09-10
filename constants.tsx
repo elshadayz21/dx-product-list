@@ -264,9 +264,11 @@ export const products: Product[] = [
       <div>
         <p className="mb-2">
           SouqChain is a digital supply chain platform designed to connect suppliers, merchants, consumers, institutions, and financial services within one integrated ecosystem. The platform helps streamline the movement of goods, manage transactions and inventory, and create opportunities for accessible supply chain financing.
-          By bringing supply chain activities and financial services together, SouqChain promotes a more connected, transparent, and efficient way of doing business. It empowers different participants across the supply chain to grow while creating a seamless flow of products, information, and finance.
+         
         </p>
-            <p className="mb-2">  </p>
+            <p className="mb-2"> 
+          By bringing supply chain activities and financial services together, SouqChain promotes a more connected, transparent, and efficient way of doing business. It empowers different participants across the supply chain to grow while creating a seamless flow of products, information, and finance.
+               </p>
       </div>
     ),
     link: "https://souqpass.coopbankoromiasc.com/supply/",
