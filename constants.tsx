@@ -518,7 +518,7 @@ export const products: Product[] = [
       </div>
     ),
     link: "http://dfs.coopbank.local/coopay-ebirr",
-    // dashboard: "http://dfs.coopbank.local/coopay-ebirr",
+    dashboard: "http://dfs.coopbank.local/coopay-ebirr",
     // iframeUrls: [
     //   "http://dfs.coopbank.local/coopay-ebirr",
     // ],
@@ -730,26 +730,26 @@ export const products: Product[] = [
           <strong>Furtuu</strong> is a closed ecosystem agri‑financing solution. It offers input financing through cashless, in‑kind loans bundled with insurance and market linkages, delivered via cooperatives and partner networks. Loans are credit‑scored and monitored with satellite systems, using internal and external datasets, and designed for both conventional and IFB models.
 
         </p>
-        <div className="mb-1 flex items-start gap-2">
-          <p className="mr-2 font-bold">•</p>
+        <div className="mb-1 flex items-start gap-1">
+          <p className="font-bold">•</p>
           <p className="text-sm">
             Cashless, in‑kind loans with insurance
           </p>
         </div>
-        <div className="mb-1 flex items-start gap-2">
-          <p className="mr-2 font-bold">•</p>
+        <div className="mb-1 flex items-start gap-1">
+          <p className="font-bold">•</p>
           <p className="text-sm">
             Delivered through cooperatives and partner ecosystems.
           </p>
         </div>
-        <div className="mb-1 flex items-start gap-2">
-          <p className="mr-2 font-bold">•</p>
+        <div className="mb-1 flex items-start gap-1">
+          <p className="font-bold">•</p>
           <p className="text-sm">
             Satellite‑based loan monitoring and credit scoring.
           </p>
         </div>
-        <div className="mb-1 flex items-start gap-2">
-          <p className="mr-2 font-bold">•</p>
+        <div className="mb-1 flex items-start gap-1">
+          <p className="font-bold">•</p>
           <p className="text-sm">
             Inclusive design for conventional and IFB models.
           </p>
