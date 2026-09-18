@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { GAMEHUB_URL } from "@/constants";
 import { useEffect } from "react";
-import { BlockedIframeNotice, isMixedContentIframe } from "./IframePortal";
 
 interface GameHubPanelProps {
   open: boolean;
@@ -99,16 +98,12 @@ export default function GameHubPanel({
 
         {/* Main Full-Size Iframe */}
         <main className="flex-1 min-w-0 min-h-0 bg-slate-900 w-full h-full relative iframe-host">
-          {isMixedContentIframe(iframeUrl) ? (
-            <BlockedIframeNotice src={iframeUrl} />
-          ) : (
-            <iframe
-              src={iframeUrl}
-              title="CoopBank GameHub"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-              allowFullScreen
-            />
-          )}
+          <iframe
+            src={iframeUrl}
+            title="CoopBank GameHub"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+            allowFullScreen
+          />
         </main>
 
         {/* Bottom Bar */}

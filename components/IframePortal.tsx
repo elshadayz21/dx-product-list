@@ -4,7 +4,6 @@
 
 import { useCallback, useEffect, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
-import { ExternalLink } from "lucide-react";
 
 interface IframePortalProps {
   src: string;
@@ -12,34 +11,6 @@ interface IframePortalProps {
   anchorRef: RefObject<HTMLElement | null>;
   visible?: boolean;
   zIndex?: number;
-}
-
-export function isMixedContentIframe(src: string) {
-  return (
-    typeof window !== "undefined" &&
-    window.location.protocol === "https:" &&
-    src.startsWith("http://")
-  );
-}
-
-export function BlockedIframeNotice({ src }: { src: string }) {
-  return (
-    <div className="flex h-full w-full flex-col items-center justify-center gap-3 bg-slate-900 px-6 text-center text-white">
-      <p className="text-sm font-semibold">This dashboard uses an HTTP address.</p>
-      <p className="max-w-md text-xs text-slate-300">
-        Brave blocks HTTP dashboards inside this HTTPS page. Open it directly in a new tab on the TV.
-      </p>
-      <a
-        href={src}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 rounded-lg bg-sky-500 px-3 py-2 text-xs font-semibold text-white transition-colors hover:bg-sky-400"
-      >
-        <ExternalLink size={14} />
-        Open dashboard
-      </a>
-    </div>
-  );
 }
 
 /**
@@ -109,8 +80,6 @@ export default function IframePortal({
     return null;
   }
 
-  const isBlockedMixedContent = isMixedContentIframe(src);
-
   return createPortal(
     <div
       className="iframe-host iframe-portal"
@@ -127,11 +96,7 @@ export default function IframePortal({
         overflow: "hidden",
       }}
     >
-      {isBlockedMixedContent ? (
-        <BlockedIframeNotice src={src} />
-      ) : (
-        <iframe src={src} title={title} allowFullScreen />
-      )}
+      <iframe src={src} title={title} allowFullScreen />
     </div>,
     document.body
   );
