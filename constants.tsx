@@ -518,7 +518,7 @@ export const products: Product[] = [
       </div>
     ),
     link: "http://dfs.coopbank.local/coopay-ebirr",
-    dashboard: "http://dfs.coopbank.local/coopay-ebirr",
+    // dashboard: "http://dfs.coopbank.local/coopay-ebirr",
     // iframeUrls: [
     //   "http://dfs.coopbank.local/coopay-ebirr",
     // ],
