@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
@@ -14,6 +14,8 @@ import {
   Layers,
   BarChart3,
   ChevronDown,
+  Maximize2,
+  X,
 } from "lucide-react";
 import { Product } from "@/types";
 import { products } from "@/constants";
@@ -76,7 +78,17 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [showVideo, setShowVideo] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
+  const [showFullscreenImage, setShowFullscreenImage] = useState(false);
   const [activeTab, setActiveTab] = useState("dxvalleyProducts");
+
+  useEffect(() => {
+    if (!showFullscreenImage) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setShowFullscreenImage(false);
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [showFullscreenImage]);
 
   const productCounts = useMemo(() => {
     const coopBank = products.filter(
@@ -412,31 +424,57 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             </div>
           </TabsContent>
 
-          <TabsContent value="imageTab" className="mt-0 flex-1 flex flex-col justify-center items-center p-2">
-            <div className="flex justify-center items-center py-2 flex-1 h-full w-full max-w-sm">
+          <TabsContent value="imageTab" className="mt-0 flex-1 min-h-0 h-full flex flex-col p-1 sm:p-2 overflow-hidden">
+            <div className="relative flex-1 min-h-0 w-full h-full rounded-2xl overflow-hidden bg-slate-50 border border-slate-200/80 flex flex-col justify-between group shadow-sm">
+              {/* Full Image Container */}
               <div
-                className="rounded-xl overflow-hidden w-full flex flex-col items-center bg-white border border-slate-200/80 shadow-md"
+                className="relative flex-1 min-h-0 w-full h-full flex items-center justify-center p-1.5 sm:p-2.5 cursor-pointer bg-slate-50/50"
+                onClick={() => setShowFullscreenImage(true)}
               >
-                <div className="p-3 bg-slate-50 flex items-center justify-center w-full max-h-[340px] overflow-hidden">
-                  <Image
-                    src="/image.jpeg"
-                    alt="Mobile-Money-ecosystem-in-Ethiopia-2023/24"
-                    width={450}
-                    height={300}
-                    className="max-h-[300px] w-auto h-auto max-w-full object-contain rounded-lg"
-                  />
-                </div>
-                <div className="bg-white px-3 py-1.5 text-[11px] text-slate-500 border-t w-full text-center shrink-0">
+                <Image
+                  src="/image.jpeg"
+                  alt="Mobile Money Ecosystem in Ethiopia 2023/24"
+                  width={1400}
+                  height={1800}
+                  className="w-full h-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
+                  priority
+                />
+
+                {/* Hover / Always-visible Expand Badge */}
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setShowFullscreenImage(true);
+                  }}
+                  className="absolute top-2.5 right-2.5 z-10 flex items-center gap-1.5 bg-slate-900/85 hover:bg-[#00adef] text-white text-xs font-semibold px-3 py-1.5 rounded-full shadow-lg backdrop-blur-md transition-all duration-200"
+                >
+                  <Maximize2 size={13} />
+                  <span>Full Screen</span>
+                </button>
+              </div>
+
+              {/* Source & action bar */}
+              <div className="bg-white/95 px-3 py-1.5 text-[11px] text-slate-500 border-t border-slate-200/80 w-full flex items-center justify-between shrink-0">
+                <span>
                   Source:{" "}
                   <a
                     href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#00adef] underline font-medium"
+                    className="text-[#00adef] underline font-medium hover:text-[#0090c8]"
                   >
                     Shega Media
                   </a>
-                </div>
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setShowFullscreenImage(true)}
+                  className="text-[#00adef] hover:underline font-semibold flex items-center gap-1 text-[11px]"
+                >
+                  <Maximize2 size={12} />
+                  Expand Full Screen
+                </button>
               </div>
             </div>
           </TabsContent>
@@ -547,6 +585,65 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
           </TabsList>
         </div>
       </Tabs>
+
+      {/* Fullscreen Image Lightbox Modal */}
+      {showFullscreenImage && (
+        <div
+          className="fixed inset-0 z-[99999] bg-slate-950/92 backdrop-blur-md flex flex-col items-center justify-between p-3 sm:p-5"
+          onClick={() => setShowFullscreenImage(false)}
+        >
+          {/* Top Control Bar */}
+          <div
+            className="w-full max-w-5xl flex items-center justify-between py-2 px-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl shrink-0"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center gap-2">
+              <Sparkles className="text-[#00adef] w-4 h-4" />
+              <h3 className="text-xs sm:text-sm font-bold text-white">
+                Mobile Money Ecosystem in Ethiopia (2023/24)
+              </h3>
+            </div>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.linkedin.com/posts/shegahq_digitalfinance-dfs-digitaltransaction-activity-7290377799494692864-DXgZ"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs text-[#00adef] hover:underline font-medium hidden sm:inline"
+              >
+                Source: Shega Media ↗
+              </a>
+              <button
+                type="button"
+                onClick={() => setShowFullscreenImage(false)}
+                className="p-1.5 rounded-full bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition-colors"
+                title="Close (Esc)"
+              >
+                <X size={18} />
+              </button>
+            </div>
+          </div>
+
+          {/* Full Screen Image Host */}
+          <div
+            className="relative flex-1 min-h-0 w-full max-w-5xl flex items-center justify-center p-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src="/image.jpeg"
+              alt="Mobile Money Ecosystem in Ethiopia 2023/24"
+              width={1600}
+              height={2200}
+              className="w-full h-full object-contain rounded-xl shadow-2xl drop-shadow-2xl"
+              priority
+            />
+          </div>
+
+          {/* Bottom Hint */}
+          <div className="text-[11px] text-slate-400 text-center shrink-0">
+            Click anywhere outside or press <kbd className="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px] font-mono">Esc</kbd> to exit full screen
+          </div>
+        </div>
+      )}
     </div>
   );
 }
