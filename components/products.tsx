@@ -401,7 +401,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
           className="shrink-0"
           style={{ background: "linear-gradient(90deg, #0f172a 0%, #1e293b 100%)" }}
         >
-          <TabsList className="w-full h-auto bg-transparent rounded-none px-1 py-1.5 grid grid-cols-5 gap-0.5">
+          <TabsList className="w-full h-auto min-w-0 justify-start overflow-x-auto bg-transparent rounded-none px-1 py-1.5 flex-nowrap gap-0.5">
             {[
               { value: "dxvalleyProducts", label: "CoopBank" },
               { value: "developmentProducts", label: "Experiments" },
@@ -411,7 +411,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
               <TabsTrigger
                 key={value}
                 value={value}
-                className={`relative text-[11px] font-medium py-2 px-1 rounded-lg transition-all duration-200 ${activeTab === value
+                className={`relative shrink-0 whitespace-nowrap text-[11px] font-medium py-2 px-2 rounded-lg transition-all duration-200 ${activeTab === value
                   ? "text-white bg-white/10"
                   : "text-white/40 hover:text-white/70 hover:bg-white/5"
                   }`}
@@ -425,7 +425,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="text-[11px] font-medium py-2 px-1 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/5 transition-all duration-200">
+                <button className="shrink-0 whitespace-nowrap text-[11px] font-medium py-2 px-2 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/5 transition-all duration-200">
                   More ▾
                 </button>
               </DropdownMenuTrigger>
