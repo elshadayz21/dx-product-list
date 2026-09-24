@@ -9,12 +9,18 @@ import {
   ArrowLeft,
   Play,
   LayoutDashboard,
+  Building2,
+  Sparkles,
+  Layers,
+  BarChart3,
+  ChevronDown,
 } from "lucide-react";
 import { Product } from "@/types";
 import { products } from "@/constants";
 import YouTubePlayer from "./YouTubePlayer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MixedContentSlider from "./MixedContentSlider";
+import { cn } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -71,6 +77,49 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const [showVideo, setShowVideo] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
   const [activeTab, setActiveTab] = useState("dxvalleyProducts");
+
+  const productCounts = useMemo(() => {
+    const coopBank = products.filter(
+      (p) =>
+        !p?.type ||
+        (p.type !== "corebankingapp" &&
+          p.type !== "underDevelopment" &&
+          p.type !== "dropdownMenu")
+    ).length;
+    const experiments = products.filter((p) => p?.type === "underDevelopment").length;
+    const core = products.filter((p) => p?.type === "corebankingapp").length;
+    return { coopBank, experiments, core };
+  }, []);
+
+  const tabItems = useMemo(
+    () => [
+      {
+        value: "dxvalleyProducts",
+        label: "CoopBank",
+        icon: Building2,
+        count: productCounts.coopBank,
+      },
+      {
+        value: "developmentProducts",
+        label: "Experiments",
+        icon: Sparkles,
+        count: productCounts.experiments,
+      },
+      {
+        value: "coreBankingProducts",
+        label: "Core",
+        icon: Layers,
+        count: productCounts.core,
+      },
+      {
+        value: "imageTab",
+        label: "Coopay Stat",
+        icon: BarChart3,
+        count: null,
+      },
+    ],
+    [productCounts]
+  );
 
   const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
@@ -326,14 +375,14 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   };
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full min-h-0">
       <Tabs
         value={activeTab}
         onValueChange={setActiveTab}
-        className="h-full flex flex-col"
+        className="h-full min-h-0 flex flex-col justify-between"
       >
         {/* Grid content */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden p-4 smooth-scroll-area flex flex-col justify-start product-grid-stable">
+        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-3.5 sm:p-4 smooth-scroll-area flex flex-col justify-start product-grid-stable">
           <TabsContent value="dxvalleyProducts" className="mt-0 w-full">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3.5 auto-rows-[190px]">
               {products
@@ -395,39 +444,62 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
 
         {/* Dark tab bar */}
         <div
-          className="shrink-0"
-          style={{ background: "linear-gradient(90deg, #0f172a 0%, #1e293b 100%)" }}
+          className="shrink-0 w-full z-20 border-t border-slate-800/80 bg-gradient-to-r from-[#09111e] via-[#0f172a] to-[#1e293b] p-1.5 select-none shadow-[0_-4px_20px_rgba(0,0,0,0.15)]"
         >
-          <TabsList className="w-full h-auto min-w-0 justify-start overflow-x-auto bg-transparent rounded-none px-1 py-1.5 flex-nowrap gap-0.5">
-            {[
-              { value: "dxvalleyProducts", label: "CoopBank" },
-              { value: "developmentProducts", label: "Experiments" },
-              { value: "coreBankingProducts", label: "Core" },
-              { value: "imageTab", label: "Coopay Stat" },
-            ].map(({ value, label }) => (
-              <TabsTrigger
-                key={value}
-                value={value}
-                className={`relative shrink-0 whitespace-nowrap text-[11px] font-medium py-2 px-2 rounded-lg transition-all duration-200 ${activeTab === value
-                  ? "text-white bg-white/10"
-                  : "text-white/40 hover:text-white/70 hover:bg-white/5"
-                  }`}
-              >
-                {label}
-                {activeTab === value && (
-                  <span className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-0.5 bg-[#00adef] rounded-full" />
-                )}
-              </TabsTrigger>
-            ))}
+          <TabsList className="w-full h-auto min-w-0 flex items-center justify-between gap-1 sm:gap-1.5 bg-transparent p-0 rounded-none">
+            {tabItems.map(({ value, label, icon: Icon, count }) => {
+              const isActive = activeTab === value;
+              return (
+                <TabsTrigger
+                  key={value}
+                  value={value}
+                  className={cn(
+                    "relative flex-1 min-w-0 flex items-center justify-center gap-1 sm:gap-1.5 px-1.5 sm:px-2.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs md:text-[13px] font-semibold transition-all duration-300 ease-out cursor-pointer",
+                    isActive
+                      ? "!bg-white !text-slate-900 shadow-md shadow-black/25 ring-1 ring-white/20"
+                      : "!bg-transparent text-slate-400 hover:text-white hover:!bg-white/10"
+                  )}
+                >
+                  <Icon
+                    className={cn(
+                      "w-3.5 h-3.5 shrink-0 transition-colors duration-200",
+                      isActive ? "text-[#00adef]" : "text-slate-400"
+                    )}
+                  />
+                  <span className="truncate">{label}</span>
+                  {count !== null && (
+                    <span
+                      className={cn(
+                        "hidden xl:inline-flex items-center justify-center text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[16px] leading-none transition-colors shrink-0",
+                        isActive
+                          ? "bg-[#00adef]/15 text-[#0090c8]"
+                          : "bg-white/10 text-slate-400"
+                      )}
+                    >
+                      {count}
+                    </span>
+                  )}
+                  {isActive && (
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-4 sm:w-5 h-1 bg-[#00adef] rounded-full shadow-[0_0_8px_rgba(0,173,239,0.8)]" />
+                  )}
+                </TabsTrigger>
+              );
+            })}
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="shrink-0 whitespace-nowrap text-[11px] font-medium py-2 px-2 rounded-lg text-white/40 hover:text-white/70 hover:bg-white/5 transition-all duration-200">
-                  More ▾
+                <button
+                  type="button"
+                  className={cn(
+                    "relative flex-1 min-w-0 flex items-center justify-center gap-1 px-1.5 sm:px-2.5 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs md:text-[13px] font-semibold transition-all duration-300 ease-out cursor-pointer text-slate-400 hover:text-white hover:bg-white/10 focus:outline-none"
+                  )}
+                >
+                  <span className="truncate">More</span>
+                  <ChevronDown className="w-3 h-3 text-slate-400 shrink-0" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent
-                className="bg-white border border-slate-200 shadow-xl rounded-xl min-w-[140px]"
+                className="bg-slate-900/95 backdrop-blur-xl border border-slate-700/80 shadow-2xl rounded-2xl min-w-[160px] p-1.5 text-white"
                 align="end"
               >
                 {products.map((product) => {
@@ -437,9 +509,9 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                       <DropdownMenuItem
                         key={product.id}
                         onClick={onOpenEcoBranch}
-                        className="cursor-pointer text-sm text-slate-700"
+                        className="cursor-pointer text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-xl px-3 py-2 flex items-center gap-2"
                       >
-                        🌿 {product.name}
+                        <span className="text-emerald-400">🌿</span> {product.name}
                       </DropdownMenuItem>
                     );
                   }
@@ -450,9 +522,9 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                           href={product.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="cursor-pointer text-sm text-slate-700 flex items-center gap-1.5"
+                          className="cursor-pointer text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-xl px-3 py-2 flex items-center gap-2"
                         >
-                          🎮 {product.name}
+                          <span className="text-sky-400">🎮</span> {product.name}
                         </a>
                       </DropdownMenuItem>
                     );
@@ -463,7 +535,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                         href={product.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-sm text-slate-700"
+                        className="cursor-pointer text-xs font-semibold text-slate-200 hover:text-white hover:bg-white/10 rounded-xl px-3 py-2"
                       >
                         {product.name}
                       </a>

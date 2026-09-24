@@ -187,12 +187,12 @@ const Page = () => {
           </div>
         </div>
       ) : (
-        <div className="min-h-screen dashboard-bg flex flex-col relative overflow-hidden">
+        <div className="h-screen max-h-screen dashboard-bg flex flex-col relative overflow-hidden">
           {/* ── MAIN DASHBOARD ─────────────────── */}
 
           {/* ── HEADER ── */}
           <header
-            className="w-full shrink-0 px-6 py-3 flex items-center justify-between relative z-10 overflow-hidden"
+            className="w-full shrink-0 px-6 py-2.5 sm:py-3 flex items-center justify-between relative z-10 overflow-hidden"
             style={{
               background: "linear-gradient(90deg, #0f172a 0%, #1e293b 60%, #0f172a 100%)",
               borderBottom: "1px solid rgba(255,255,255,0.06)",
@@ -251,7 +251,7 @@ const Page = () => {
 
           {/* ── MARQUEE TICKER (continuous scrolling carousel) ── */}
           <div
-            className="w-full overflow-hidden py-1.5 relative z-10"
+            className="w-full shrink-0 overflow-hidden py-1.5 relative z-10"
             style={{
               background: "linear-gradient(90deg, rgba(0,173,239,0.08), rgba(0,144,200,0.05), rgba(0,173,239,0.08))",
               borderBottom: "1px solid rgba(0,173,239,0.1)",
@@ -282,14 +282,14 @@ const Page = () => {
           </div>
 
           {/* ── CONTENT ── */}
-          <div className="flex-1 container py-4 grid grid-cols-2 gap-5 relative z-10">
+          <div className="flex-1 min-h-0 container py-2 sm:py-3 grid grid-cols-2 gap-3.5 sm:gap-5 relative z-10 overflow-hidden">
 
             {/* Left panel */}
-            <div className="h-[calc(100vh-155px)] flex flex-col justify-between gap-4">
+            <div className="h-full min-h-0 flex flex-col justify-between gap-2.5 sm:gap-3.5 overflow-hidden">
               <CooperativeVision className="shrink-0" />
 
               {/* Award cards */}
-              <div className="flex-1 min-h-[220px] flex gap-5 items-center justify-center w-full py-1">
+              <div className="flex-1 min-h-0 flex gap-3 sm:gap-4 items-center justify-center w-full py-1 overflow-hidden">
                 {AWARD_CARDS.map(({ id, src, alt, width = 1080, height = 1350 }) => (
                   <div
                     key={id}
@@ -326,7 +326,7 @@ const Page = () => {
 
             {/* Right panel — product list */}
             <div
-              className="h-[calc(100vh-155px)] rounded-2xl overflow-hidden flex flex-col border border-slate-200/80 tv-iframe-shell"
+              className="h-full min-h-0 rounded-2xl overflow-hidden flex flex-col border border-slate-200/80 tv-iframe-shell"
               style={{
                 boxShadow: "0 4px 32px rgba(0,0,0,0.06)",
                 background: "rgba(255,255,255,0.85)",

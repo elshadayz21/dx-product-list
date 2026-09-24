@@ -14,7 +14,7 @@ const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
         {/* Top Accent Gradient Bar */}
         <div className="h-1.5 w-full bg-gradient-to-r from-coopBlue via-sky-400 to-amber-500" />
 
-        <div className="relative p-5 md:p-6 flex flex-col justify-between">
+        <div className="relative p-3.5 sm:p-4 md:p-5 flex flex-col justify-between">
           {/* Background mesh / watermark */}
           <div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
             <div
@@ -27,36 +27,36 @@ const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
               }}
             />
             <Handshake
-              className="absolute -right-2 -bottom-2 w-32 h-32 text-coopBlue opacity-[0.08] transition-transform duration-500 group-hover:scale-110"
+              className="absolute -right-2 -bottom-2 w-28 h-28 sm:w-32 sm:h-32 text-coopBlue opacity-[0.08] transition-transform duration-500 group-hover:scale-110"
               strokeWidth={0.6}
             />
           </div>
 
           <Sparkles
-            className="absolute top-4 right-4 text-sky-400 w-5 h-5 opacity-60"
+            className="absolute top-3.5 right-3.5 text-sky-400 w-4 h-4 sm:w-5 sm:h-5 opacity-60"
           />
 
           {/* Content */}
           <div className="relative z-10">
             {/* Header */}
-            <div className="flex items-center gap-2.5 mb-3.5">
-              <div className="p-2 rounded-xl bg-coopBlue/10 border border-coopBlue/20 text-coopBlue shadow-sm">
-                <Users className="w-4 h-4" />
+            <div className="flex items-center gap-2 mb-2 sm:mb-3">
+              <div className="p-1.5 sm:p-2 rounded-xl bg-coopBlue/10 border border-coopBlue/20 text-coopBlue shadow-sm">
+                <Users className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <h2 className="text-base font-extrabold text-slate-800 tracking-tight leading-tight">
+              <h2 className="text-sm sm:text-base font-extrabold text-slate-800 tracking-tight leading-tight">
                 Working Together for a Better Tomorrow
               </h2>
             </div>
 
             {/* Quote body */}
-            <div className="relative pl-3.5 border-l-2 border-coopBlue/40 mb-3.5 space-y-2">
-              <p className="text-xs md:text-sm text-slate-700 leading-relaxed">
-                <span className="font-serif text-coopBlue text-base font-bold mr-1">&ldquo;</span>
+            <div className="relative pl-3 border-l-2 border-coopBlue/40 mb-2 sm:mb-3 space-y-1 sm:space-y-1.5">
+              <p className="text-xs sm:text-[13px] text-slate-700 leading-relaxed">
+                <span className="font-serif text-coopBlue text-sm sm:text-base font-bold mr-1">&ldquo;</span>
                 <em className="text-slate-800 font-medium">
                   The key to overcoming poverty lies in the power of cooperation and cooperatives
                 </em>
-                <span className="font-serif text-coopBlue text-base font-bold ml-1">&rdquo;</span>
-                <span className="block text-xs text-slate-500 mt-1">
+                <span className="font-serif text-coopBlue text-sm sm:text-base font-bold ml-1">&rdquo;</span>
+                <span className="block text-[11px] sm:text-xs text-slate-500 mt-0.5">
                   &mdash; Envisioned by{" "}
                   <span className="font-semibold text-coopBlue">
                     Obbo Haile Gebre Lube
@@ -66,7 +66,7 @@ const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
               </p>
             </div>
 
-            <p className="text-xs md:text-sm text-slate-600 leading-relaxed mb-4">
+            <p className="text-xs sm:text-[13px] text-slate-600 leading-relaxed mb-2.5 sm:mb-3.5">
               Inspired by his vision, we believe that{" "}
               <em className="text-slate-700 font-medium">a better tomorrow for our community</em> rests in the hands of young innovators. That&apos;s why we are committed to{" "}
               <strong className="text-coopBlue font-semibold">cooperating</strong> with them to transform lives and shape a bright future.
@@ -75,7 +75,7 @@ const CooperativeVision = ({ className = "" }: CooperativeVisionProps) => {
             {/* Footer badge */}
             <div className="flex justify-end">
               <div
-                className="text-coopBlue-dark text-[11px] font-bold py-1.5 px-3.5 rounded-full inline-flex items-center gap-1.5 shadow-sm transition-all duration-300 group-hover:shadow-md"
+                className="text-coopBlue-dark text-[10px] sm:text-[11px] font-bold py-1 px-3 sm:py-1.5 sm:px-3.5 rounded-full inline-flex items-center gap-1.5 shadow-sm transition-all duration-300 group-hover:shadow-md"
                 style={{
                   background: "linear-gradient(135deg, #e0f5ff 0%, #f0f9ff 100%)",
                   border: "1px solid rgba(0,173,239,0.3)",

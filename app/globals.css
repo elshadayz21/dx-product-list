@@ -100,6 +100,14 @@
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(180deg, #0090c8, #006fa8);
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 /* ═══════════════════════════════════════════════
@@ -209,7 +217,7 @@
 
 /* Stable product grid — prevents jump while fonts/images settle */
 .product-grid-stable {
-  min-height: 580px;
+  min-height: 0;
   contain: layout style;
 }
 
