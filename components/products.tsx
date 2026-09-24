@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from "react";
+import React, { useState, useMemo } from "react";
 import Image from "next/image";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import {
@@ -15,7 +15,6 @@ import { products } from "@/constants";
 import YouTubePlayer from "./YouTubePlayer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import MixedContentSlider from "./MixedContentSlider";
-import IframePortal from "./IframePortal";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -72,7 +71,6 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
   const [showVideo, setShowVideo] = useState(false);
   const [showDashboard, setShowDashboard] = useState(false);
   const [activeTab, setActiveTab] = useState("dxvalleyProducts");
-  const dashboardHostRef = useRef<HTMLDivElement>(null);
 
   const handleProductSelect = (product: Product) => {
     setSelectedProduct(product);
@@ -223,15 +221,14 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                   {showDashboard && selectedProduct.dashboard ? (
                     <div className="w-full h-full relative bg-slate-900 overflow-hidden">
                       <div
-                        ref={dashboardHostRef}
                         className="iframe-host w-full h-full"
                         aria-hidden
                       />
-                      <IframePortal
+                      <iframe
                         src={selectedProduct.dashboard}
                         title={`${selectedProduct.name} Dashboard`}
-                        anchorRef={dashboardHostRef}
-                        visible={showDashboard}
+                        className="absolute inset-0 w-full h-full border-0 bg-white"
+                        allowFullScreen
                       />
                     </div>
                   ) : showVideo && selectedProduct.video ? (

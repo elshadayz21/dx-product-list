@@ -8,7 +8,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import YouTubePlayer from "./YouTubePlayer";
 import Image from "next/image";
-import IframePortal from "./IframePortal";
 
 type ContentItem = {
   type: "video" | "image" | "iframe";
@@ -33,7 +32,6 @@ export default function MixedContentSlider({
   const mouseStartX = useRef<number | null>(null);
   const isDragging = useRef(false);
   const didSwipe = useRef(false);
-  const sliderHostRef = useRef<HTMLDivElement>(null);
 
   // Ensure we start from the first slide whenever the content set changes
   useEffect(() => {
@@ -111,13 +109,8 @@ export default function MixedContentSlider({
     return null;
   }
 
-  const activeItem = items[currentIndex];
-  const activeIframe =
-    activeItem?.type === "iframe" ? activeItem : null;
-
   return (
     <div
-      ref={sliderHostRef}
       className={cn(
         "relative w-full h-full min-h-0 mx-auto rounded-xl select-none overflow-hidden bg-white",
         className
@@ -180,9 +173,12 @@ export default function MixedContentSlider({
               </button>
             )}
             {item.type === "iframe" && (
-              <div
-                className="w-full h-full bg-white rounded-lg border border-slate-200/80"
+              <iframe
+                src={item.src}
+                className="w-full h-full border-0 bg-white"
                 aria-label={item.alt || `Slide ${index + 1}`}
+                title={item.alt || `Slide ${index + 1}`}
+                allowFullScreen
               />
             )}
           </div>
@@ -249,14 +245,6 @@ export default function MixedContentSlider({
         </>
       )}
 
-      {activeIframe && (
-        <IframePortal
-          src={activeIframe.src}
-          title={activeIframe.alt || `Slide ${currentIndex + 1}`}
-          anchorRef={sliderHostRef}
-          visible
-        />
-      )}
     </div>
   );
 }
