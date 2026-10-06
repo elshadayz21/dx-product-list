@@ -530,17 +530,17 @@ export const products: Product[] = [
     type: "",
     vslaPhotos: [
       {
-        src: "/6-trillion-coopay-ebirr.jpg",
-        alt: "6-trillion-transaction",
+        src: "/coopay-6.5-trillion.jpeg",
+        alt: "6.5-trillion-transaction",
       },
       {
         src: "/image.jpeg",
         alt: "mobile-money-ecosystem-2023/24-shega",
       },
-      // {
-      //   src: "/numbers-on-coopay-ebirr.jpg",
-      //   alt: "numbers-on-coopay-ebirr",
-      // },
+      {
+        src: "/coopay-overall-stat.jpeg",
+        alt: "numbers-on-coopay-ebirr",
+      },
     ],
     produtType: "External"
   },
