@@ -534,12 +534,12 @@ export const products: Product[] = [
       //   alt: "6.5-trillion-transaction",
       // },
       {
-        src: "/image.jpeg",
-        alt: "mobile-money-ecosystem-2023/24-shega",
-      },
-      {
         src: "/coopay-overall-stat.jpeg",
         alt: "numbers-on-coopay-ebirr",
+      },
+      {
+        src: "/image.jpeg",
+        alt: "mobile-money-ecosystem-2023/24-shega",
       },
     ],
     produtType: "External"
