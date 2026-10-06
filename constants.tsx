@@ -529,10 +529,10 @@ export const products: Product[] = [
     imageUrl: "/products/coopay-logo.png",
     type: "",
     vslaPhotos: [
-      {
-        src: "/coopay-6.5-trillion.jpeg",
-        alt: "6.5-trillion-transaction",
-      },
+      // {
+      //   src: "/coopay-6.5-trillion.jpeg",
+      //   alt: "6.5-trillion-transaction",
+      // },
       {
         src: "/image.jpeg",
         alt: "mobile-money-ecosystem-2023/24-shega",
