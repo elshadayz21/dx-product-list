@@ -633,7 +633,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
               alt="Mobile Money Ecosystem in Ethiopia 2023/24"
               width={1600}
               height={2200}
-              className="w-full h-full object-contain rounded-xl shadow-2xl drop-shadow-2xl"
+              className="w-auto h-auto max-w-full max-h-full object-contain rounded-xl shadow-2xl drop-shadow-2xl"
               priority
             />
           </div>
