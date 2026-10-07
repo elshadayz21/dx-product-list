@@ -529,10 +529,10 @@ export const products: Product[] = [
     imageUrl: "/products/coopay-logo.png",
     type: "",
     vslaPhotos: [
-      // {
-      //   src: "/coopay-6.5-trillion.jpeg",
-      //   alt: "6.5-trillion-transaction",
-      // },
+      {
+        src: "/Coopay-7-Trillion.png",
+        alt: "7-trillion-transaction",
+      },
       {
         src: "/coopay-overall-stat.jpeg",
         alt: "numbers-on-coopay-ebirr",
