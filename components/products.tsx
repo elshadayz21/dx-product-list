@@ -262,7 +262,9 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
             {/* Right — description (always visible) & media viewer */}
             <div className="flex-1 min-w-0 flex flex-col gap-4 h-full min-h-0 overflow-y-auto pr-1 pt-2">
               {/* Description section: plain clean text with comfortable spacing */}
-              {selectedProduct.description && (
+              {/* Hidden while the dashboard is open so the iframe gets the full
+                  column — on TV viewports a long description left it 0px tall. */}
+              {selectedProduct.description && !(showDashboard && selectedProduct.dashboard) && (
                 <div className="shrink-0 text-xs md:text-sm text-slate-700 leading-relaxed font-normal space-y-3 [&_p]:mb-2.5 [&_p:last-child]:mb-0 [&_div]:mb-2 [&_div:last-child]:mb-0">
                   {selectedProduct.description}
                 </div>
@@ -275,7 +277,7 @@ export default function ProductPage({ onOpenEcoBranch }: ProductPageProps) {
                 <div
                   className={`w-full relative overflow-hidden rounded-xl border border-slate-200/80 bg-white shadow-sm ${
                     showDashboard && selectedProduct.dashboard
-                      ? "flex-1 min-h-0"
+                      ? "flex-1 min-h-[360px]"
                       : "h-[170px] sm:h-[190px] md:h-[210px] shrink-0"
                   }`}
                 >
