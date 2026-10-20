@@ -100,7 +100,7 @@ export const products: Product[] = [
         </p>
       </div>
     ),
-    link: "https://debo.coopbankoromiasc.com/",
+    link: "https://deboo.coopbankoromiasc.com/",
     file: "Deboo.pptx",
     moto: "",
     video: "",

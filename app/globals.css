@@ -295,7 +295,7 @@
   animation: marquee 70s linear infinite !important;
 }
 
-.marquee-track:hover {
+.marquee-track:active {
   animation-play-state: paused !important;
 }
 
