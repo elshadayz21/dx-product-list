@@ -9,9 +9,43 @@ import { Input } from "@/components/ui/input";
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { preloadEcoBranchAssets } from "@/lib/eco-branch";
-import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield, X, Maximize2, Gamepad2 } from "lucide-react";
+import { Leaf, Lock, Eye, EyeOff, Sparkles, Shield, X, Maximize2, Gamepad2, Clock3 } from "lucide-react";
 import { DASHBOARD_STATS, products, AWARD_CARDS, GAMEHUB_URL } from "@/constants";
 import { Product } from "@/types";
+
+const EastAfricaClock = () => {
+  const [time, setTime] = useState("--:--:--");
+
+  useEffect(() => {
+    const updateTime = () => {
+      setTime(
+        new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Africa/Nairobi",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        }).format(new Date())
+      );
+    };
+
+    updateTime();
+    const intervalId = window.setInterval(updateTime, 1000);
+    return () => window.clearInterval(intervalId);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-2 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-white">
+      <Clock3 size={15} className="shrink-0 text-coopBlue" aria-hidden="true" />
+      <div className="leading-tight">
+        <div className="font-mono text-sm font-semibold tabular-nums" aria-label={`East Africa time ${time}`}>
+          {time}
+        </div>
+        <div className="text-[9px] font-medium tracking-widest text-white/50">EAT</div>
+      </div>
+    </div>
+  );
+};
 
 const getProductFontColor = (product: Product) => {
   const pType = (product.produtType || "").trim().toLowerCase();
@@ -92,6 +126,9 @@ const Page = () => {
                 priority
               />
             </div>
+          </div>
+          <div className="absolute top-6 right-6 z-20">
+            <EastAfricaClock />
           </div>
 
           {/* Login card */}
@@ -246,6 +283,9 @@ const Page = () => {
                   priority
                 />
               </div>
+
+              <div className="h-4 w-px bg-white/10" />
+              <EastAfricaClock />
             </div>
           </header>
 
