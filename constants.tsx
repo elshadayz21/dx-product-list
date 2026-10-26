@@ -544,31 +544,31 @@ export const products: Product[] = [
     ],
     produtType: "External"
   },
-  {
-    id: 9,
-    name: "Equb",
-    description: (
-      <div>
-        <p className="mb-2">
-          The Equb app by CoopBank digitizes the traditional Ethiopian practice
-          of rotating savings and credit. It allows users to easily join or
-          create Equb groups, contributing and receiving funds securely through
-          their smartphones.
-        </p>
-        <p>
-          This app modernizes a cultural tradition, making it more accessible
-          and convenient. Users can manage their Equb participation seamlessly,
-          with notifications and tracking features enhancing the experience.
-        </p>
-      </div>
-    ),
-    link: "",
-    file: "",
-    moto: "",
-    video: "https://www.youtube.com/watch?v=DfQFo1y2mqs",
-    imageUrl: "/products/equb-image.png",
-    type: "",
-  },
+  // {
+  //   id: 9,
+  //   name: "Equb",
+  //   description: (
+  //     <div>
+  //       <p className="mb-2">
+  //         The Equb app by CoopBank digitizes the traditional Ethiopian practice
+  //         of rotating savings and credit. It allows users to easily join or
+  //         create Equb groups, contributing and receiving funds securely through
+  //         their smartphones.
+  //       </p>
+  //       <p>
+  //         This app modernizes a cultural tradition, making it more accessible
+  //         and convenient. Users can manage their Equb participation seamlessly,
+  //         with notifications and tracking features enhancing the experience.
+  //       </p>
+  //     </div>
+  //   ),
+  //   link: "",
+  //   file: "",
+  //   moto: "",
+  //   video: "https://www.youtube.com/watch?v=DfQFo1y2mqs",
+  //   imageUrl: "/products/equb-image.png",
+  //   type: "",
+  // },
   {
     id: 15,
     name: "SACCO-Link Core Banking Solution",
@@ -1136,7 +1136,7 @@ export const products: Product[] = [
 ];
 
 export const DASHBOARD_STATS: DashboardStat[] = [
-  { key: "products", label: "Products", target: 24, suffix: "+", icon: <Zap size={12} /> },
+  { key: "products", label: "Products", target: 25, suffix: "+", icon: <Zap size={12} /> },
   { key: "customers", label: "Customers", target: 20, suffix: "M+", icon: <Users size={12} /> },
   { key: "atms", label: "CRMs & ATMs", target: 900, suffix: "+", icon: <CreditCard size={12} /> },
   { key: "branches", label: "Branches", target: 680, suffix: "+", icon: <Building2 size={12} /> },
