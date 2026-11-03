@@ -463,8 +463,14 @@ export const products: Product[] = [
     type: "",
     vslaPhotos: [
       {
-        src: "/michu-comparision-to-other-Digital-lending-providers.png",
+        src: "/michu-comparision-to-other-Digital-lending-providers.jpeg",
         alt: "michu-comparision-to-other-Digital-lending-providers",
+  
+       src: "/ michu-70Billlion-dispursed.jpeg",
+        alt: "Michu 70Billion Dispursed ",
+
+
+       
       },
 
     ],
@@ -1020,7 +1026,7 @@ export const products: Product[] = [
         <p className="mb-2"></p>
       </div>
     ),
-    link: "https://visithub.vercel.app/",
+    link: "http://10.8.101.150/schedule",
     file: "",
     moto: "",
     video: "",
