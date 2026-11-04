@@ -183,7 +183,14 @@ export const products: Product[] = [
     video: "",
     imageUrl: "/products/coop-remit-new-mobile-app-logo.png",
     type: "",
-    produtType: "External"
+    produtType: "External",
+     vslaPhotos: [
+      {
+        src: "/coopremit Landscape Banner - Both.png",
+        alt: "coopremit Download QR - Play store and Apple store",
+      },
+    ]
+
   },
   {
     id: 5,
@@ -465,14 +472,11 @@ export const products: Product[] = [
       {
         src: "/michu-comparision-to-other-Digital-lending-providers.jpeg",
         alt: "michu-comparision-to-other-Digital-lending-providers",
-  
+      },
+      {
        src: "/ michu-70Billlion-dispursed.jpeg",
         alt: "Michu 70Billion Dispursed ",
-
-
-       
       },
-
     ],
     iframeUrls: [],
     produtType: "External"
@@ -550,31 +554,31 @@ export const products: Product[] = [
     ],
     produtType: "External"
   },
-  // {
-  //   id: 9,
-  //   name: "Equb",
-  //   description: (
-  //     <div>
-  //       <p className="mb-2">
-  //         The Equb app by CoopBank digitizes the traditional Ethiopian practice
-  //         of rotating savings and credit. It allows users to easily join or
-  //         create Equb groups, contributing and receiving funds securely through
-  //         their smartphones.
-  //       </p>
-  //       <p>
-  //         This app modernizes a cultural tradition, making it more accessible
-  //         and convenient. Users can manage their Equb participation seamlessly,
-  //         with notifications and tracking features enhancing the experience.
-  //       </p>
-  //     </div>
-  //   ),
-  //   link: "",
-  //   file: "",
-  //   moto: "",
-  //   video: "https://www.youtube.com/watch?v=DfQFo1y2mqs",
-  //   imageUrl: "/products/equb-image.png",
-  //   type: "",
-  // },
+  {
+    id: 9,
+    name: "Equb",
+    description: (
+      <div>
+        <p className="mb-2">
+          The Equb app by CoopBank digitizes the traditional Ethiopian practice
+          of rotating savings and credit. It allows users to easily join or
+          create Equb groups, contributing and receiving funds securely through
+          their smartphones.
+        </p>
+        <p>
+          This app modernizes a cultural tradition, making it more accessible
+          and convenient. Users can manage their Equb participation seamlessly,
+          with notifications and tracking features enhancing the experience.
+        </p>
+      </div>
+    ),
+    link: "",
+    file: "",
+    moto: "",
+    video: "https://www.youtube.com/watch?v=DfQFo1y2mqs",
+    imageUrl: "/products/equb-image.png",
+    type: "",
+  },
   {
     id: 15,
     name: "SACCO-Link Core Banking Solution",
