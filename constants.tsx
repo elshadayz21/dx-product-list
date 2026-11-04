@@ -474,7 +474,7 @@ export const products: Product[] = [
         alt: "michu-comparision-to-other-Digital-lending-providers",
       },
       {
-       src: "/ michu-70Billlion-dispursed.jpeg",
+       src: "/michu-70Billlion-dispursed.jpeg",
         alt: "Michu 70Billion Dispursed ",
       },
     ],
