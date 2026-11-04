@@ -470,13 +470,14 @@ export const products: Product[] = [
     type: "",
     vslaPhotos: [
       {
-        src: "/michu-comparision-to-other-Digital-lending-providers.jpeg",
-        alt: "michu-comparision-to-other-Digital-lending-providers",
-      },
-      {
        src: "/michu-70Billlion-dispursed.jpeg",
         alt: "Michu 70Billion Dispursed ",
       },
+      {
+        src: "/michu-comparision-to-other-Digital-lending-providers.jpeg",
+        alt: "michu-comparision-to-other-Digital-lending-providers",
+      },
+      
     ],
     iframeUrls: [],
     produtType: "External"
