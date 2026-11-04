@@ -174,7 +174,8 @@ export const products: Product[] = [
     name: "Coop Remit",
     description: (
       <div>
-        The Smarter Way to Send Money Home. Support your family and loved ones with a remittance service you can trust. Coop Remit makes international money transfers fast, simple, and affordable. Whether it&apos;s for school fees, medical bills, or monthly support, we ensure your hard-earned money reaches its destination safely.
+        {/* The Smarter Way to Send Money Home. Support your family and loved ones with a remittance service you can trust. Coop Remit makes international money transfers fast, simple, and affordable. Whether it&apos;s for school fees, medical bills, or monthly support, we ensure your hard-earned money reaches its destination safely. */}
+      Coop Remit is a fast, secure, and reliable way to send money to Ethiopia. With support for 20+ financial service providers, your loved ones can receive funds through a wide network of banks and digital financial services. Enjoy competitive exchange rates, seamless transfers, and trusted delivery backed by one of Ethiopia's leading financial institutions.
       </div>
     ),
     link: "https://coopremit.coopbankoromiasc.com",
